@@ -1,0 +1,183 @@
+let mapleader=" "
+set showcmd
+set showmode
+set clipboard=unnamed
+set number
+set smartcase
+set smarttab
+set smartindent
+set ignorecase
+set shiftwidth=4
+set tabstop=4
+set wrap
+set blinkcursor
+noremap ; :
+noremap : q:i
+noremap r <C-r>
+nnoremap X r
+" map 0 To the first non-blank character of the line.
+nnoremap 0 ^
+nnoremap ) g_
+" nnoremap <BS> X
+" Save & quit
+noremap <C-q> :qa<CR>
+nnoremap <silent> S :w<CR>
+noremap <silent> <C-S> :wa<CR>
+inoremap <silent> <C-s> <ESC>:w<CR>i
+inoremap <S-CR> <ESC>o
+" Meta key remap
+vnoremap <M-c> "+y
+inoremap <M-v> <C-o>"+]p
+
+" Open the vimrc file anytime
+noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
+
+" Open Startify
+noremap <LEADER>st :Startify<CR>
+
+" make Y to copy till the end of the line
+nnoremap Y yg_
+
+" Copy to system clipboard
+xnoremap y "+y
+
+" Indentation
+noremap < <<
+noremap > >>
+xnoremap < <gv
+xnoremap > >gv
+
+" Search
+noremap <LEADER><CR> :nohlsearch<CR>
+
+" Adjacent duplicate words
+noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
+
+" Space to Tab
+nnoremap <LEADER>tt :%s/    /\t/g
+xnoremap <LEADER>tt :s/    /\t/g
+nnoremap <LEADER>ss :%s/\t/    /g
+xnoremap <leader>ss :s/\t/    /g
+
+noremap k <nop>
+noremap j :Vista!!<CR>
+noremap J :BTags<CR>
+noremap h <nop>
+noremap . <C-I>
+noremap , <C-O>
+noremap = <C-a>
+noremap - <C-x>
+noremap <C-a> <nop>
+noremap <C-x> <nop>
+noremap <Home> ^
+inoremap <Home> <esc>^i
+inoremap <Del> <ESC>lxi
+" U/E keys for 5 times u/e (faster navigation)
+noremap <silent> F 5k
+noremap <silent> E 5j
+
+
+xnoremap <silent> , ^
+xnoremap <silent> . g_
+xnoremap <silent> <End> g_
+xnoremap <silent> <Home> ^
+" Faster in-line navigation
+noremap W 5w
+noremap B 5b
+
+" Go next or forward word under cursor
+nnoremap \\ *
+nnoremap \| #
+" select word
+inoremap <M-d> <ESC>viw<C-g>
+nnoremap <M-d> viw<C-g>
+snoremap <M-d> <ESC>*ve<C-g>
+snoremap <M-D> <ESC>#ve<C-g>
+snoremap <ESC> <ESC>:noh<CR>
+" Ctrl + U or E will move up/down the view port without moving the cursor
+noremap <C-U> 5<C-y>
+noremap <C-E> 5<C-e>
+
+" ===
+" === Insert Mode Cursor Movement
+" ===
+inoremap <C-a> <ESC>A
+
+
+" ===
+" === Command Mode Cursor Movement
+" ===
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-w> <S-Right>
+
+" use shift + arrow keys to move line up/down
+inoremap <S-up> <ESC>:m .-2<CR>==gi
+inoremap <S-down> <ESC>:m .+1<CR>==gi
+inoremap <S-left> <ESC>bi
+inoremap <S-right> <Esc>ea
+" multi-lines move up/down in visual mode
+vnoremap <S-up> :m '<-2<CR>gv=gv
+vnoremap <S-down> :m '>+1<CR>gv=gv
+" ===
+" === Window management
+" ===
+" Use <space> + new arrow keys for moving the cursor around windows
+noremap <LEADER>w <C-w>w
+noremap <LEADER><Up> <C-w>k
+noremap <LEADER><Down> <C-w>j
+noremap <LEADER><Left> <C-w>h
+noremap <LEADER><Right> <C-w>l
+
+" Disable the default s key
+noremap s <nop>
+
+" split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
+noremap s<up> :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap s<down> :set splitbelow<CR>:split<CR>
+noremap s<left> :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap s<right> :set splitright<CR>:vsplit<CR>
+
+" Resize splits with arrow keys
+nnoremap <S-up> :res +5<CR>
+nnoremap <S-down> :res -5<CR>
+nnoremap <S-left> :vertical resize-5<CR>
+nnoremap <S-right> :vertical resize+5<CR>
+
+" Place the two screens up and down
+noremap sh <C-w>t<C-w>K
+" Place the two screens side by side
+noremap sv <C-w>t<C-w>H
+
+" Rotate screens
+noremap srh <C-w>b<C-w>K
+noremap srv <C-w>b<C-w>H
+
+" Press <SPACE> + q to close the window below the current window
+noremap <LEADER>q <C-w>j:q<CR>
+
+
+" ===
+" === Tab management
+" ===
+" Create a new tab with t/
+noremap t/ :tabe<CR>
+" Move around tabs with t, and t.
+noremap t, :-tabnext<CR>
+noremap t. :+tabnext<CR>
+" Move the tabs with tm, and tm.
+noremap tm, :-tabmove<CR>
+noremap tm. :+tabmove<CR>
+
+" ===
+" === Buffer manage
+" ===
+noremap <C-\> :bprevious<CR>
+noremap <C-]> :bnext<CR>
+
+

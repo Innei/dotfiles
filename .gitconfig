@@ -1,0 +1,35 @@
+[user]
+	name = Innei
+	email = tukon479@gmail.com
+	signingkey = 9DAF034F21220A35A3125DDA0F62D33977F021F7
+[https]
+	proxy = socks5://127.0.0.1:1086
+[http]
+	proxy = socks5://127.0.0.1:1086
+[alias]
+	fuckgit = !git add -A && git commit -n -m \"$(curl -sS https://whatthecommit.com/index.txt)\" && git push
+	fuck = !git add -A && git commit -n -m \"$(echo $commit)\" && git push
+	sa = status
+	go = checkout
+	br = branch
+	ci = commit
+	st = status
+	ps = push
+	pl = pull
+	tree = log --graph --oneline --all
+	s = status
+[commit]
+	gpgsign = true
+[core]
+	autocrlf = input
+	excludesfile = ~/.gitignore
+[gpg]
+	program = /usr/local/bin/gpg
+[merge]
+	tool = vimdiff
+
+[mergetool]
+	keepBackup = false
+    
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
