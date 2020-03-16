@@ -33,6 +33,7 @@ alias e='exit'
 alias pip='pip3'
 alias proxy='export all_proxy=socks5://127.0.0.1:1086'
 alias pc='proxychains4 zsh'
+alias ga='git status'
 alias gc='git clone'
 alias gm='git commit -a -m'
 alias gp='git push'
@@ -42,6 +43,8 @@ alias gf='git fetch'
 alias gs='git stash'
 alias gr='git rebase'
 alias gt='git log --graph --oneline --all'
+alias gsum='git summary'
+alias gco='git checkout'
 
 alias t='tldr'
 alias mkdir='mkdir -p'
@@ -62,7 +65,10 @@ alias r='ranger'
 alias q='exit'
 alias c='clear'
 alias ll='ls -l'
-# alias python='python3'
+
+alias tnew='tmux new -s'
+alias tkall='tmux kill-session -a'
+alias ta='tmux attach-session'
 # alias end
 
 VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
@@ -119,7 +125,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle sobolevn/wakatime-zsh-plugin
 
 antigen bundle willghatch/zsh-cdr
-
 antigen theme xxf
 #syntax color definition
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -180,6 +185,12 @@ bindkey '\e[1;3C' forward-word
 bindkey '\e[1;3A' beginning-of-line
 bindkey '\e[1;3B' end-of-line
 
+
+if [[ -n "$TMUX" ]]; then
+  bindkey -s '\e[1~' '\eOH'
+  bindkey -s '\e[4~' '\eOF'
+  export TERM=screen-256color
+fi
 # options
 unsetopt correct_all
 
