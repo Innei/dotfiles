@@ -3,12 +3,10 @@ ANTIGEN="$HOME/.local/bin/antigen.zsh"
 
 # Install antigen.zsh if not exist
 if [ ! -f "$ANTIGEN" ]; then
-  echo "Installing antigen ... please connect the proxy"
-  #export all_proxy=socks5://127.0.0.1:1086
   [ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local" 2> /dev/null
   [ ! -d "$HOME/.local/bin" ] && mkdir -p "$HOME/.local/bin" 2> /dev/null
   [ ! -f "$HOME/.z" ] && touch "$HOME/.z"
-  URL="http://git.io/antigen"
+  URL="https://cdn.jsdelivr.net/gh/zsh-users/antigen@master/antigen.zsh"
   TMPFILE="/tmp/antigen.zsh"
   if [ -x "$(which curl)" ]; then
     curl -L "$URL" -o "$TMPFILE"
@@ -95,13 +93,6 @@ export TERM="xterm-256color"
 
 # Load local bash/zsh compatible settings
 _INIT_SH_NOFUN=1
-#[ -f "$HOME/.local/etc/init.sh" ] && source "$HOME/.local/etc/init.sh"
-
-# exit for non-interactive shell
-#[[ $- != *i* ]] && return
-
-# WSL (aka Bash for Windows) doesn't work well with BG_NICE
-#[ -d "/mnt/c" ] && [[ "$(uname -a)" == *Microsoft* ]] && unsetopt BG_NICE
 
 # Initialize antigen
 source "$ANTIGEN"
@@ -110,6 +101,10 @@ source "$ANTIGEN"
 # Initialize oh-my-zsh
 antigen use oh-my-zsh
 
+# install theme
+if [[ ! -e "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"  ]]; then
+      curl -L "https://cdn.jsdelivr.net/gh/innei/zshrc@master/theme/xxf.zsh-theme" -o "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"
+fi
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
 antigen bundle pip
