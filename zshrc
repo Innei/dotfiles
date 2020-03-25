@@ -6,7 +6,7 @@ if [ ! -f "$ANTIGEN" ]; then
   [ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local" 2> /dev/null
   [ ! -d "$HOME/.local/bin" ] && mkdir -p "$HOME/.local/bin" 2> /dev/null
   [ ! -f "$HOME/.z" ] && touch "$HOME/.z"
-  URL="https://cdn.jsdelivr.net/gh/zsh-users/antigen@master/antigen.zsh"
+  URL="https://cdn.jsdelivr.net/gh/zsh-users/antigen@master/bin/antigen.zsh"
   TMPFILE="/tmp/antigen.zsh"
   if [ -x "$(which curl)" ]; then
     curl -L "$URL" -o "$TMPFILE"

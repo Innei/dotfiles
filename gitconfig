@@ -3,9 +3,9 @@
 	email = tukon479@gmail.com
 	signingkey = 9DAF034F21220A35A3125DDA0F62D33977F021F7
 [https]
-	proxy = socks5://127.0.0.1:1086
+	proxy = socks5://127.0.0.1:1080
 [http]
-	proxy = socks5://127.0.0.1:1086
+	proxy = socks5://127.0.0.1:1080
 [alias]
 	fuckgit = !git add -A && git commit -n -m \"$(curl -sS https://whatthecommit.com/index.txt)\" && git push
 	fuck = !git add -A && git commit -n -m \"$(echo $commit)\" && git push
