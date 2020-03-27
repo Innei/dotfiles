@@ -103,7 +103,8 @@ antigen use oh-my-zsh
 
 # install theme
 if [[ ! -e "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"  ]]; then
-      curl -L "https://cdn.jsdelivr.net/gh/innei/zshrc@master/theme/xxf.zsh-theme" -o "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"
+      curl -L "https://cdn.jsdelivr.net/gh/innei/zshrc@master/theme/xxf.zsh-theme" -o "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme.antigen-compat"
+      cp $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme.antigen-compat $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme
 fi
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
@@ -117,9 +118,10 @@ antigen bundle rupa/z z.sh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle willghatch/zsh-cdr
+
 antigen bundle sobolevn/wakatime-zsh-plugin
 
-antigen bundle willghatch/zsh-cdr
 antigen theme xxf
 #syntax color definition
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
