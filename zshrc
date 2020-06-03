@@ -57,7 +57,7 @@ alias vf='nvim $(fzf)'
 alias cdt='cd $(find * -type d | fzf)'
 alias gct='git checkout $(git branch -r | fzf)'
 
-alias cl='cloc . --exclude-dir=node_modules,.nuxt,build,.vscode,dist --exclude-lang=JSON'
+alias cl='cloc . --exclude-dir=node_modules,.nuxt,.next,build,.vscode,dist --exclude-lang=JSON,SVG,XML'
 
 alias r='ranger'
 alias q='exit'
@@ -67,6 +67,7 @@ alias ll='ls -l'
 alias tnew='tmux new -s'
 alias tkall='tmux kill-session -a'
 alias ta='tmux attach-session'
+alias yanr='yarn'
 # alias end
 
 VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
@@ -234,3 +235,4 @@ precmd_functions+=(_fix_cursor)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:~/go/bin:~/library/Python/3.7/bin:~/.local/bin:$PATH
+export PATH="/usr/local/opt/node@12/bin:$PATH"

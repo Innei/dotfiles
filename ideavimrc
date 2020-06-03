@@ -1,46 +1,25 @@
-" ===
-" === Basic Mappings
-" ===
-" Set <LEADER> as <SPACE>, ; as :
 let mapleader=" "
 noremap ; :
-" noremap : q:i
 noremap r <C-r>
 nnoremap X r
-" map 0 To the first non-blank character of the line.
 nnoremap 0 ^
 nnoremap ) g_
-" nnoremap <BS> X
-" Save & quit
-nnoremap Q :bd<CR>
+nnoremap Q :q<CR>
 command! -nargs=0 Q :q!
-noremap <C-q> :qa<CR>
+noremap <C-q> :tabo<CR>
 nnoremap <silent> S :w<CR>
 noremap <silent> <C-S> :wa<CR>
 inoremap <silent> <C-s> <ESC>:w<CR>i
 inoremap <M-f> <ESC>:Format<CR>a
 
 inoremap <S-CR> <ESC>o
-" Meta key remap
-vnoremap <M-c> "+y
-inoremap <M-v> <C-o>"+]p
-
 
 " make Y to copy till the end of the line
 nnoremap Y yg_
-
-nnoremap P "+p
-" Copy to system clipboard
-xnoremap y "+y
-
-" Indentation
 nnoremap < <<
 nnoremap > >>
 xnoremap < <gv
 xnoremap > >gv
-
-" Search
-nnoremap <LEADER><CR> :nohlsearch<CR>
 
 " Adjacent duplicate words
 noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
@@ -53,22 +32,8 @@ xnoremap <leader>ss :s/\t/    /g
 
 " Toggle wrap
 nnoremap <LEADER>tw :set wrap!<CR>
-" ===
-" === Cursor Movement
-" ===
-
-" noremap k <nop>
-
-" nnoremap h <nop>
 nnoremap . <C-I>
 nnoremap , <C-O>
-nnoremap = <C-a>
-nnoremap - <C-x>
-nnoremap <C-a> <nop>
-nnoremap <C-x> <nop>
-noremap <Home> ^
-inoremap <Home> <esc>^i
-inoremap <Del> <ESC>lxi
 " U/E keys for 5 times u/e (faster navigation)
 nnoremap <silent> F 5k
 nnoremap <silent> E 5j
@@ -88,11 +53,6 @@ xnoremap B 5b
 " Go next or forward word under cursor
 nnoremap \\ *
 nnoremap \| #
-" select word
-inoremap <M-d> <ESC>viw<C-g>
-nnoremap <M-d> viw<C-g>
-snoremap <M-d> <ESC>*ve<C-g>
-snoremap <M-D> <ESC>#ve<C-g>
 
 " rename a word
 nnoremap cw ciw
@@ -109,36 +69,6 @@ inoremap jj <ESC>l
 inoremap jk <ESC>l
 inoremap kk <ESC>l
 
-" ===
-" === Command Mode Cursor Movement
-" ===
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <M-b> <S-Left>
-cnoremap <M-w> <S-Right>
-
-" use shift(Meta) + arrow keys to move line up/down
-inoremap <M-up> <ESC>:m .-2<CR>==gi
-inoremap <M-down> <ESC>:m .+1<CR>==gi
-inoremap <M-left> <ESC>bi
-inoremap <M-right> <Esc>ea
-inoremap <S-up> <ESC>:m .-2<CR>==gi
-inoremap <S-down> <ESC>:m .+1<CR>==gi
-inoremap <S-left> <ESC>bi
-inoremap <S-right> <Esc>ea
-" multi-lines move up/down in visual mode
-vnoremap <M-up> :m '<-2<CR>gv=gv
-vnoremap <M-down> :m '>+1<CR>gv=gv
-vnoremap <M-left> b
-vnoremap <M-right> e
-vnoremap <S-up> <nop>
-vnoremap <S-down> <nop>
-vnoremap <S-left> <nop>
-vnoremap <S-right> <nop>
 " ===
 " === Window management
 " ===
@@ -158,12 +88,6 @@ nnoremap s<down> :set splitbelow<CR>:split<CR>
 nnoremap s<left> :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
 nnoremap s<right> :set splitright<CR>:vsplit<CR>
 
-" Resize splits with arrow keys
-nnoremap <M-up> :res +5<CR>
-nnoremap <M-down> :res -5<CR>
-nnoremap <M-left> :vertical resize-5<CR>
-nnoremap <M-right> :vertical resize+5<CR>
-
 " Place the two screens up and down
 nnoremap sh <C-w>t<C-w>K
 " Place the two screens side by side
@@ -175,13 +99,13 @@ nnoremap srv <C-w>b<C-w>H
 
 " Press <SPACE> + q to close the window below the current window
 nnoremap <LEADER>q <C-w>j:q<CR>
-nnoremap <Leader>Q :BufOnly<CR>
+nnoremap <Leader>Q :tabo<CR>
 
 " ===
 " === Tab management
 " ===
 " Create a new tab with t/
-nnoremap t/ :tabe<CR>
+nnoremap t/ :tabnew<CR>
 " Move around tabs with t, and t.
 nnoremap t, :-tabnext<CR>
 nnoremap t. :+tabnext<CR>
@@ -189,18 +113,11 @@ nnoremap t. :+tabnext<CR>
 nnoremap tm, :-tabmove<CR>
 nnoremap tm. :+tabmove<CR>
 
-" ===
-" === Buffer manage
-" ===
-nnoremap <C-\> :bprevious<CR>
-nnoremap <C-]> :bnext<CR>
-nnoremap gB :bprevious<CR>
-noremap gb :bnext<CR>
-nnoremap tb :enew<CR>
 nnoremap <silent> <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>v3l<C-g>
 inoremap <silent> <C-p> <++>
 noremap ` ~<left>
 
+nnoremap tt :action SelectIn<CR>
 " Code review
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
@@ -211,6 +128,7 @@ nnoremap ga :action GotoAction<CR>
 nnoremap gc :action GotoClass<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gs :action GotoSymbol<CR>
+nnoremap gr :action ShowUsages<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
 
 nnoremap <Leader>ga :action GotoAction<CR>

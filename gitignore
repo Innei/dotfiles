@@ -114,3 +114,6 @@ web_modules/
 ctag
 /tags
 .undodir
+
+# idea
+.idea/*
