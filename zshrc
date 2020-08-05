@@ -29,7 +29,7 @@ fi
 alias c='clear'
 alias e='exit'
 alias pip='pip3'
-alias proxy='export all_proxy=socks5://127.0.0.1:1086'
+alias proxy='export all_proxy=socks5://127.0.0.1:1080'
 alias pc='proxychains4 zsh'
 alias ga='git status'
 alias gc='git clone'
@@ -51,7 +51,7 @@ alias dns8='networksetup -setdnsservers Ethernet\ Adaptor\ \(en2\) 8.8.8.8 8.8.4
 alias dns='networksetup -setdnsservers "802.11n NIC" empty'
 alias dns114='networksetup -setdnsservers "802.11n NIC" 114.114.114.114'
 alias dnstx='networksetup -setdnsservers "802.11n NIC" 119.29.29.29'
-alias sshproxy="ssh -o 'ProxyCommand=nc -X 5 -x localhost:1086 %h %p'"
+alias sshproxy="ssh -o 'ProxyCommand=nc -X 5 -x localhost:1080 %h %p'"
 
 alias vf='nvim $(fzf)'
 alias cdt='cd $(find * -type d | fzf)'
