@@ -1,0 +1,1 @@
+nnoremap <silent> \f :retab<CR>:Autoformat<CR>
