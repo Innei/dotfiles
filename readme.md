@@ -10,7 +10,7 @@ git clone https://github.com/Innei/dotfiles --depth=1 ~/.dotfiles
 rcup
 ```
 
-After, you will got normal config. (Eg. Tmux, zsh, git ...)
+After, you will get normal config. (Eg. Tmux, zsh, git ...)
 
 ### Set up other config
 
@@ -21,3 +21,6 @@ rcup -t nvim
 rcup -t ranger
 ```
 
+NeoVim docs following this: 
+
+<./tag-nvim/config/nvim/README.md>
