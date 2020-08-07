@@ -7,7 +7,7 @@ Install rcm first. then run
 ```bash
 cd
 git clone https://github.com/Innei/dotfiles --depth=1 ~/.dotfiles
-rcup
+rcup -t base
 ```
 
 After, you will get normal config. (Eg. Tmux, zsh, git ...)
@@ -23,4 +23,4 @@ rcup -t ranger
 
 NeoVim docs following this: 
 
-<./tag-nvim/config/nvim/README.md>
+[Readme](./tag-nvim/config/nvim/README.md)
