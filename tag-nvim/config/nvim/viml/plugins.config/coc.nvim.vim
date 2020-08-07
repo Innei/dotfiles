@@ -36,7 +36,6 @@ let g:coc_global_extensions = [
     \ 'coc-tslint',
     \ 'coc-tsserver',
     \ 'coc-vimlsp',
-    \ 'coc-vimlsp',
     \ 'coc-yank',
     \ 'coc-zi',
     \ ]
@@ -67,6 +66,7 @@ function! s:show_documentation()
 endfunction
 
 inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> ,. coc#refresh()
 " Open up coc-commands
 nnoremap <c-c> :CocList diagnostics<CR>
 nnoremap <leader>l :CocList<CR>
@@ -82,6 +82,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>cw <Plug>(coc-rename)
 
 nnoremap tt :CocCommand explorer<CR>
 " coc-todolist

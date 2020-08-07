@@ -190,7 +190,7 @@
   "javascript.suggestionActions.enabled": true,
   "javascript.format.enabled": true,
   /* "tsserver.locale": "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/typescript-language-features", */
-  "snippets.priority": 3,
+  /* "snippets.priority": 99, */
   "snippets.autoTrigger": false,
   "snippets.userSnippetsDirectory": "~/.config/nvim/Ultisnips",
   "json.format.enable": true,
