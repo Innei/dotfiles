@@ -1,7 +1,6 @@
 [user]
 	name = Innei
 	email = tukon479@gmail.com
-	signingkey = 9DAF034F21220A35A3125DDA0F62D33977F021F7
 [https]
 	proxy = socks5://127.0.0.1:1080
 [http]
@@ -40,3 +39,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[pull]
+	ff = only

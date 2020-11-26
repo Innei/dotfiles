@@ -47,11 +47,6 @@ alias gco='git checkout'
 alias t='tldr'
 alias mkdir='mkdir -p'
 alias mkidr='mkdir -p'
-alias dns8='networksetup -setdnsservers Ethernet\ Adaptor\ \(en2\) 8.8.8.8 8.8.4.4'
-alias dns='networksetup -setdnsservers "802.11n NIC" empty'
-alias dns114='networksetup -setdnsservers "802.11n NIC" 114.114.114.114'
-alias dnstx='networksetup -setdnsservers "802.11n NIC" 119.29.29.29'
-alias sshproxy="ssh -o 'ProxyCommand=nc -X 5 -x localhost:1080 %h %p'"
 
 alias vf='nvim $(fzf)'
 alias cdt='cd $(find * -type d | fzf)'
@@ -68,6 +63,8 @@ alias tnew='tmux new -s'
 alias tkall='tmux kill-session -a'
 alias ta='tmux attach-session'
 alias yanr='yarn'
+
+alias ss='lsof -Pn -i4 | grep LISTEN'
 # alias end
 
 VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
@@ -104,8 +101,7 @@ antigen use oh-my-zsh
 
 # install theme
 if [[ ! -e "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"  ]]; then
-      curl -L "https://cdn.jsdelivr.net/gh/innei/zshrc@master/theme/xxf.zsh-theme" -o "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme.antigen-compat"
-      cp $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme.antigen-compat $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme
+      curl -L "https://cdn.jsdelivr.net/gh/innei/zshrc@master/theme/xxf.zsh-theme" -o "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"
 fi
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
@@ -236,3 +232,4 @@ precmd_functions+=(_fix_cursor)
 
 export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:~/go/bin:~/library/Python/3.7/bin:~/.local/bin:$PATH
 export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH="/usr/local/opt/node@14/bin:$PATH"

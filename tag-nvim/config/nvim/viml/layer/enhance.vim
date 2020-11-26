@@ -19,6 +19,10 @@ Plug 'voldikss/vim-floaterm'
 " Plug 'junegunn/vim-after-object' " da= to delete what's after =
 
 if !exists('g:vscode')
+
+  Plug 'wakatime/vim-wakatime'
+  let g:wakatime_PythonBinary = '/usr/bin/python3'
+
   Plug 'jiangmiao/auto-pairs'
   Plug 'kkoomen/vim-doge', { 'on': ['DogeGenerate', 'DogeCreateDocStandard'] } " document genertor
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
