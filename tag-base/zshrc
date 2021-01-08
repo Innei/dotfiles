@@ -30,6 +30,7 @@ alias c='clear'
 alias e='exit'
 alias pip='pip3'
 alias proxy='export all_proxy=socks5://127.0.0.1:1080'
+alias hp='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;'
 alias pc='proxychains4 zsh'
 alias ga='git status'
 alias gc='git clone'
@@ -65,6 +66,11 @@ alias ta='tmux attach-session'
 alias yanr='yarn'
 
 alias ss='lsof -Pn -i4 | grep LISTEN'
+
+alias dns8='networksetup -setdnsservers Wi-Fi 8.8.8.8'
+alias dns114='networksetup -setdnsservers Wi-Fi 114.114.114.114'
+alias dnsali='networksetup -setdnsservers Wi-Fi 223.5.5.5'
+alias dns='networksetup -setdnsservers Wi-Fi "Empty"'
 # alias end
 
 VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
