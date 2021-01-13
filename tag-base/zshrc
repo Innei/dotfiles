@@ -71,6 +71,11 @@ alias dns8='networksetup -setdnsservers Wi-Fi 8.8.8.8'
 alias dns114='networksetup -setdnsservers Wi-Fi 114.114.114.114'
 alias dnsali='networksetup -setdnsservers Wi-Fi 223.5.5.5'
 alias dns='networksetup -setdnsservers Wi-Fi "Empty"'
+
+
+alias charge80='sudo bclm write 80'
+alias charge60='sudo bclm write 60'
+alias charge='sudo bclm write 100'
 # alias end
 
 VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
