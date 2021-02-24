@@ -4,9 +4,7 @@
 " ===
 let g:coc_global_extensions = [
     \ 'coc-actions',
-    \ 'coc-bookmark',
     \ 'coc-calc',
-    \ 'coc-cord',
     \ 'coc-css',
     \ 'coc-cssmodules',
     \ 'coc-eslint',
@@ -30,7 +28,6 @@ let g:coc_global_extensions = [
     \ 'coc-spell-checker',
     \ 'coc-stylelint',
     \ 'coc-tailwindcss',
-    \ 'coc-template',
     \ 'coc-todolist',
     \ 'coc-translator',
     \ 'coc-tslint',
@@ -38,6 +35,7 @@ let g:coc_global_extensions = [
     \ 'coc-vimlsp',
     \ 'coc-yank',
     \ 'coc-zi',
+    \ 'coc-discord-rpc',
     \ ]
 
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -92,11 +90,6 @@ noremap tD :CocCommand todolist.download<CR>
 noremap tc :CocCommand todolist.clearNotice<CR>
 noremap tc :CocCommand todolist.clearNotice<CR>
 noremap tl :CocList --normal todolist<CR>
-" coc-bookmark
-nmap ma <Plug>(coc-bookmark-annotate)
-nmap mm <Plug>(coc-bookmark-toggle)
-nmap m, <Plug>(coc-bookmark-prev)
-nmap m. <Plug>(coc-bookmark-next)
 " coc-translator
 nmap ts <Plug>(coc-translator-p)
 " coc-zi
