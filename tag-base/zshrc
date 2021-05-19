@@ -30,12 +30,13 @@ alias c='clear'
 alias e='exit'
 alias pip='pip3'
 alias proxy='export all_proxy=socks5://127.0.0.1:1080'
+alias charles='export http_proxy=http://127.0.0.1:8888;export https_proxy=http://127.0.0.1:8888'
 alias hp='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;'
 alias pc='proxychains4 zsh'
 alias ga='git status'
 alias gc='git clone'
 alias gm='git commit -a -m'
-alias gp='git push'
+alias gp='git push -u origin $(git symbolic-ref --short HEAD)'
 alias gb='git branch'
 alias gpl='git pull'
 alias gf='git fetch'
@@ -44,6 +45,9 @@ alias gr='git rebase'
 alias gt='git log --graph --oneline --all'
 alias gsum='git summary'
 alias gco='git checkout'
+alias gignore='git update-index --assume-unchanged'
+alias gnoignore='git update-index --no-assume-unchanged'
+alias gclean='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
 alias t='tldr'
 alias mkdir='mkdir -p'
@@ -53,7 +57,7 @@ alias vf='nvim $(fzf)'
 alias cdt='cd $(find * -type d | fzf)'
 alias gct='git checkout $(git branch -r | fzf)'
 
-alias cl='cloc . --exclude-dir=node_modules,.nuxt,.next,build,.vscode,dist --exclude-lang=JSON,SVG,XML'
+alias cl='cloc . --exclude-dir=node_modules,.nuxt,.next,build,.vscode,dist,release,tmp --exclude-lang=JSON,SVG,XML'
 
 alias r='ranger'
 alias q='exit'
@@ -78,6 +82,8 @@ alias charge='sudo bclm write 100'
 
 alias npm='pnpm'
 alias npx='pnpx'
+alias nenv='export PATH="$PATH:./node_modules/.bin"'
+alias clang++='clang++ --std=c++17'
 # alias end
 
 VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
@@ -168,6 +174,7 @@ ZSH_HIGHLIGHT_STYLES[assign]=none
 [ -f "$HOME/.local/etc/local.zsh" ] && source "$HOME/.local/etc/local.zsh"
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 [ -f "$HOME/.config/zsh/zshrc" ] && source "$HOME/.config/zsh/zshrc"
+[ -f "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh" ] && source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
 antigen apply
 
@@ -247,3 +254,9 @@ export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:~/go/bin
 export PATH="/usr/local/opt/node@12/bin:$PATH"
 export PATH="/usr/local/opt/node@14/bin:$PATH"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export GOPROXY=https://goproxy.io,direct
