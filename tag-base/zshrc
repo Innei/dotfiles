@@ -82,6 +82,7 @@ alias charge='sudo bclm write 100'
 
 alias npm='pnpm'
 alias npx='pnpx'
+alias n='pnpm'
 alias nenv='export PATH="$PATH:./node_modules/.bin"'
 alias clang++='clang++ --std=c++17'
 # alias end
@@ -254,6 +255,7 @@ export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:~/go/bin
 export PATH="/usr/local/opt/node@12/bin:$PATH"
 export PATH="/usr/local/opt/node@14/bin:$PATH"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PATH="$PATH:./node_modules/.bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

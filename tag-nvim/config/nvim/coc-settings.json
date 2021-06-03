@@ -1,8 +1,6 @@
 {
   "npm.binPath": "yarn",
-  "coc.preferences.hoverTarget": "float",
   /* "coc.preferences.hoverTarget": "echo", */
-  "coc.preferences.formatOnInsertLeave": true,
   /* "coc.preferences.enableFloatHighlight": false, */
   "coc.preferences.enableFloatHighlight": true,
   "coc.preferences.snippetStatusText": "Ⓢ ",
@@ -52,14 +50,12 @@
     "value": "\uf89f",
     "variable": "\ue71b"
   },
-  "diagnostic.signOffset": 3,
   "diagnostic.errorSign": "×",
   "diagnostic.warningSign": "»",
   "diagnostic.infoSign": "!",
   "diagnostic.hintSign": "?",
   "diagnostic.displayByAle": false,
   "diagnostic.refreshOnInsertMode": true,
-  "diagnostic.refreshAfterSave": false,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualTextPrefix": "           => ",
   "diagnostic.virtualText": false,
@@ -90,9 +86,6 @@
   "explorer.quitOnOpen": true,
   "explorer.activeMode": true,
   "explorer.icon.enableVimDevicons": true,
-  "explorer.file.tabCD": true,
-  "explorer.autoExpandSingleNode": true,
-  "explorer.openAction.changeDirectory": true,
   "explorer.sources": [
     {
       "name": "buffer",
@@ -108,64 +101,6 @@
   "explorer.icon.enableNerdfont": true,
   "explorer.git.showIgnored": true,
   "explorer.keyMappingMode": "none",
-  "explorer.keyMappings": {
-    "u": "nodePrev",
-    "e": "nodeNext",
-
-    "*": "toggleSelection",
-    "<tab>": "actionMenu",
-
-    "n": "expanded?",
-    "E": ["toggleSelection", "normal:j"],
-    "U": ["toggleSelection", "normal:k"],
-    "gl": "expandRecursive",
-    "gh": "collapseRecursive",
-    "i": "expand",
-    "s": "open:vsplit",
-    "<cr>": ["expandable?", "expandOrCollapse", "open"],
-    "o": ["expandable?", "expandOrCollapse", "open"],
-    "t": "open:tab",
-    "<bs>": "gotoParent",
-    "l": "gotoParent",
-
-    "yp": "copyFilepath",
-    "yn": "copyFilename",
-    "yy": "copyFile",
-    "dd": "cutFile",
-    "pp": "pasteFile",
-    "dD": "delete",
-    "Dd": "deleteForever",
-
-    "a": "addFile",
-    "M": "addDirectory",
-    "cw": "rename",
-
-    ".": "toggleHidden",
-    "zh": "toggleHidden",
-    "R": "refresh",
-
-    "?": "help",
-    "q": "quit",
-    "X": "systemExecute",
-    "gd": "listDrive",
-
-    "f": "search",
-    "F": "searchRecursive",
-
-    "B": "gotoSource:file",
-    "b": "gotoSource:buffer",
-
-    "[[": "sourcePrev",
-    "]]": "sourceNext",
-
-    "[d": "diagnosticPrev",
-    "]d": "diagnosticNext",
-
-    "[c": "gitPrev",
-    "]c": "gitNext",
-    "<<": "gitStage",
-    ">>": "gitUnstage"
-  },
   "git.enableGutters": true,
   "git.branchCharacter": "\uf408",
   "git.addGBlameToBufferVar": false,
@@ -179,7 +114,6 @@
   "tslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "eslint.autoFixOnSave": true,
-  "eslint.autoFix": true,
   "python.autoComplete.addBrackets": true,
   "python.jediEnabled": false,
   "html.format.enable": true,
@@ -229,22 +163,7 @@
     },
   },
   "snippets.textmateSnippetsRoots": [],
-  "snippets.extends": [{ "vue": "javascript" }],
   "html.filetypes": ["html", "handlebars", "htmldjango", "vue"],
-  "vetur.useWorkspaceDependencies": true,
-  "vetur.format.enable": true,
-  "vetur.format.defaultFormatter.js": "prettier-eslint",
-  "vetur.format.defaultFormatter.ts": "prettier-tslint",
-  "vetur.format.defaultFormatter.scss": "prettier",
-  "vetur.format.defaultFormatter.css": "prettier",
-  "vetur.format.defaultFormatter.html": "prettier",
-  "vetur.completion.useScaffoldSnippets": true,
-  "emmet.includeLanguages": {       
-    "javascript": "javascriptreact",
-    "typescriptreact": "typescriptreact" 
-  },                                
-  "emmet.showSuggestionsAsSnippets": true,
-  "emmet.optimizeStylesheetParsing": true,
   "cSpell.maxNumberOfProblems": 10,
   "cSpell.ignorePaths": [
     "node_modules",
@@ -257,11 +176,8 @@
     "**/*.dll",
     "init.vim"
   ],
-  "yaml.format.enable": true,
   "coc-actions.hideCursor": true,
   "coc-actions.useCursorLine": true,
-  "sourcekit.commandPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
   "cSpell.userWords": ["Innei", "Typegoose", "consola"],
-  "smartf.timeout": 5000,
-  "bookmark.sign": " "
+  "smartf.timeout": 5000
 }

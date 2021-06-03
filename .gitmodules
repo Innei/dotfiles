@@ -1,0 +1,3 @@
+[submodule "tag-fish/local/share/omf"]
+	path = tag-fish/local/share/omf
+	url = https://github.com/oh-my-fish/oh-my-fish.git
