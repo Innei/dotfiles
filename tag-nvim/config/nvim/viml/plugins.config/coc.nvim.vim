@@ -65,8 +65,7 @@ let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-vimlsp',
     \ 'coc-yank',
-    \ 'coc-zi',
-    \ 'coc-discord-rpc',
+    \ 'coc-zi'
     \ ]
 
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

@@ -5,10 +5,12 @@
 set rtp+=/usr/local/opt/fzf
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 let g:fzf_history_dir = '~/.config/nvim/tmp/fzf-history'
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 nnoremap <C-f> :Ag<CR>
 nnoremap <C-p> :FZF<CR>
 nnoremap <C-r> :Rg<CR>
 nnoremap <leader>f :BLines<CR>
+" Ctrl+P/N
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)

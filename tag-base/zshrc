@@ -123,6 +123,9 @@ antigen use oh-my-zsh
 if [[ ! -e "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"  ]]; then
       curl -L "https://cdn.jsdelivr.net/gh/innei/zshrc@master/theme/xxf.zsh-theme" -o "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"
 fi
+if [[ ! -e "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme.antigen-compat"  ]]; then
+      curl -L "https://cdn.jsdelivr.net/gh/innei/zshrc@master/theme/xxf.zsh-theme.antigen-compat" -o "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"
+fi
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
 antigen bundle pip
@@ -137,7 +140,7 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle willghatch/zsh-cdr
 
-antigen bundle sobolevn/wakatime-zsh-plugin
+# antigen bundle sobolevn/wakatime-zsh-plugin
 
 antigen theme xxf
 #syntax color definition
