@@ -61,7 +61,6 @@ let g:coc_global_extensions = [
     \ 'coc-tailwindcss',
     \ 'coc-todolist',
     \ 'coc-translator',
-    \ 'coc-tslint',
     \ 'coc-tsserver',
     \ 'coc-vimlsp',
     \ 'coc-yank',
