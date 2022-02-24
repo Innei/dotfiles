@@ -249,30 +249,32 @@ nnoremap tx :r !figlet
 " find and replace
 noremap \s :%s//g<left><left>
 
-" ---------------------------------------------------------------------
-" About Chinese: f[[
-" punctuations auto changing has unexpected problems
-imap （ (
-imap ） )
-imap 』 }
-imap 『 {
-imap 【 [
-imap 】 ]
-imap 。 .
-imap ， ,
-imap ； ;
-imap ： :
-imap “ "
-imap ” "
-imap ‘ '
-imap ’ '
-imap ？ ?
-imap ！ !
-imap 》 >
-imap 《 <
-imap 、 /
-imap ￥ $
-imap 》 >
-imap 《 <
-map ： :
-map ； :
+if !exists('g:vscode')
+  " ---------------------------------------------------------------------
+  " About Chinese: f[[
+  " punctuations auto changing has unexpected problems
+  imap （ (
+  imap ） )
+  imap 』 }
+  imap 『 {
+    imap 【 [
+      imap 】 ]
+      imap 。 .
+      imap ， ,
+      imap ； ;
+      imap ： :
+      imap “ "
+      imap ” "
+      imap ‘ '
+      imap ’ '
+      imap ？ ?
+      imap ！ !
+      imap 》 >
+      imap 《 <
+      imap 、 /
+      imap ￥ $
+      imap 》 >
+      imap 《 <
+      map ： :
+      map ； :
+    endif

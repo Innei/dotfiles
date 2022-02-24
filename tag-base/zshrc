@@ -33,6 +33,7 @@ alias proxy='export all_proxy=socks5://127.0.0.1:1080'
 alias charles='export http_proxy=http://127.0.0.1:8888;export https_proxy=http://127.0.0.1:8888'
 alias hp='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;'
 alias pc='proxychains4 zsh'
+
 alias ga='git status'
 alias gc='git clone'
 alias gm='git commit -a -m'
@@ -43,11 +44,13 @@ alias gf='git fetch'
 alias gs='git stash'
 alias gr='git rebase'
 alias gt='git log --graph --oneline --all'
-alias gsum='git summary'
 alias gco='git checkout'
 alias gignore='git update-index --assume-unchanged'
 alias gnoignore='git update-index --no-assume-unchanged'
 alias gclean='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+
+# git commit
+alias gm1='git commit -m "chore: update deps"'
 
 alias t='tldr'
 alias mkdir='mkdir -p'
@@ -80,8 +83,11 @@ alias charge80='sudo bclm write 80'
 alias charge60='sudo bclm write 60'
 alias charge='sudo bclm write 100'
 
+alias npm_='\npm'
+alias npx_='\npx'
 alias npm='pnpm'
 alias npx='pnpx'
+alias nn='\n'
 alias n='pnpm'
 alias nenv='export PATH="$PATH:./node_modules/.bin"'
 alias clang++='clang++ --std=c++17'
@@ -258,10 +264,16 @@ export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:~/go/bin
 export PATH="/usr/local/opt/node@12/bin:$PATH"
 export PATH="/usr/local/opt/node@14/bin:$PATH"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
-export PATH="$PATH:./node_modules/.bin"
+export PATH="./node_modules/.bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export N_PREFIX="$HOME/.n"
+export N_PRESERVE_NPM=1
+export PATH=$N_PREFIX/bin:$PATH
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export GOPROXY=https://goproxy.io,direct
+eval "$(starship init zsh)"
+
