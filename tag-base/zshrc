@@ -260,11 +260,10 @@ precmd_functions+=(_fix_cursor)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:~/go/bin:~/library/Python/3.7/bin:~/.local/bin:$PATH
-export PATH="/usr/local/opt/node@12/bin:$PATH"
-export PATH="/usr/local/opt/node@14/bin:$PATH"
+export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:~/go/bin:~/.local/bin:$PATH
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
+export PATH="$HOME/Library/Python/3.8/bin:$PATH"
 
 export N_PREFIX="$HOME/.n"
 export N_PRESERVE_NPM=1

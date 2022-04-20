@@ -73,7 +73,6 @@ nnoremap <LEADER>tw :set wrap!<CR>
 " ===
 nnoremap . <C-I>
 nnoremap , <C-O>
-noremap ' .
 nnoremap = <C-a>
 nnoremap - <C-x>
 map ! %
