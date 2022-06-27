@@ -78,14 +78,18 @@ nnoremap - <C-x>
 map ! %
 nnoremap <C-a> <nop>
 nnoremap <C-x> <nop>
-inoremap <Home> <esc>^i
-inoremap <Del> <ESC>lxi
-nnoremap <Del> "_x
-xnoremap <Del> "_d
-xnoremap <silent> , ^
-xnoremap <silent> . g_
-xnoremap <silent> <End> g_
-xnoremap <silent> <Home> ^
+
+if !exists('g:vscode')
+  inoremap <Home> <esc>^i
+  inoremap <Del> <ESC>lxi
+  nnoremap <Del> "_x
+  xnoremap <Del> "_d
+  xnoremap <silent> , ^
+  xnoremap <silent> . g_
+  xnoremap <silent> <End> g_
+  xnoremap <silent> <Home> ^
+endif
+
 " Faster in-line navigation
 nnoremap W 5w
 nnoremap B 5b
@@ -256,24 +260,27 @@ if !exists('g:vscode')
   imap ） )
   imap 』 }
   imap 『 {
-    imap 【 [
-      imap 】 ]
-      imap 。 .
-      imap ， ,
-      imap ； ;
-      imap ： :
-      imap “ "
-      imap ” "
-      imap ‘ '
-      imap ’ '
-      imap ？ ?
-      imap ！ !
-      imap 》 >
-      imap 《 <
-      imap 、 /
-      imap ￥ $
-      imap 》 >
-      imap 《 <
-      map ： :
-      map ； :
-    endif
+  imap 【 [
+  imap 】 ]
+  imap 。 .
+  imap ， ,
+  imap ； ;
+  imap ： :
+  imap “ "
+  imap ” "
+  imap ‘ '
+  imap ’ '
+  imap ？ ?
+  imap ！ !
+  imap 》 >
+  imap 《 <
+  imap 、 /
+  imap ￥ $
+  imap 》 >
+  imap 《 <
+  map ： :
+  map ； :
+else
+  map  ' <Plug>(easymotion-bd-f)
+  nmap ' <Plug>(easymotion-overwin-f)
+endif
