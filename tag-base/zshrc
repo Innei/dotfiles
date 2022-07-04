@@ -3,8 +3,8 @@ ANTIGEN="$HOME/.local/bin/antigen.zsh"
 
 # Install antigen.zsh if not exist
 if [ ! -f "$ANTIGEN" ]; then
-  [ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local" 2> /dev/null
-  [ ! -d "$HOME/.local/bin" ] && mkdir -p "$HOME/.local/bin" 2> /dev/null
+  [ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local" 2>/dev/null
+  [ ! -d "$HOME/.local/bin" ] && mkdir -p "$HOME/.local/bin" 2>/dev/null
   [ ! -f "$HOME/.z" ] && touch "$HOME/.z"
   URL="https://cdn.jsdelivr.net/gh/zsh-users/antigen@master/bin/antigen.zsh"
   TMPFILE="/tmp/antigen.zsh"
@@ -20,7 +20,7 @@ if [ ! -f "$ANTIGEN" ]; then
     echo ""
     echo "ERROR: downloading antigen.zsh ($URL) failed !!"
     exit
-  fi;
+  fi
   echo "move $TMPFILE to $ANTIGEN"
   mv "$TMPFILE" "$ANTIGEN"
 fi
@@ -93,7 +93,9 @@ alias nenv='export PATH="$PATH:./node_modules/.bin"'
 alias clang++='clang++ --std=c++17'
 # alias end
 
-VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
+VISUAL=nvim
+export VISUAL EDITOR=nvim
+export EDITOR
 
 # fzf
 export FZF_DEFAULT_OPTS='--bind ctrl-e:down,ctrl-u:up --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
@@ -101,7 +103,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore-dir=node_modules 
 export FZF_COMPLETION_TRIGGER='\'
 export FZF_TMUX_HEIGHT='80%'
 export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
-
 
 export LSCOLORS=exfxcxdxbxexexxxxxxxxx
 export LC_ALL=en_US.UTF-8
@@ -114,32 +115,30 @@ export LANGUAGE=en_US
 # Enable 256 color to make auto-suggestions look nice
 export TERM="xterm-256color"
 
-
 # Load local bash/zsh compatible settings
 _INIT_SH_NOFUN=1
 
 # Initialize antigen
 source "$ANTIGEN"
 
-
 # Initialize oh-my-zsh
-antigen use oh-my-zsh
+# antigen use oh-my-zsh
 
 # install theme
-if [[ ! -e "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"  ]]; then
-      curl -L "https://cdn.jsdelivr.net/gh/innei/zshrc@master/theme/xxf.zsh-theme" -o "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"
-fi
-if [[ ! -e "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme.antigen-compat"  ]]; then
-      curl -L "https://cdn.jsdelivr.net/gh/innei/zshrc@master/theme/xxf.zsh-theme.antigen-compat" -o "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"
-fi
+# if [[ ! -e "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"  ]]; then
+#       curl -L "https://cdn.jsdelivr.net/gh/innei/zshrc@master/theme/xxf.zsh-theme" -o "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"
+# fi
+# if [[ ! -e "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme.antigen-compat"  ]]; then
+#       curl -L "https://cdn.jsdelivr.net/gh/innei/zshrc@master/theme/xxf.zsh-theme.antigen-compat" -o "$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/themes/xxf.zsh-theme"
+# fi
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
-antigen bundle pip
-antigen bundle svn-fast-info
+# antigen bundle pip
+# antigen bundle svn-fast-info
 
 antigen bundle colorize
-antigen bundle github
-antigen bundle python
+# antigen bundle github
+# antigen bundle python
 antigen bundle rupa/z z.sh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
@@ -148,7 +147,7 @@ antigen bundle willghatch/zsh-cdr
 
 # antigen bundle sobolevn/wakatime-zsh-plugin
 
-antigen theme xxf
+# antigen theme xxf
 #syntax color definition
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
@@ -157,27 +156,27 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 #ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
 #ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
 
-ZSH_HIGHLIGHT_STYLES[default]=none
-ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
-ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=009,standout
-ZSH_HIGHLIGHT_STYLES[alias]=fg=cyan,bold
-ZSH_HIGHLIGHT_STYLES[builtin]=fg=cyan,bold
-ZSH_HIGHLIGHT_STYLES[function]=fg=cyan,bold
-ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
-ZSH_HIGHLIGHT_STYLES[commandseparator]=none
-ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=009
-ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
-ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
-ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=none
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=none
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=063
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
-ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
-ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
-ZSH_HIGHLIGHT_STYLES[assign]=none
+# ZSH_HIGHLIGHT_STYLES[default]=none
+# ZSH_HIGHLIGHT_STYLES[unknown - token]=fg=009
+# ZSH_HIGHLIGHT_STYLES[reserved - word]=fg=009,standout
+# ZSH_HIGHLIGHT_STYLES[alias]=fg=cyan,bold
+# ZSH_HIGHLIGHT_STYLES[builtin]=fg=cyan,bold
+# ZSH_HIGHLIGHT_STYLES[function]=fg=cyan,bold
+# ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
+# ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
+# ZSH_HIGHLIGHT_STYLES[commandseparator]=none
+# ZSH_HIGHLIGHT_STYLES[hashed - command]=fg=009
+# ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
+# ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
+# ZSH_HIGHLIGHT_STYLES[history - expansion]=fg=white,underline
+# ZSH_HIGHLIGHT_STYLES[single - hyphen - option]=none
+# ZSH_HIGHLIGHT_STYLES[double - hyphen - option]=none
+# ZSH_HIGHLIGHT_STYLES[back - quoted - argument]=none
+# ZSH_HIGHLIGHT_STYLES[single - quoted - argument]=fg=063
+# ZSH_HIGHLIGHT_STYLES[double - quoted - argument]=fg=063
+# ZSH_HIGHLIGHT_STYLES[dollar - double - quoted - argument]=fg=009
+# ZSH_HIGHLIGHT_STYLES[back - double - quoted - argument]=fg=009
+# ZSH_HIGHLIGHT_STYLES[assign]=none
 
 # load local config
 [ -f "$HOME/.local/etc/config.zsh" ] && source "$HOME/.local/etc/config.zsh"
@@ -187,7 +186,6 @@ ZSH_HIGHLIGHT_STYLES[assign]=none
 [ -f "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh" ] && source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
 antigen apply
-
 
 # default keymap
 bindkey -s '\ee' 'nvim\n'
@@ -209,7 +207,6 @@ bindkey '\e[1;3C' forward-word
 bindkey '\e[1;3A' beginning-of-line
 bindkey '\e[1;3B' end-of-line
 
-
 if [[ -n "$TMUX" ]]; then
   bindkey -s '\e[1~' '\eOH'
   bindkey -s '\e[4~' '\eOF'
@@ -218,17 +215,17 @@ fi
 # options
 unsetopt correct_all
 
-setopt BANG_HIST                 # Treat the '!' character specially during expansion.
-setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
-setopt SHARE_HISTORY             # Share history between all sessions.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
-setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
-setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
-setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
-setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
-setopt HIST_VERIFY # Don't execute immediately upon history expansion.
+setopt BANG_HIST              # Treat the '!' character specially during expansion.
+setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY          # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS       # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE      # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS      # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY            # Don't execute immediately upon history expansion.
 
 # less highlight for man page
 export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -269,10 +266,5 @@ export N_PREFIX="$HOME/.n"
 export N_PRESERVE_NPM=1
 export PATH=$N_PREFIX/bin:$PATH
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 export GOPROXY=https://goproxy.io,direct
 eval "$(starship init zsh)"
-
