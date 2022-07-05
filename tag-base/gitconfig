@@ -21,6 +21,7 @@
 [core]
 	autocrlf = input
 	excludesfile = ~/.gitignore
+	ignorecase = false
 [gpg]
 	program = /usr/local/bin/gpg
 [merge]

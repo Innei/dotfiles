@@ -66,6 +66,7 @@ alias r='ranger'
 alias q='exit'
 alias c='clear'
 alias ll='ls -l'
+alias d='npm run dev'
 
 alias tnew='tmux new -s'
 alias tkall='tmux kill-session -a'
