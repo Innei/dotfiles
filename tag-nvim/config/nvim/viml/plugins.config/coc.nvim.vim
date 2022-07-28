@@ -45,7 +45,6 @@ let g:coc_global_extensions = [
     \ 'coc-go',
     \ 'coc-highlight',
     \ 'coc-html',
-    \ 'coc-imselect',
     \ 'coc-json',
     \ 'coc-lists',
     \ 'coc-marketplace',

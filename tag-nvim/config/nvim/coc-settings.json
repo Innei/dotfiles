@@ -21,8 +21,7 @@
   "suggest.floatEnable": true,
   "suggest.detailField": "preview",
   "suggest.snippetIndicator": "*",
-  "suggest.triggerCompletionWait": 100,
-  "suggest.echodocSupport": true,
+  "suggest.triggerCompletionWait": 0,
   "suggest.completionItemKindLabels": {
     "class": "\uf0e8",
     "color": "\ue22b",
@@ -75,7 +74,6 @@
     "vue",
     "scss"
   ],
-  "prettier.eslintIntegration": true,
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "signature.target": "echo",
@@ -84,7 +82,6 @@
   "yank.priority": 30,
   "explorer.width": 38,
   "explorer.quitOnOpen": true,
-  "explorer.activeMode": true,
   "explorer.icon.source": "vim-devicons",
   "explorer.sources": [
     {
@@ -111,7 +108,6 @@
   "git.removedSign.hlGroup": "GitGutterDelete",
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-  "tslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "eslint.autoFixOnSave": true,
   "python.autoComplete.addBrackets": true,
@@ -131,10 +127,21 @@
   "zi.enable": true,
   "zi.patterns": {
     "": [],
-    "javascript": ["^\\s*\\/\\/", "^\\s*\\/\\*", "^\\s*\\*", "const \\s*"],
-    "typescript": ["^\\s*\\/\\/", "^\\s*\\/\\*", "^\\s*\\*"],
+    "javascript": [
+      "^\\s*\\/\\/",
+      "^\\s*\\/\\*",
+      "^\\s*\\*",
+      "const \\s*"
+    ],
+    "typescript": [
+      "^\\s*\\/\\/",
+      "^\\s*\\/\\*",
+      "^\\s*\\*"
+    ],
     "markdown": [],
-    "vim": ["^\\s*\\\""],
+    "vim": [
+      "^\\s*\\\""
+    ],
     "gitcommit": []
   },
   "zi.syntaxKinds.javascript": [
@@ -147,8 +154,12 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"],
+      "rootPatterns": [
+        "go.mod"
+      ],
+      "filetypes": [
+        "go"
+      ],
       "initializationOptions": {
         "gocodeCompletionEnabled": true,
         "diagnosticsEnabled": true,
@@ -157,13 +168,22 @@
     },
     "bash": {
       "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"],
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
       "ignoredRootPaths": []
-    },
+    }
   },
   "snippets.textmateSnippetsRoots": [],
-  "html.filetypes": ["html", "handlebars", "htmldjango", "vue"],
+  "html.filetypes": [
+    "html",
+    "handlebars",
+    "htmldjango",
+    "vue"
+  ],
   "cSpell.maxNumberOfProblems": 10,
   "cSpell.ignorePaths": [
     "node_modules",
@@ -178,87 +198,10 @@
   ],
   "coc-actions.hideCursor": true,
   "coc-actions.useCursorLine": true,
-  "cSpell.userWords": ["Innei", "Typegoose", "consola"],
-  "smartf.timeout": 5000
-  "explorer.keyMappings.global": {
-    "i": false, // cancel default mapkey
-    "<c-o>": "noop",
-
-    "*": "toggleSelection",
-    "<tab>": "actionMenu",
-
-    "gk": ["wait", "expandablePrev"],
-    "gj": ["wait", "expandableNext"],
-    "h": ["wait", "collapse"],
-    "l": ["wait", "expandable?", "expand", "open"],
-    "J": ["wait", "toggleSelection", "normal:j"],
-    "K": ["wait", "toggleSelection", "normal:k"],
-    "gl": ["wait", "expand:recursive"],
-    "gh": ["wait", "collapse:recursive"],
-    "<2-LeftMouse>": [
-      "expandable?",
-      ["expanded?", "collapse", "expand"],
-      "open"
-    ],
-    "o": ["wait", "expanded?", "collapse", "expand"],
-    "<cr>": ["wait", "expanded?", "collapse", "expand"],
-    "e": "open",
-    "s": "open:split",
-    "E": "open:vsplit",
-    "t": "open:tab",
-    "<bs>": ["wait", "gotoParent"],
-    "gs": ["wait", "reveal:select"],
-    "il": "preview:labeling",
-    "ic": "preview:content",
-    "Il": "previewOnHover:toggle:labeling",
-    "Ic": "previewOnHover:toggle:content",
-    "II": "previewOnHover:disable",
-
-    "yp": "copyFilepath",
-    "yn": "copyFilename",
-    "yy": "copyFile",
-    "dd": "cutFile",
-    "p": "pasteFile",
-    "df": "delete",
-    "dF": "deleteForever",
-
-    "a": "addFile",
-    "A": "addDirectory",
-    "r": "rename",
-
-    "zh": "toggleHidden",
-    "g<dot>": "toggleHidden",
-    "R": "refresh",
-
-    "?": "help",
-    "q": "quit",
-    "<esc>": "esc",
-    "X": "systemExecute",
-    "gd": "listDrive",
-
-    "f": "search",
-    "F": "searchRecursive",
-
-    "gf": "gotoSource:file",
-    "gb": "gotoSource:buffer",
-
-    "[[": ["wait", "sourcePrev"],
-    "]]": ["wait", "sourceNext"],
-
-    "[i": ["wait", "indentPrev"],
-    "]i": ["wait", "indentNext"],
-
-    "[m": ["wait", "markPrev:modified"],
-    "]m": ["wait", "markNext:modified"],
-
-    "[d": ["wait", "markPrev:diagnosticError:diagnosticWarning"],
-    "]d": ["wait", "markNext:diagnosticError:diagnosticWarning"],
-    "[D": ["wait", "markPrev:diagnosticError"],
-    "]D": ["wait", "markNext:diagnosticError"],
-
-    "[c": ["wait", "markPrev:git"],
-    "]c": ["wait", "markNext:git"],
-    "<<": "gitStage",
-    ">>": "gitUnstage"
-  }
+  "cSpell.userWords": [
+    "Innei",
+    "Typegoose",
+    "consola"
+  ],
+  "smartf.timeout": 5000,
 }

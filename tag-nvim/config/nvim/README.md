@@ -9,7 +9,7 @@ Support Language:
 - HTML
 - CSS
 
-![](https://cdn.jsdelivr.net/gh/innei/img-bed@master/20200217150307.png)
+![](https://cdn.jsdelivr.net/gh/Innei/fancy@master/2022/0728232305.png)
 
 Please **DO NOT** just copy this config without really looking at it! Please, at least, read this README file!
 
@@ -64,10 +64,10 @@ Python:
 
 | Shortcut   | Action                                                    |
 | ---------- | --------------------------------------------------------- |
-| `↑`        | Cursor up a terminal line                                 |
-| `↓`        | Cursor down a terminal line                               |
-| `←`        | Cursor left                                               |
-| `→`        | Cursor right                                              |
+| `↑` `k`    | Cursor up a terminal line                                 |
+| `↓` `j`    | Cursor down a terminal line                               |
+| `←` `h`    | Cursor left                                               |
+| `→` `l`    | Cursor right                                              |
 | `Ctrl` `u` | Move the view port up 5 lines without moving the cursor   |
 | `Ctrl` `e` | Move the view port down 5 lines without moving the cursor |
 | `W`        | Move cursor five words forward                            |
@@ -77,24 +77,24 @@ Python:
 | `<M-d>`    | Select current under cursor word                          |
 | `\` `\`    | Go next word which equal with current cursor under word   |
 | `\` `*`    | Same as above, but go forward                             |
-| `0`        | Equal to  `^`                                             |
-| `)`        | Equal to  `$`                                             |
+| `0`        | Equal to `^`                                              |
+| `)`        | Equal to `$`                                              |
 
 #### 1.3 Remapped Insert Mode Keys
 
-| Shortcut      | Action                                                               |
-| ----------    | -------------------------------------------------------------------- |
-| `j` `j`       | Map to `ESC`                                                         |
-| `j` `k`       | Map to undo                                                          |
-| `Meta` `d`    | Select current (next) under cursor word                              |
-| `Meta` `D`    | Select prev some word which like under cursor word                   |
-| `Meta` `Down` | Swap current line and next line                                      |
-| `Meta` `Up`   | Swap current line and before line                                    |
+| Shortcut      | Action                                             |
+| ------------- | -------------------------------------------------- |
+| `j` `j`       | Map to `ESC`                                       |
+| `j` `k`       | Map to undo                                        |
+| `Meta` `d`    | Select current (next) under cursor word            |
+| `Meta` `D`    | Select prev some word which like under cursor word |
+| `Meta` `Down` | Swap current line and next line                    |
+| `Meta` `Up`   | Swap current line and before line                  |
 
 #### 1.4 Remap Visual Mode Keys
 
 | Shortcut        | Action                                |
-|-----------------|---------------------------------------|
+| --------------- | ------------------------------------- |
 | `Shift` `Left`  | Select to previous word               |
 | `Shift` `Right` | Select to next word                   |
 | `Meta` `Up`     | Move selection up                     |
@@ -104,15 +104,15 @@ Python:
 
 #### 1.5 Remapped Text Manipulating Commands in Normal Mode
 
-| Shortcut    | Action                                      |
-| ----------- | ------------------------------------------- |
-| `u`         | **undo**                                    |
-| `r`         | **redo**                                    |
-| `<`         | Un-indent                                   |
-| `>`         | Indent                                      |
-| `=`         | Increase the number under cursor by 1       |
-| `-`         | Decrease the number under cursor by 1       |
-| `X`         | replace a letter into another. Equal to `r` |
+| Shortcut | Action                                      |
+| -------- | ------------------------------------------- |
+| `u`      | **undo**                                    |
+| `r`      | **redo**                                    |
+| `<`      | Un-indent                                   |
+| `>`      | Indent                                      |
+| `=`      | Increase the number under cursor by 1       |
+| `-`      | Decrease the number under cursor by 1       |
+| `X`      | replace a letter into another. Equal to `r` |
 
 #### 1.6 Other Useful Normal Mode Remapping
 
@@ -177,31 +177,34 @@ Use the **Shift + arrow keys** to resize the current window.
 
 ### 4 Buffer Management
 
-| Shortcut                        | Action             |
-| ------------------------------- | ------------------ |
-| `Ctrl` `\`                      | Toggle prev buffer |
-| `Ctrl` `]`                      | Toggle next buffer |
-| `g` `b`                         | Toggle next buffer |
+| Shortcut   | Action             |
+| ---------- | ------------------ |
+| `Ctrl` `\` | Toggle prev buffer |
+| `Ctrl` `]` | Toggle next buffer |
+| `g` `b`    | Toggle next buffer |
 
-### 5 Terminal Keyboard Shortcuts
+### 5 Float Terminal Keyboard Shortcuts
 
-| Shortcut    | Action                                                      |
-| ----------- | ----------------------------------------------------------- |
-| `SPACE` `.` | Create a new split with a terminal below the current window |
-| `Ctrl` `n`  | Escape from terminal input mode                             |
+| Shortcut    | Action                          | Mode     |
+| ----------- | ------------------------------- | -------- |
+| `SPACE` `.` | Create float terminal window    | normal   |
+| `Ctrl` `n`  | Escape from terminal input mode | terminal |
+| `F2`        | Toggle float terminal           | all      |
+| `F3`        | Toggle next terminal window     | terminal |
+| `F4`        | Toggle previous terminal window | terminal |
 
 ### 6 Vim Object Action
 
 **pairs**: `[` `]` `(` `)` `{` `}` etc.
 
 | Shortcuts       | Action                                                      |
-|-----------------|-------------------------------------------------------------|
+| --------------- | ----------------------------------------------------------- |
 | `c` `i` + pairs | Remove section and re-edit section in next section in pairs |
 | `c` `I` + pairs | Same as above, but ignore surrounding space                 |
 | `v` `i` + pairs | Select section which in pairs                               |
 | `v` `I` + pairs | Same as above, but ignore surrounding space                 |
 
-More useful object actions. Like 
+More useful object actions. Like
 
 - `c` + `b` (change this block content under the cursor) (`{} ()`)
 - `c` + `q` (change this quote content under the cursor) (`"" ''`)
@@ -234,21 +237,20 @@ CoC is a modern completion, which had most vscode feature. It's all configs wrot
 #### rnvimr
 
 | Shortcuts | Action      |
-|-----------|-------------|
+| --------- | ----------- |
 | `R`       | Open Ranger |
 
 #### Git Action
 
-| Shortcut        | Action                            |
-| --------------- | --------------------------------- |
-| `g` `h`         | **Show git hunk at current line** |
-| `g` `-`         | Go to previous git hunk           |
-| `g` `+`         | Go to next git hunk               |
-| `g` `f`         | Fold everything except hunks      |
-| `g` `u`         | Undo git hunk under cursor        |
-| `g` `s`         | Stage this git hunk               |
-| `<Space>` `gg`  | Open git stash and commit         |
-| `<Space>` `gp`  | Do git push                       |
+| Shortcut       | Action                            |
+| -------------- | --------------------------------- |
+| `g` `-`        | Go to previous git hunk           |
+| `g` `+`        | Go to next git hunk               |
+| `g` `f`        | Fold everything except hunks      |
+| `g` `u`        | Undo git hunk under cursor        |
+| `g` `s`        | Stage this git hunk               |
+| `<Space>` `gg` | Open git stash and commit         |
+| `<Space>` `gp` | Do git push                       |
 
 #### Auto Pairs
 
@@ -275,9 +277,9 @@ See `:help table-mode.txt` for more.
 
 #### Fuzzy find
 
-| Shortcut   | Action                     |
-| ---------- | -------------------        |
-| `Ctrl` `f` | **Active FZF (ag)**        |
+| Shortcut   | Action              |
+| ---------- | ------------------- |
+| `Ctrl` `f` | **Active FZF (ag)** |
 
 #### Undotree
 
@@ -289,15 +291,15 @@ See `:help table-mode.txt` for more.
 
 #### Vim Bookmarks
 
-| Shortcut    | Action                          |
-| ----------- | ------------------------------- |
-| `ma`        | Add mark at current line        |
-| `m.`        | Move to next mark               |
-| `m,`        | Move to prev mark               |
-| `mc`        | Clear mark                      |
-| `mC`        | Clear All mark                  |
-| `ml`        | List all marks                  |
-| `mSPACE`    | Jump to the next mark in buffer |
+| Shortcut | Action                          |
+| -------- | ------------------------------- |
+| `ma`     | Add mark at current line        |
+| `m.`     | Move to next mark               |
+| `m,`     | Move to prev mark               |
+| `mc`     | Clear mark                      |
+| `mC`     | Clear All mark                  |
+| `ml`     | List all marks                  |
+| `mSPACE` | Jump to the next mark in buffer |
 
 For more commands, see [here](https://github.com/MattesGroeger/vim-bookmarks#usage)
 
@@ -309,7 +311,6 @@ For more commands, see [here](https://github.com/MattesGroeger/vim-bookmarks#usa
 | `Ctrl`+`p` | Select previous word                |
 | `Ctrl`+`x` | Skip word                           |
 | `Esc`      | Quit mutiple cursors                |
-
 
 #### vim-surround
 
@@ -343,15 +344,15 @@ To add surround (`string` -> `"string"`):
 
 #### far.vim - find and replace
 
-| Shortcut        | Action                                      |
-| --------------- | ------------------------------------------- |
-| `SPACE` `f`     | Find in the current file (required ag)      |
-| `SPACE` `f` `r` | Find and replace                            |
+| Shortcut        | Action                                 |
+| --------------- | -------------------------------------- |
+| `SPACE` `f`     | Find in the current file (required ag) |
+| `SPACE` `f` `r` | Find and replace                       |
 
 #### vim-workspace
 
 | Shortcut | Action                                        |
-|----------|-----------------------------------------------|
+| -------- | --------------------------------------------- |
 | `ss`     | Save this session as a workspace like vscode. |
 | `srm`    | Remove all session.                           |
 
@@ -380,9 +381,9 @@ To add surround (`string` -> `"string"`):
 
 #### nerdcommenter - Quick comment
 
-| Shortcut     | Action                            |
-| ------------ | --------------------------------- |
-| `SPACE + /`  | toggle comment lines.             |
+| Shortcut    | Action                |
+| ----------- | --------------------- |
+| `SPACE + /` | toggle comment lines. |
 
 ## Custom Snippets
 
