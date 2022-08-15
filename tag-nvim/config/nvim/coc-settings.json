@@ -1,5 +1,5 @@
 {
-  "npm.binPath": "pnpm",
+  "npm.binPath": "yarn",
   /* "coc.preferences.hoverTarget": "echo", */
   /* "coc.preferences.enableFloatHighlight": false, */
   "coc.preferences.enableFloatHighlight": true,

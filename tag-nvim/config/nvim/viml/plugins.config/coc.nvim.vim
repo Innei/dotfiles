@@ -34,46 +34,63 @@ endif
 
 
 let g:coc_global_extensions = [
-    \ 'coc-actions',
-    \ 'coc-calc',
-    \ 'coc-css',
-    \ 'coc-cssmodules',
-    \ 'coc-eslint',
-    \ 'coc-explorer',
-    \ 'coc-git',
-    \ 'coc-gitignore',
-    \ 'coc-go',
-    \ 'coc-highlight',
-    \ 'coc-html',
-    \ 'coc-json',
-    \ 'coc-lists',
-    \ 'coc-marketplace',
-    \ 'coc-post',
-    \ 'coc-postfix',
-    \ 'coc-prettier',
-    \ 'coc-pyright',
-    \ 'coc-python',
-    \ 'coc-smartf',
-    \ 'coc-snippets',
-    \ 'coc-spell-checker',
-    \ 'coc-stylelint',
-    \ 'coc-tailwindcss',
-    \ 'coc-todolist',
-    \ 'coc-translator',
-    \ 'coc-tsserver',
-    \ 'coc-vimlsp',
-    \ 'coc-yank',
-    \ 'coc-zi'
-    \ ]
+      \ 'coc-actions',
+      \ 'coc-calc',
+      \ 'coc-css',
+      \ 'coc-cssmodules',
+      \ 'coc-eslint',
+      \ 'coc-explorer',
+      \ 'coc-git',
+      \ 'coc-gitignore',
+      \ 'coc-go',
+      \ 'coc-highlight',
+      \ 'coc-html',
+      \ 'coc-json',
+      \ 'coc-lists',
+      \ 'coc-marketplace',
+      \ 'coc-post',
+      \ 'coc-postfix',
+      \ 'coc-prettier',
+      \ 'coc-pyright',
+      \ 'coc-python',
+      \ 'coc-smartf',
+      \ 'coc-snippets',
+      \ 'coc-spell-checker',
+      \ 'coc-stylelint',
+      \ 'coc-tailwindcss',
+      \ 'coc-todolist',
+      \ 'coc-translator',
+      \ 'coc-tsserver',
+      \ 'coc-vimlsp',
+      \ 'coc-yank',
+      \ 'coc-zi'
+      \ ]
 
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 imap <expr> <silent> <CR>  "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 nnoremap <expr> <silent> o "o\<c-r>=coc#on_enter()\<cr>"
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? coc#_select_confirm() :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+
+
+# @see https://github.com/neoclide/coc.nvim/pull/3862
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+" remap for complete to use tab and <cr>
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <c-space> coc#refresh()
+
+hi CocSearch ctermfg=12 guifg=#18A3FF
+hi CocMenuSel ctermbg=109 guibg=#13354A
+
+
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 function! s:check_back_space() abort
   let col = col('.') - 1

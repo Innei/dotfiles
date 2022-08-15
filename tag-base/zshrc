@@ -136,9 +136,8 @@ antigen bundle colorize
 antigen bundle rupa/z z.sh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle willghatch/zsh-cdr
-
+antigen theme robbyrussell
 # antigen bundle sobolevn/wakatime-zsh-plugin
 
 #syntax color definition
@@ -152,7 +151,7 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 [ -f "$HOME/.config/zsh/zshrc" ] && source "$HOME/.config/zsh/zshrc"
 [ -f "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh" ] && source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
-
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 # default keymap
