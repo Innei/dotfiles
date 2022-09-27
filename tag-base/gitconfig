@@ -1,10 +1,7 @@
 [user]
 	name = Innei
 	email = tukon479@gmail.com
-[https]
-	proxy = socks5://127.0.0.1:1080
-[http]
-	proxy = socks5://127.0.0.1:1080
+
 [alias]
 	sa = status
 	go = checkout
@@ -24,14 +21,9 @@
 	ignorecase = false
 [gpg]
 	program = /usr/local/bin/gpg
-[merge]
-	tool = vimdiff
-
 [mergetool]
 	keepBackup = false
     
-[mergetool "vimdiff"]
-	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [push]
 	default = upstream
 	autoSetupRemote = true
