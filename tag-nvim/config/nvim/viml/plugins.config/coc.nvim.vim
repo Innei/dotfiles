@@ -76,7 +76,7 @@ nnoremap <expr> <silent> o "o\<c-r>=coc#on_enter()\<cr>"
 "       \ coc#refresh()
 
 
-# @see https://github.com/neoclide/coc.nvim/pull/3862
+" @see https://github.com/neoclide/coc.nvim/pull/3862
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
 " remap for complete to use tab and <cr>
