@@ -34,7 +34,7 @@ if !exists('g:vscode')
   Plug 'airblade/vim-rooter'
   Plug 'tpope/vim-sleuth' " auto adjust tabwidth base on current file
   Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
-  Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+  " Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
   Plug 'thaerkh/vim-workspace'
   " Plug 'osyo-manga/vim-anzu'
   Plug 'skywind3000/asyncrun.vim'

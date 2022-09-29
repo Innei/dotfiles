@@ -12,6 +12,8 @@
 	pl = pull
 	tree = log --graph --oneline --all
 	s = status
+	out = fire
+	going = fire
 
 [commit]
 	gpgsign = true
