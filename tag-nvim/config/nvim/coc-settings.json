@@ -1,11 +1,8 @@
 {
   "npm.binPath": "yarn",
-  /* "coc.preferences.hoverTarget": "echo", */
-  /* "coc.preferences.enableFloatHighlight": false, */
   "coc.preferences.enableFloatHighlight": true,
   "coc.preferences.snippetStatusText": "Ⓢ ",
   "coc.preferences.extensionUpdateCheck": "weekly",
-  /* "coc.preferences.currentFunctionSymbolAutoUpdate": true, */
   "coc.preferences.rootPatterns": [
     ".git",
     ".hg",
@@ -58,7 +55,6 @@
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualTextPrefix": "           => ",
   "diagnostic.virtualText": false,
-  /* "diagnostic.messageTarget": "echo", */
   "diagnostic.messageTarget": "float",
   "codeLens.enable": true,
   "list.previewHighlightGroup": "Statement",
@@ -77,7 +73,6 @@
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "signature.target": "echo",
-  /* "signature.target": "float", */
   "signature.enable": true,
   "yank.priority": 30,
   "explorer.width": 38,
@@ -119,8 +114,6 @@
   "javascript.suggest.names": true,
   "javascript.suggestionActions.enabled": true,
   "javascript.format.enabled": true,
-  /* "tsserver.locale": "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/typescript-language-features", */
-  /* "snippets.priority": 99, */
   "snippets.autoTrigger": false,
   "snippets.userSnippetsDirectory": "~/.config/nvim/Ultisnips",
   "json.format.enable": true,
@@ -203,5 +196,5 @@
     "Typegoose",
     "consola"
   ],
-  "smartf.timeout": 5000,
+  "smartf.timeout": 5000
 }
