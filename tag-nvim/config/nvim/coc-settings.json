@@ -1,7 +1,5 @@
 {
-  "npm.binPath": "yarn",
-  "coc.preferences.enableFloatHighlight": true,
-  "coc.preferences.snippetStatusText": "Ⓢ ",
+  "npm.binPath": "pnpm",
   "coc.preferences.extensionUpdateCheck": "weekly",
   "coc.preferences.rootPatterns": [
     ".git",
@@ -9,13 +7,10 @@
     ".projections.json",
     "node_modules"
   ],
-  "suggest.detailMaxLength": 100,
   "suggest.noselect": true,
   "suggest.enablePreselect": false,
   "suggest.triggerAfterInsertEnter": false,
   "suggest.timeout": 5000,
-  "suggest.enablePreview": true,
-  "suggest.floatEnable": true,
   "suggest.detailField": "preview",
   "suggest.snippetIndicator": "*",
   "suggest.triggerCompletionWait": 0,
@@ -77,7 +72,7 @@
   "yank.priority": 30,
   "explorer.width": 50,
   "explorer.quitOnOpen": true,
-  "explorer.icon.source": "vim-devicons",
+  "explorer.icon.source": "nvim-web-devicons",
   "explorer.sources": [
     {
       "name": "buffer",
@@ -179,8 +174,6 @@
     "**/*.dll",
     "init.vim"
   ],
-  "coc-actions.hideCursor": true,
-  "coc-actions.useCursorLine": true,
   "cSpell.userWords": [
     "Innei",
     "Typegoose",

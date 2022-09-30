@@ -1,1 +1,3 @@
-require('bufferline.nvim').setup()
+require('bufferline').setup {
+  diagnostics = 'coc'
+}

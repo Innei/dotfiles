@@ -280,7 +280,4 @@ if !exists('g:vscode')
   imap 《 <
   map ： :
   map ； :
-else
-  map  ' <Plug>(easymotion-bd-f)
-  nmap ' <Plug>(easymotion-overwin-f)
 endif

@@ -9,7 +9,6 @@ Plug 'AndrewRadev/splitjoin.vim'  " gS to split line, gJ to join lines
 Plug 'tomtom/tcomment_vim'
 Plug 'jesseleite/vim-noh'
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
-Plug 'alpertuna/vim-header'
 Plug 'voldikss/vim-floaterm'
 " Plug 'xolox/vim-session'
 " Plug 'xolox/vim-misc' vim-session dep
@@ -21,8 +20,6 @@ Plug 'voldikss/vim-floaterm'
 if !exists('g:vscode')
 
   Plug 'wakatime/vim-wakatime'
-  let g:wakatime_PythonBinary = '/usr/bin/python3'
-
   Plug 'jiangmiao/auto-pairs'
   Plug 'kkoomen/vim-doge', { 'on': ['DogeGenerate', 'DogeCreateDocStandard'] } " document genertor
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -31,28 +28,30 @@ if !exists('g:vscode')
   " Plug 'tyru/caw.vim'
   " Plug 'Shougo/context_filetype.vim'
   Plug 'sgur/vim-editorconfig'
-  Plug 'airblade/vim-rooter'
+  Plug 'airblade/vim-rooter' " auto change project cwd
   Plug 'tpope/vim-sleuth' " auto adjust tabwidth base on current file
   Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
-  " Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
   Plug 'thaerkh/vim-workspace'
-  " Plug 'osyo-manga/vim-anzu'
   Plug 'skywind3000/asyncrun.vim'
   Plug 'ConradIrwin/vim-bracketed-paste'
   Plug 'schickling/vim-bufonly'
   Plug '907th/vim-auto-save', { 'on': 'AutoSaveToggle', 'for': ['text', 'markdown', 'tex'] }
 
-  " Dependencies
-  " Plug 'MarcWeber/vim-addon-mw-utils'
-  " Plug 'kana/vim-textobj-user'
-  Plug 'roxma/nvim-yarp'
   Plug 'max397574/better-escape.nvim'
-  " Plug 'akinsho/bufferline.nvim'
+  Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'Yggdroot/indentLine', { 'for': ['python', 'yaml', 'bash'], 'on': ['IndentLinesToggle']}
+
   if !exists('g:started_by_firenvim')
+    Plug 'kyazdani42/nvim-web-devicons'
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline-themes'
     Plug 'mhinz/vim-startify'
   endif
+
+  " Dependencies
+  " Plug 'roxma/nvim-yarp'
 endif
 
 

@@ -1,0 +1,1 @@
+let g:wakatime_PythonBinary = '/usr/bin/python3'

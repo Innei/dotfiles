@@ -13,6 +13,6 @@ let g:rnvimr_layout = { 'relative': 'editor',
 " Customize multiple preset layouts
 " '{}' represents the initial layout
 let g:rnvimr_presets = [
-      \ {'width': 1.0, 'height': 1.0},
+      \ {'width': 0.9, 'height': 0.9},
       \ {'width': 0.500, 'height': 1.000, 'col': 0, 'row': 0},
       \ ]
