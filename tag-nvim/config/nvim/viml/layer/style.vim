@@ -16,7 +16,8 @@ if !exists('g:vscode')
   " Plug 'kaicataldo/material.vim'
   " Plug 'jacoborus/tender.vim'
   " Plug 'dracula/vim'
-  Plug 'iamcco/onedark.vim'
+  " Plug 'iamcco/onedark.vim'
+  Plug 'navarasu/onedark.nvim'
   " Plug 'flazz/vim-colorschemes'
 endif
 
