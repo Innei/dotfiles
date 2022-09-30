@@ -75,7 +75,7 @@
   "signature.target": "echo",
   "signature.enable": true,
   "yank.priority": 30,
-  "explorer.width": 38,
+  "explorer.width": 50,
   "explorer.quitOnOpen": true,
   "explorer.icon.source": "vim-devicons",
   "explorer.sources": [
@@ -92,7 +92,7 @@
   "explorer.file.showHiddenFiles": true,
   "explorer.icon.enableNerdfont": true,
   "explorer.git.showIgnored": true,
-  "explorer.keyMappingMode": "none",
+  "explorer.keyMappingMode": "default",
   "eslint.packageManager": "pnpm",
   "eslint.autoFixOnSave": true,
   "python.autoComplete.addBrackets": true,

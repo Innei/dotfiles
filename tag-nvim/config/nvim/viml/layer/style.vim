@@ -18,6 +18,7 @@ if !exists('g:vscode')
   " Plug 'dracula/vim'
   " Plug 'iamcco/onedark.vim'
   Plug 'navarasu/onedark.nvim'
+  Plug 'projekt0n/github-nvim-theme'
   " Plug 'flazz/vim-colorschemes'
 endif
 

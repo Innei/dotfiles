@@ -65,6 +65,9 @@ set hidden
 set pastetoggle=<F10>
 " set colorcolumn=80
 set updatetime=500
+" toggle number releative or absolute
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 

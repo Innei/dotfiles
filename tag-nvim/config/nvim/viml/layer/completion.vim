@@ -1,6 +1,7 @@
 if !exists('g:vscode')
   " Auto Complete
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'github/copilot.vim'
 
   " Snippets
   Plug 'Innei/vim-snippets'

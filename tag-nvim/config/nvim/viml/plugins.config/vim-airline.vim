@@ -36,6 +36,8 @@ if !exists('g:started_by_firenvim')
     return join(msgs, ' ')
   endfunction
   let g:airline_section_warning = airline#section#create_right(['%{StatusDiagnostic()}'])
+  " hide filetype
+  let g:airline_section_x = airline#section#create_right(['tagbar'])
   " let g:airline_section_warning = airline#section#create_right(['%{coc#status()}'])
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}

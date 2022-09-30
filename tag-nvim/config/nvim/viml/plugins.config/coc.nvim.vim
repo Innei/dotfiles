@@ -32,7 +32,6 @@ else
   set signcolumn=yes
 endif
 
-
 let g:coc_global_extensions = [
       \ 'coc-calc',
       \ 'coc-css',
@@ -102,11 +101,12 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <silent><expr> ,. coc#refresh()
 " Open up coc-commands
 nnoremap <c-c> :CocList diagnostics<CR>
+try
+    nmap <silent> [c :call CocAction('diagnosticNext')<cr>
+    nmap <silent> ]c :call CocAction('diagnosticPrevious')<cr>
+endtry
 nnoremap <leader>l :CocList<CR>
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -139,8 +139,6 @@ noremap tl :CocList --normal todolist<CR>
 nmap ts <Plug>(coc-translator-p)
 " coc-zi
 noremap \d :CocList translators<CR>
-
-nnoremap <silent> <leader>b :CocCommand actions.open<cr>
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " hi CocHighlightText guifg=#eeffff guibg=#888888
