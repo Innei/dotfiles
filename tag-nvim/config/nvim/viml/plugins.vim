@@ -1,5 +1,6 @@
 scriptencoding utf-8
 let s:script_path = expand('<sfile>:p:h')
+
 function! s:source(layer) abort
   execute 'source ' . s:script_path . '/layer/' . a:layer . '.vim'
 endfunction

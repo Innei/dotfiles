@@ -4,11 +4,13 @@ if !exists('g:vscode')
   " Plug 'mg979/vim-xtabline'
   Plug 'Yggdroot/indentLine', { 'for': ['python', 'yaml', 'bash'], 'on': ['IndentLinesToggle']}
   Plug 'luochen1990/rainbow'
+
   if !exists('g:started_by_firenvim')
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    Plug 'kyazdani42/nvim-web-devicons'
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline-themes'
   endif
-  Plug 'ryanoasis/vim-devicons'
+  " Plug 'ryanoasis/vim-devicons'
 
   " ColorScheme
   " Plug 'kaicataldo/material.vim'

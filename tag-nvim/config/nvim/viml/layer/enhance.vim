@@ -47,6 +47,9 @@ if !exists('g:vscode')
   " Plug 'kana/vim-textobj-user'
   Plug 'roxma/nvim-yarp'
   Plug 'max397574/better-escape.nvim'
+  " Plug 'akinsho/bufferline.nvim'
+
+  Plug 'nvim-lualine/lualine.nvim'
   if !exists('g:started_by_firenvim')
     Plug 'mhinz/vim-startify'
   endif
