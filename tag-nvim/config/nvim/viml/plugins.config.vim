@@ -8,5 +8,10 @@ if len(get(g:, 'plugs_order', [])) !=# 0
     if filereadable(s:plug_config)
       execute 'source ' . s:plug_config
     endif
+
+    let s:plug_lua_config = s:script_cwd . '/plugins.config/' . s:plug . '.lua'
+    if filereadable(s:plug_lua_config)
+      execute 'source ' . s:plug_lua_config
+    endif
   endfor
 endif

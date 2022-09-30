@@ -29,7 +29,7 @@ if !exists('g:vscode')
   Plug 'Konfekt/FastFold'
   Plug 'wellle/context.vim'
   " Plug 'tyru/caw.vim'
-  Plug 'Shougo/context_filetype.vim'
+  " Plug 'Shougo/context_filetype.vim'
   Plug 'sgur/vim-editorconfig'
   Plug 'airblade/vim-rooter'
   Plug 'tpope/vim-sleuth' " auto adjust tabwidth base on current file
@@ -43,9 +43,10 @@ if !exists('g:vscode')
   Plug '907th/vim-auto-save', { 'on': 'AutoSaveToggle', 'for': ['text', 'markdown', 'tex'] }
 
   " Dependencies
-  Plug 'MarcWeber/vim-addon-mw-utils'
+  " Plug 'MarcWeber/vim-addon-mw-utils'
   " Plug 'kana/vim-textobj-user'
   Plug 'roxma/nvim-yarp'
+  Plug 'max397574/better-escape.nvim'
   if !exists('g:started_by_firenvim')
     Plug 'mhinz/vim-startify'
   endif
