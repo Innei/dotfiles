@@ -7,26 +7,17 @@ Plug 'andymass/vim-matchup' " Extends vim's % motion to language-specific words.
 Plug 'AndrewRadev/switch.vim' " gs to switch
 Plug 'AndrewRadev/splitjoin.vim'  " gS to split line, gJ to join lines
 Plug 'tomtom/tcomment_vim'
-Plug 'jesseleite/vim-noh'
+Plug 'jesseleite/vim-noh' " A vim plugin for automatically clearing search highlighting when cursor is moved.
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'voldikss/vim-floaterm'
-" Plug 'xolox/vim-session'
-" Plug 'xolox/vim-misc' vim-session dep
-" Plug 'terryma/vim-multiple-cursors'
-" Plug 'scrooloose/nerdcommenter'
-" Plug 'junegunn/vim-peekaboo'
-" Plug 'junegunn/vim-after-object' " da= to delete what's after =
+Plug 'norcalli/nvim-colorizer.lua', {'do': 'ColorizerAttachToBuffer'}
 
 if !exists('g:vscode')
-
-  Plug 'wakatime/vim-wakatime'
   Plug 'jiangmiao/auto-pairs'
   Plug 'kkoomen/vim-doge', { 'on': ['DogeGenerate', 'DogeCreateDocStandard'] } " document genertor
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'Konfekt/FastFold'
   Plug 'wellle/context.vim'
-  " Plug 'tyru/caw.vim'
-  " Plug 'Shougo/context_filetype.vim'
   Plug 'sgur/vim-editorconfig'
   Plug 'airblade/vim-rooter' " auto change project cwd
   Plug 'tpope/vim-sleuth' " auto adjust tabwidth base on current file
@@ -45,8 +36,6 @@ if !exists('g:vscode')
 
   if !exists('g:started_by_firenvim')
     Plug 'kyazdani42/nvim-web-devicons'
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
     Plug 'mhinz/vim-startify'
   endif
 

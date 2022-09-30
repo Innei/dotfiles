@@ -8,15 +8,15 @@ if !exists('g:vscode')
   " Plug 'easymotion/vim-easymotion'
   Plug 'phaazon/hop.nvim', {'branch': 'v2'}
 
-"  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
-"  Plug 'nvim-telescope/telescope-fzf-native.nvim'
-"  Plug 'nvim-telescope/telescope-project.nvim'
-"  Plug 'nvim-telescope/telescope-frecency.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
+  Plug 'nvim-telescope/telescope-fzf-native.nvim'
+  Plug 'nvim-telescope/telescope-project.nvim'
+  Plug 'nvim-telescope/telescope-frecency.nvim'
 
   Plug 'folke/which-key.nvim', {'on': 'WhichKey'}
 
   " deps of telescope
-  " Plug 'nvim-lua/plenary.nvim'
-  " Plug 'kkharji/sqlite.lua'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'kkharji/sqlite.lua'
 else
 endif

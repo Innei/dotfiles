@@ -1,8 +1,8 @@
 if !exists('g:vscode')
   " HTML, CSS, JavaScript, PHP, JSON, etc.
+  " Plug 'AndrewRadev/tagalong.vim', { 'for': ['javascriptreact', 'javascript', 'html', 'typescriptreact'] } " auto rename tags
   Plug 'neoclide/jsonc.vim', { 'for': 'jsonc' }
   Plug 'yuezk/vim-js', { 'for': ['php', 'html', 'javascript', 'css', 'less', 'javascriptreact'] }
-  Plug 'AndrewRadev/tagalong.vim', { 'for': ['javascriptreact', 'javascript', 'html', 'typescriptreact'] } " auto rename tags
   Plug 'jelera/vim-javascript-syntax', { 'for': ['php', 'html', 'javascript', 'css', 'less', 'javascriptreact'] }
   Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'javascriptreact', 'typescriptreact'] }
   " Plug 'ruanyl/vim-sort-imports', { 'for': ['javascript', 'typescript', 'typescriptreact'] }
@@ -17,5 +17,6 @@ if !exists('g:vscode')
   "   Plug 'keith/swift.vim', { 'for': ['swift'] }
   " Tex
   "   Plug 'lervag/vimtex'
-  Plug 'sheerun/vim-polyglot'
+  " Plug 'sheerun/vim-polyglot'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif

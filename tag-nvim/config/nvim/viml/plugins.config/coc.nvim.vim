@@ -40,7 +40,6 @@ let g:coc_global_extensions = [
       \ 'coc-explorer',
       \ 'coc-gitignore',
       \ 'coc-go',
-      \ 'coc-highlight',
       \ 'coc-html',
       \ 'coc-json',
       \ 'coc-lists',

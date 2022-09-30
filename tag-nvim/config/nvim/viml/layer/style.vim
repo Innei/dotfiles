@@ -3,7 +3,7 @@ if !exists('g:vscode')
   " Plug 'theniceboy/eleline.vim'
   " Plug 'mg979/vim-xtabline'
 
-  Plug 'luochen1990/rainbow'
+  " Plug 'luochen1990/rainbow'
 
   " ColorScheme
   " Plug 'kaicataldo/material.vim'

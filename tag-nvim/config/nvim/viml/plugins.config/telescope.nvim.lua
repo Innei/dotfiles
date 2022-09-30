@@ -1,3 +1,8 @@
+vim.cmd([[packadd sqlite.lua]])
+vim.cmd([[packadd telescope-fzf-native.nvim]])
+vim.cmd([[packadd telescope-project.nvim]])
+vim.cmd([[packadd telescope-frecency.nvim]])
+vim.cmd([[packadd telescope-zoxide]])
 
 local telescope_actions = require("telescope.actions.set")
 local fixfolds = {

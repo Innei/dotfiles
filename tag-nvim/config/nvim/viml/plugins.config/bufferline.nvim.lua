@@ -1,3 +1,3 @@
 require('bufferline').setup {
-  diagnostics = 'coc'
+  options = { diagnostics = 'coc' }
 }
