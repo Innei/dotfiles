@@ -90,12 +90,6 @@ if !exists('g:vscode')
   xnoremap <silent> <Home> ^
 endif
 
-" Faster in-line navigation
-nnoremap W 5w
-nnoremap B 5b
-xnoremap W 5w
-xnoremap B 5b
-
 " rename a word
 nnoremap cw ciw
 

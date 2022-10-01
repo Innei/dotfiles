@@ -70,8 +70,6 @@ Python:
 | `→` `l`    | Cursor right                                              |
 | `Ctrl` `u` | Move the view port up 5 lines without moving the cursor   |
 | `Ctrl` `e` | Move the view port down 5 lines without moving the cursor |
-| `W`        | Move cursor five words forward                            |
-| `B`        | Move cursor five words forward                            |
 | `,`        | Back to prev edited position                              |
 | `.`        | Forward to next edited position                           |
 | `<M-d>`    | Select current under cursor word                          |

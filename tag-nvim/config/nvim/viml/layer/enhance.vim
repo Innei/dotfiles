@@ -6,11 +6,14 @@ Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
 Plug 'andymass/vim-matchup' " Extends vim's % motion to language-specific words.
 Plug 'AndrewRadev/switch.vim' " gs to switch
 Plug 'AndrewRadev/splitjoin.vim'  " gS to split line, gJ to join lines
-Plug 'tomtom/tcomment_vim'
+" Plug 'tomtom/tcomment_vim'
 Plug 'jesseleite/vim-noh' " A vim plugin for automatically clearing search highlighting when cursor is moved.
+Plug 'romainl/vim-cool' " A very simple plugin that makes hlsearch more useful.
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'voldikss/vim-floaterm'
-Plug 'norcalli/nvim-colorizer.lua', {'do': 'ColorizerAttachToBuffer'}
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'rhysd/accelerated-jk'
+Plug 'dstein64/nvim-scrollview'
 
 if !exists('g:vscode')
   Plug 'jiangmiao/auto-pairs'

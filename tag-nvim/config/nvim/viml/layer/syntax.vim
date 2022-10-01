@@ -10,4 +10,8 @@ if !exists('g:vscode')
   " Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescriptreact'] }
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'p00f/nvim-ts-rainbow'
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+  " Plug 'windwp/nvim-ts-autotag'
+  Plug 'terrortylor/nvim-comment'
 endif
