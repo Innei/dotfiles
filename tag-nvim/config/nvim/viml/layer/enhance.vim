@@ -35,7 +35,8 @@ if !exists('g:vscode')
   Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 
   Plug 'nvim-lualine/lualine.nvim'
-  Plug 'Yggdroot/indentLine', { 'for': ['python', 'yaml', 'bash'], 'on': ['IndentLinesToggle']}
+  " Plug 'Yggdroot/indentLine', { 'for': ['python', 'yaml', 'bash'], 'on': ['IndentLinesToggle']}
+  Plug 'lukas-reineke/indent-blankline.nvim'
 
   if !exists('g:started_by_firenvim')
     Plug 'kyazdani42/nvim-web-devicons'
