@@ -9,15 +9,20 @@ Support Language:
 - HTML
 - CSS
 
-![](https://cdn.jsdelivr.net/gh/Innei/fancy@master/2022/0728232305.png)
+<img width="1538" alt="image" src="https://user-images.githubusercontent.com/41265413/193402012-dbe53635-948c-449e-a7f2-567cadd7e2d7.png">
+<img width="1538" alt="image" src="https://user-images.githubusercontent.com/41265413/193402049-f77f049b-26e8-44dd-992a-7e95305fa6e8.png">
+<img width="1538" alt="image" src="https://user-images.githubusercontent.com/41265413/193402137-c233bdd3-9878-430b-b6f9-ba62ee50ae2c.png">
+
 
 Please **DO NOT** just copy this config without really looking at it! Please, at least, read this README file!
 
 ## After Installation, You Need To:
 
-- [ ] Install `pynvim` (pip)
+- [ ] Install `pynvim` `neovim` `ranger-fm` (pip)
 - [ ] Install `nodejs`, and do `npm install -g neovim`
 - [ ] Install nerd-fonts (actually it's optional but it looks real good, recommended `Operator Mono` which patched font on (Fonts)[https://github.com/Innei/zshrc/tree/master/fonts])
+- [ ] Install `highlight` (for ranger-fm preview highlight)
+- [ ] Install `ripgrep` `the_silver_searcher` `fzf`
 
 ## After Installation, You Might Want To:
 

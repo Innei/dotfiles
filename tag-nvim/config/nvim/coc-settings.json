@@ -70,7 +70,7 @@
   "signature.target": "echo",
   "signature.enable": true,
   "yank.priority": 30,
-  "explorer.width": 50,
+  "explorer.width": 40,
   "explorer.quitOnOpen": true,
   "explorer.icon.source": "nvim-web-devicons",
   "explorer.sources": [
