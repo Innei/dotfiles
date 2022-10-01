@@ -65,6 +65,7 @@ set hidden
 set pastetoggle=<F10>
 " set colorcolumn=80
 set updatetime=500
+set termguicolors " enable true colors support
 " toggle number releative or absolute
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
