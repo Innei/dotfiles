@@ -15,7 +15,7 @@ if !exists('g:vscode')
 
   Plug 'folke/which-key.nvim', {'on': 'WhichKey'}
 
-  " deps of telescope
+  " deps of telescope, diffview
   Plug 'nvim-lua/plenary.nvim'
   Plug 'kkharji/sqlite.lua'
 else

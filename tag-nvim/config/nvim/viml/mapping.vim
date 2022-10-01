@@ -78,6 +78,10 @@ nnoremap - <C-x>
 map ! %
 nnoremap <C-a> <nop>
 nnoremap <C-x> <nop>
+" inoremap <C-j> <ESC>ji
+" inoremap <C-k> <ESC>ki
+" inoremap <C-h> <ESC>i
+" inoremap <C-l> <ESC>la
 
 if !exists('g:vscode')
   inoremap <Home> <esc>^i

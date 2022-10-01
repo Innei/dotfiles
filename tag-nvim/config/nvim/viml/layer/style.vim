@@ -8,6 +8,7 @@ if !exists('g:vscode')
   " Plug 'flazz/vim-colorschemes'
   " Plug 'projekt0n/github-nvim-theme'
   Plug 'navarasu/onedark.nvim'
+
 endif
 
 " for tsx

@@ -18,12 +18,12 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff'},
-    lualine_c = { 'filename' },
-    lualine_x = { 'filetype' },
+    lualine_b = { { "branch" }, { "diff", source = diff_source } },
+    lualine_c = { {'filename', path = 1, shorting_target = 40, } },
+    lualine_x = { { "filetype", colored = true, icon_only = true }, },
     lualine_y = {{
       'diagnostics',
-      sources = {'coc' },
+      sources = { 'coc' },
 
       -- Displays diagnostics for the defined severity types
       sections = { 'error', 'warn', 'info', 'hint' },
@@ -31,7 +31,7 @@ require('lualine').setup {
       colored = true,           -- Displays diagnostics status in color if set to true.
      }
     },
-    lualine_z = { "progress",'location' }
+    lualine_z = { "progress", 'location' }
   },
   inactive_sections = {
     lualine_a = {},
@@ -44,5 +44,7 @@ require('lualine').setup {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = {
+    "fugitive",
+  }
 }
