@@ -50,6 +50,14 @@ let g:coc_global_extensions = [
       \ ]
 
 
+function! CheckBackSpace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : "<ESC>ja"
+inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "<ESC>ka"
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file.
@@ -58,6 +66,7 @@ let g:coc_global_extensions = [
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") :
       \ CheckBackSpace() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
@@ -70,16 +79,9 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 inoremap <silent><expr> <C-Space> coc#refresh()
 inoremap <silent><expr> <C-r> coc#refresh()
 
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 hi CocSearch ctermfg=12 guifg=#18A3FF
 hi CocMenuSel ctermbg=109 guibg=#13354A
-
-
-imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 let g:coc_snippet_next = '<tab>'
 nnoremap <silent> K :call <SID>show_documentation()<CR>

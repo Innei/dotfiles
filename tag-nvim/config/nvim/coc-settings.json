@@ -7,13 +7,15 @@
     ".projections.json",
     "node_modules"
   ],
-  "suggest.noselect": true,
+  "suggest.noselect": false,
   "suggest.enablePreselect": false,
   "suggest.triggerAfterInsertEnter": false,
   "suggest.timeout": 5000,
   "suggest.detailField": "preview",
   "suggest.snippetIndicator": "*",
   "suggest.triggerCompletionWait": 0,
+  "suggest.selection": "first",
+  
   "suggest.completionItemKindLabels": {
     "class": "\uf0e8",
     "color": "\ue22b",

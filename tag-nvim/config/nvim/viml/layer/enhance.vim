@@ -16,7 +16,8 @@ Plug 'rhysd/accelerated-jk'
 Plug 'dstein64/nvim-scrollview'
 
 if !exists('g:vscode')
-  Plug 'jiangmiao/auto-pairs'
+  " Plug 'jiangmiao/auto-pairs'
+  Plug 'windwp/nvim-autopairs'
   Plug 'kkoomen/vim-doge', { 'on': ['DogeGenerate', 'DogeCreateDocStandard'] } " document genertor
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'Konfekt/FastFold'

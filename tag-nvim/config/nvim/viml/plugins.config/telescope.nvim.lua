@@ -1,5 +1,3 @@
-
-
 local telescope_actions = require("telescope.actions.set")
 local fixfolds = {
 	hidden = true,
@@ -58,7 +56,3 @@ require("telescope").setup({
 		oldfiles = fixfolds,
 	},
 })
--- require("telescope").load_extension("fzf")
--- require("telescope").load_extension("project")
--- require("telescope").load_extension("zoxide")
--- require("telescope").load_extension("frecency")

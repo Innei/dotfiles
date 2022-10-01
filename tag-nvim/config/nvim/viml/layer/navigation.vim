@@ -9,9 +9,6 @@ if !exists('g:vscode')
   Plug 'phaazon/hop.nvim', {'branch': 'v2'}
 
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
-  Plug 'nvim-telescope/telescope-fzf-native.nvim'
-  Plug 'nvim-telescope/telescope-project.nvim'
-  Plug 'nvim-telescope/telescope-frecency.nvim'
 
   Plug 'folke/which-key.nvim', {'on': 'WhichKey'}
 
