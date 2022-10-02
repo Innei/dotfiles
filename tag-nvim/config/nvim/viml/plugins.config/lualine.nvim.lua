@@ -1,3 +1,5 @@
+local gps = require("nvim-gps")
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -19,7 +21,7 @@ require('lualine').setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { { "branch" }, { "diff", source = diff_source } },
-    lualine_c = { {'filename', path = 1, shorting_target = 40, } },
+    lualine_c = { {'filename', path = 1, shorting_target = 40, },{ gps.get_location, cond = gps.is_available }, },
     lualine_x = { { "filetype", colored = true, icon_only = true }, },
     lualine_y = {{
       'diagnostics',
@@ -42,7 +44,9 @@ require('lualine').setup {
     lualine_z = {}
   },
   tabline = {},
-  winbar = {},
+  winbar = {
+    -- lualine_a = {{'filename', path = 1, shorting_target = 40, }}
+  },
   inactive_winbar = {},
   extensions = {
     "fugitive",

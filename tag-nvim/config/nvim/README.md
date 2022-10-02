@@ -375,12 +375,6 @@ To add surround (`string` -> `"string"`):
 
     Press `g` `y` to toggle Goyo. (For markdown)
 
-#### nerdcommenter - Quick comment
-
-| Shortcut    | Action                |
-| ----------- | --------------------- |
-| `SPACE + /` | toggle comment lines. |
-
 ## Custom Snippets
 
 #### Markdown

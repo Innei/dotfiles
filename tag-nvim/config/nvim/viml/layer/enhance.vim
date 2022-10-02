@@ -5,7 +5,7 @@ Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
 Plug 'andymass/vim-matchup' " Extends vim's % motion to language-specific words.
 Plug 'AndrewRadev/switch.vim' " gs to switch
 Plug 'AndrewRadev/splitjoin.vim'  " gS to split line, gJ to join lines
-Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
+" Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'rhysd/accelerated-jk'
 
 if !exists('g:vscode')
@@ -36,7 +36,7 @@ if !exists('g:vscode')
   Plug 'nvim-lualine/lualine.nvim'
   " Plug 'Yggdroot/indentLine', { 'for': ['python', 'yaml', 'bash'], 'on': ['IndentLinesToggle']}
   Plug 'lukas-reineke/indent-blankline.nvim'
-  Plug 'fgheng/winbar.nvim'
+  " Plug 'fgheng/winbar.nvim'
   Plug 'Shatur/neovim-session-manager'
 
   if !exists('g:started_by_firenvim')

@@ -31,5 +31,9 @@ require('winbar').setup({
       'spectre_panel',
       'toggleterm',
       'qf',
+      'terminal',
+      '',
+      'coc-explorer',
+      'fzf'
   }
 })

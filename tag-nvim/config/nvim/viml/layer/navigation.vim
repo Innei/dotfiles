@@ -14,6 +14,6 @@ if !exists('g:vscode')
 
   " deps of telescope, diffview
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'kkharji/sqlite.lua'
+  " Plug 'kkharji/sqlite.lua'
 else
 endif
