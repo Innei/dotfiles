@@ -10,8 +10,8 @@ set encoding=utf-8
 set hidden
 
 " Some servers have issues with backup files, see #649.
-" set nobackup
-" set nowritebackup
+set nobackup
+set nowritebackup
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -24,6 +24,7 @@ set updatetime=300
 set shortmess+=c
 
 set signcolumn=yes
+set pumheight=15
 
 let g:coc_global_extensions = [
       \ 'coc-calc',
@@ -78,7 +79,7 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 
 inoremap <silent><expr> <C-Space> coc#refresh()
 inoremap <silent><expr> <C-r> coc#refresh()
-
+inoremap <silent><expr> <S-Space> coc#refresh()
 
 hi CocSearch ctermfg=12 guifg=#18A3FF
 hi CocMenuSel ctermbg=109 guibg=#13354A

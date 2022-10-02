@@ -48,6 +48,7 @@ alias gco='git checkout'
 alias gignore='git update-index --assume-unchanged'
 alias gnoignore='git update-index --no-assume-unchanged'
 alias gclean='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias lg='lazygit'
 
 # git commit
 alias gm1='git commit -m "chore: update deps"'

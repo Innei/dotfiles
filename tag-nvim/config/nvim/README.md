@@ -352,13 +352,6 @@ To add surround (`string` -> `"string"`):
 | `SPACE` `f`     | Find in the current file (required ag) |
 | `SPACE` `f` `r` | Find and replace                       |
 
-#### vim-workspace
-
-| Shortcut | Action                                        |
-| -------- | --------------------------------------------- |
-| `ss`     | Save this session as a workspace like vscode. |
-| `srm`    | Remove all session.                           |
-
 #### vim-fileheader
 
     Press `F4` to add file-header this file.
