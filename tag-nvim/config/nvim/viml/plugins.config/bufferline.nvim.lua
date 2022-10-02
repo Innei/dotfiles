@@ -1,7 +1,7 @@
 local opts = {
   options = {
     number = nil,
-    modified_icon = "✥",
+    modified_icon = "",
     buffer_close_icon = "",
     left_trunc_marker = "",
     right_trunc_marker = "",

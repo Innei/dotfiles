@@ -26,9 +26,8 @@ require('lualine').setup {
     lualine_y = {{
       'diagnostics',
       sources = { 'coc' },
-
       -- Displays diagnostics for the defined severity types
-      sections = { 'error', 'warn', 'info', 'hint' },
+      sections = { 'error', 'warn', 'hint' },
       symbols = { error = " ", warn = " ", info = " " },
       colored = true,           -- Displays diagnostics status in color if set to true.
      }

@@ -56,3 +56,8 @@ require("telescope").setup({
 		oldfiles = fixfolds,
 	},
 })
+
+vim.api.nvim_set_keymap("n", "<leader>;", "<cmd>Telescope commands<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>Telescope<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rf", "<cmd>Telescope fd<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { noremap = true, silent = true })
