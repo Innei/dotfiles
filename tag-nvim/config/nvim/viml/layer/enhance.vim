@@ -31,7 +31,7 @@ if !exists('g:vscode')
 
   Plug 'max397574/better-escape.nvim'
   Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
-  Plug 'rcarriga/nvim-notify'
+  " Plug 'rcarriga/nvim-notify'
 
   Plug 'nvim-lualine/lualine.nvim'
   " Plug 'Yggdroot/indentLine', { 'for': ['python', 'yaml', 'bash'], 'on': ['IndentLinesToggle']}
