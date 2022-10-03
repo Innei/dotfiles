@@ -5,10 +5,11 @@ Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
 Plug 'andymass/vim-matchup' " Extends vim's % motion to language-specific words.
 Plug 'AndrewRadev/switch.vim' " gs to switch
 Plug 'AndrewRadev/splitjoin.vim'  " gS to split line, gJ to join lines
+Plug 'schickling/vim-bufonly'
 " Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
-Plug 'rhysd/accelerated-jk'
 
 if !exists('g:vscode')
+  Plug 'rhysd/accelerated-jk'
   Plug 'voldikss/vim-floaterm'
   Plug 'norcalli/nvim-colorizer.lua'
   Plug 'jesseleite/vim-noh' " A vim plugin for automatically clearing search highlighting when cursor is moved.
@@ -22,11 +23,11 @@ if !exists('g:vscode')
   Plug 'sgur/vim-editorconfig'
   Plug 'airblade/vim-rooter' " auto change project cwd
   Plug 'tpope/vim-sleuth' " auto adjust tabwidth base on current file
+  
   Plug 'dstein64/vim-startuptime', { 'on': 'StartupTime' }
   " Plug 'thaerkh/vim-workspace'
   Plug 'skywind3000/asyncrun.vim'
   Plug 'ConradIrwin/vim-bracketed-paste'
-  Plug 'schickling/vim-bufonly'
   Plug '907th/vim-auto-save', { 'on': 'AutoSaveToggle', 'for': ['text', 'markdown', 'tex'] }
 
   Plug 'max397574/better-escape.nvim'

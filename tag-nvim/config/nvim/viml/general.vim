@@ -50,7 +50,6 @@ autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set splitbelow
 set noshowmode
 set showcmd
-" autocmd CursorHold * :echo
 set wildmenu
 set ignorecase
 set smartcase
@@ -60,7 +59,6 @@ set ttyfast "should make scrolling faster
 set lazyredraw "same as above
 set visualbell
 set autoread
-" set autowrite
 set hidden
 set pastetoggle=<F10>
 " set colorcolumn=80

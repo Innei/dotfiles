@@ -1,13 +1,11 @@
 " Author:   Innei
 " Github:   https://github.com/innei
 " License:  MIT
-autocmd BufRead,BufNewFile *.md setlocal spell
-" ===
-" === Markdown
-" ===
 
-"autocmd Filetype markdown map <leader>w yiWi[<esc>Ea](<esc>pa)
-autocmd Filetype markdown inoremap <buffer> ,f <Esc>/<++><CR>:nohlsearch<CR>"_c4l
+if !exists('g:vscode')
+autocmd BufRead,BufNewFile *.md setlocal spell
+
+
 autocmd Filetype markdown inoremap <buffer> ,w <Esc>/ <++><CR>:nohlsearch<CR>"_c5l<CR>
 autocmd Filetype markdown inoremap <buffer> ,n ---<Enter><Enter>
 autocmd Filetype markdown inoremap <buffer> ,b **** <++><Esc>F*hi
@@ -50,6 +48,8 @@ augroup unmapChn
   au FileType markdown  :inoremap <buffer> 《 《
 augroup END
 au FileType markdown setlocal wrap
+endif
+
 autocmd BufRead,BufNewFile *.{md,mkd,markdown,mdown,mkdn,mdwn} set filetype=markdown
 autocmd BufRead,BufNewFile *.{json} set ft=jsonc
 au BufEnter github.com_*.txt set filetype=markdown

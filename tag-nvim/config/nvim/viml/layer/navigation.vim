@@ -1,3 +1,5 @@
+Plug 'easymotion/vim-easymotion'
+
 if !exists('g:vscode')
   Plug 'mbbill/undotree'
   Plug 'junegunn/fzf.vim'
@@ -5,7 +7,6 @@ if !exists('g:vscode')
   Plug 'liuchengxu/vista.vim'
   Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
   " Plug 'yuki-ycino/fzf-preview.vim'
-  Plug 'easymotion/vim-easymotion'
   " Plug 'phaazon/hop.nvim', {'branch': 'v2'} " https://github.com/phaazon/hop.nvim/issues/278
 
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
