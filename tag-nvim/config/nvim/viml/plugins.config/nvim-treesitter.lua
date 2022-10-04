@@ -25,8 +25,15 @@ require("nvim-treesitter.configs").setup({
   auto_install = true,
   highlight = { enable = true, disable = { "vim" } },
   rainbow = {
+    disable = {
+      "html", "vim"
+    },
     enable = true,
-    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+    extended_mode = true,
+    -- loaded = true,
+    -- module_path = "rainbow.internal",
+    -- termcolors = { "Red", "Green", "Yellow", "Blue", "Magenta", "Cyan", "White" },
+    colors = { "#ff99d7", "#ffd372", "#ff74b1", "#f5c7a9", "#8bbccc", "#90b77d", "#42c2ff" },
     max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
   },
   context_commentstring = { enable = true, enable_autocmd = false },

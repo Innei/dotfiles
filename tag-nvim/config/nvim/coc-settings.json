@@ -154,6 +154,7 @@
     "consola"
   ],
   "smartf.timeout": 5000,
+  "explorer.file.reveal.auto": true,
   "explorer.keyMappings.global": {
     "i": false,
     "<c-o>": "noop",

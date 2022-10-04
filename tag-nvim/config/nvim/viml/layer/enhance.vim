@@ -31,7 +31,8 @@ if !exists('g:vscode')
   Plug '907th/vim-auto-save', { 'on': 'AutoSaveToggle', 'for': ['text', 'markdown', 'tex'] }
 
   Plug 'max397574/better-escape.nvim'
-  Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+  " Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+  Plug 'kdheepak/tabline.nvim'
   " Plug 'rcarriga/nvim-notify'
 
   Plug 'nvim-lualine/lualine.nvim'

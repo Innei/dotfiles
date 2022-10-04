@@ -13,7 +13,6 @@ Support Language:
 <img width="1538" alt="image" src="https://user-images.githubusercontent.com/41265413/193402049-f77f049b-26e8-44dd-992a-7e95305fa6e8.png">
 <img width="1538" alt="image" src="https://user-images.githubusercontent.com/41265413/193402137-c233bdd3-9878-430b-b6f9-ba62ee50ae2c.png">
 
-
 Please **DO NOT** just copy this config without really looking at it! Please, at least, read this README file!
 
 ## After Installation, You Need To:
@@ -245,15 +244,14 @@ CoC is a modern completion, which had most vscode feature. It's all configs wrot
 
 #### Git Action
 
-| Shortcut       | Action                            |
-| -------------- | --------------------------------- |
-| `g` `-`        | Go to previous git hunk           |
-| `g` `+`        | Go to next git hunk               |
-| `g` `f`        | Fold everything except hunks      |
-| `g` `u`        | Undo git hunk under cursor        |
-| `g` `s`        | Stage this git hunk               |
-| `<Space>` `gg` | Open git stash and commit         |
-| `<Space>` `gp` | Do git push                       |
+| Shortcut | Action                       |
+| -------- | ---------------------------- |
+| `g` `-`  | Go to previous git hunk      |
+| `g` `+`  | Go to next git hunk          |
+| `z` `g`  | Fold everything except hunks |
+| `g` `u`  | Undo git hunk under cursor   |
+| `g` `s`  | Stage this git hunk          |
+| `g` `p`  | Preview this git hunk        |
 
 #### Auto Pairs
 
