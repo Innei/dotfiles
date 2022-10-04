@@ -31,8 +31,8 @@ require("nvim-treesitter.configs").setup({
     enable = true,
     extended_mode = true,
     -- loaded = true,
-    -- module_path = "rainbow.internal",
-    -- termcolors = { "Red", "Green", "Yellow", "Blue", "Magenta", "Cyan", "White" },
+    module_path = "rainbow.internal",
+    termcolors = { "Red", "Green", "Yellow", "Blue", "Magenta", "Cyan", "White" },
     colors = { "#ff99d7", "#ffd372", "#ff74b1", "#f5c7a9", "#8bbccc", "#90b77d", "#42c2ff" },
     max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
   },

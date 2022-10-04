@@ -2,9 +2,9 @@
 " Github:   https://github.com/innei
 " License:  MIT
 
-if !exists('g:vscode')
-  colorscheme onedark
-endif
+" if !exists('g:vscode')
+"   colorscheme onedark
+" endif
 
 exec "nohlsearch"
 
