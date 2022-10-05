@@ -1,19 +1,21 @@
-local telescope_actions = require("telescope.actions.set")
+-- local telescope_actions = require("telescope.actions.set")
 local fixfolds = {
 	hidden = true,
-	attach_mappings = function(_)
-		telescope_actions.select:enhance({
-			post = function()
-				vim.cmd(":normal! zx")
-			end,
-		})
-		return true
-	end,
+	-- attach_mappings = function(_)
+	-- 	telescope_actions.select:enhance({
+	-- 		post = function()
+	-- 			vim.cmd(":normal! zx")
+	-- 		end,
+	-- 	})
+	-- 	return true
+	-- end,
 }
 require("telescope").setup({
 	defaults = {
+		file_ignore_patterns = {"node_modules"},
+		find_command = {"rg", "--no-ignore", "--files"},
 		initial_mode = "insert",
-		prompt_prefix = "  ",
+		prompt_prefix = " ❯ ",
 		selection_caret = " ",
 		entry_prefix = " ",
 		scroll_strategy = "limit",
@@ -21,7 +23,7 @@ require("telescope").setup({
 		borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
 		layout_strategy = "horizontal",
 		path_display = { "absolute" },
-		file_ignore_patterns = { ".git/", ".cache", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
+		file_ignore_patterns = { ".git/", ".cache", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip", ".DS_Store" },
 		layout_config = {
 			prompt_position = "bottom",
 			horizontal = {
@@ -46,10 +48,17 @@ require("telescope").setup({
 			show_unindexed = true,
 			ignore_patterns = { "*.git/*", "*/tmp/*" },
 		},
+		coc = {
+			theme = 'ivy',
+			prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
+		}
 	},
 	pickers = {
 		buffers = fixfolds,
-		find_files = fixfolds,
+		find_files = {
+			find_command = { "rg", "--files", "--hidden", "--follow" },
+			hidden = true
+		},
 		git_files = fixfolds,
 		grep_string = fixfolds,
 		live_grep = fixfolds,
@@ -59,5 +68,12 @@ require("telescope").setup({
 
 vim.api.nvim_set_keymap("n", "<leader>;", "<cmd>Telescope commands<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>Telescope<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rf", "<cmd>Telescope fd<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-r>", "<cmd>Telescope grep_string<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-f>", "<cmd>Telescope live_grep<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>Telescope find_files<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { noremap = true, silent = true })
+
+
+require('telescope').load_extension('fzf')
+require 'telescope'.load_extension('project')
+require('telescope').load_extension('coc')

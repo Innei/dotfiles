@@ -66,8 +66,8 @@ inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : "<ESC>ka"
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ CheckBackSpace() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
