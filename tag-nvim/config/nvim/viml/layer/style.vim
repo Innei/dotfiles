@@ -9,5 +9,6 @@ if !exists('g:vscode')
   " Plug 'projekt0n/github-nvim-theme'
   " Plug 'navarasu/onedark.nvim'
   Plug 'olimorris/onedarkpro.nvim'
+  " Plug 'shaunsingh/nord.nvim'
 
 endif

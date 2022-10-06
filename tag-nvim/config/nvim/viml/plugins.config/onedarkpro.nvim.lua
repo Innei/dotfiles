@@ -7,7 +7,16 @@ require("onedarkpro").setup({
     nvim_ts_rainbow = false,
     native_lsp = true,
     treesitter = true,
-    copilot = true, polygot = true, startify = true, telescope = true, which_key = true, gitsigns = true
+
+    copilot = true, startify = true, telescope = true, which_key = true, gitsigns = false
+  },
+  colors = {
+    cursorline = "#2D313B" -- This is optional. The default cursorline color is based on the background
+  },
+  options = {
+    cursorline = true,
+    terminal_colors = true,
+    underline = true
   }
 
 })
