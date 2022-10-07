@@ -1,7 +1,14 @@
 local remap = vim.api.nvim_set_keymap
 local npairs = require('nvim-autopairs')
+local hasCoc = vim.g.coc_global_extensions ~= nil
+
+local map_cr = true
+
+if (hasCoc) then
+  map_cr = false
+end
 npairs.setup({
-  map_cr = false,
+  map_cr = map_cr,
   check_ts = true,
   enable_check_bracket_line = false,
   ignored_next_char = "[%w]"
@@ -28,4 +35,7 @@ MUtils.completion_confirm = function()
   end
 end
 
-remap('i', '<CR>', 'v:lua.MUtils.completion_confirm()', { expr = true, noremap = true })
+if (hasCoc) then
+
+  remap('i', '<CR>', 'v:lua.MUtils.completion_confirm()', { expr = true, noremap = true })
+end

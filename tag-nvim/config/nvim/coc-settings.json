@@ -1,7 +1,10 @@
 {
   "npm.binPath": "pnpm",
   "coc.preferences.extensionUpdateCheck": "weekly",
-  "coc.preferences.rootPatterns": [".git", "node_modules"],
+  "coc.preferences.rootPatterns": [
+    ".git",
+    "node_modules"
+  ],
   "suggest.timeout": 5000,
   "suggest.snippetIndicator": "*",
   "suggest.triggerCompletionWait": 0,
@@ -91,8 +94,12 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"],
+      "rootPatterns": [
+        "go.mod"
+      ],
+      "filetypes": [
+        "go"
+      ],
       "initializationOptions": {
         "gocodeCompletionEnabled": true,
         "diagnosticsEnabled": true,
@@ -101,13 +108,22 @@
     },
     "bash": {
       "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"],
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
       "ignoredRootPaths": []
     }
   },
   "snippets.textmateSnippetsRoots": [],
-  "html.filetypes": ["html", "handlebars", "htmldjango", "vue"],
+  "html.filetypes": [
+    "html",
+    "handlebars",
+    "htmldjango",
+    "vue"
+  ],
   "cSpell.maxNumberOfProblems": 10,
   "cSpell.ignorePaths": [
     "node_modules",
@@ -120,7 +136,11 @@
     "**/*.dll",
     "init.vim"
   ],
-  "cSpell.userWords": ["Innei", "Typegoose", "consola"],
+  "cSpell.userWords": [
+    "Innei",
+    "Typegoose",
+    "consola"
+  ],
   "smartf.timeout": 5000,
   "explorer.file.reveal.auto": true,
   "explorer.keyMappings.global": {
@@ -128,27 +148,75 @@
     "<c-o>": "noop",
     "*": "toggleSelection",
     "<tab>": "actionMenu",
-    "gk": ["wait", "expandablePrev"],
-    "gj": ["wait", "expandableNext"],
-    "h": ["wait", "collapse"],
-    "l": ["wait", "expandable?", "expand", "open"],
-    "J": ["wait", "toggleSelection", "normal:j"],
-    "K": ["wait", "toggleSelection", "normal:k"],
-    "gl": ["wait", "expand:recursive"],
-    "gh": ["wait", "collapse:recursive"],
-    "<2-LeftMouse>": [
+    "gk": [
+      "wait",
+      "expandablePrev"
+    ],
+    "gj": [
+      "wait",
+      "expandableNext"
+    ],
+    "h": [
+      "wait",
+      "collapse"
+    ],
+    "l": [
+      "wait",
       "expandable?",
-      ["expanded?", "collapse", "expand"],
+      "expand",
       "open"
     ],
-    "o": ["wait", "expanded?", "collapse", "expand"],
-    "<cr>": ["wait", "expandable?", "cd", "open"],
+    "J": [
+      "wait",
+      "toggleSelection",
+      "normal:j"
+    ],
+    "K": [
+      "wait",
+      "toggleSelection",
+      "normal:k"
+    ],
+    "gl": [
+      "wait",
+      "expand:recursive"
+    ],
+    "gh": [
+      "wait",
+      "collapse:recursive"
+    ],
+    "<2-LeftMouse>": [
+      "expandable?",
+      [
+        "expanded?",
+        "collapse",
+        "expand"
+      ],
+      "open"
+    ],
+    "o": [
+      "wait",
+      "expanded?",
+      "collapse",
+      "expand"
+    ],
+    "<cr>": [
+      "wait",
+      "expandable?",
+      "cd",
+      "open"
+    ],
     "e": "open",
     "s": "open:split",
     "E": "open:vsplit",
     "t": "open:tab",
-    "<bs>": ["wait", "gotoParent"],
-    "gs": ["wait", "reveal:select"],
+    "<bs>": [
+      "wait",
+      "gotoParent"
+    ],
+    "gs": [
+      "wait",
+      "reveal:select"
+    ],
     "il": "preview:labeling",
     "ic": "preview:content",
     "Il": "previewOnHover:toggle:labeling",
@@ -176,29 +244,58 @@
     "F": "searchRecursive",
     "gf": "gotoSource:file",
     "gb": "gotoSource:buffer",
-    "[[": ["wait", "sourcePrev"],
-    "]]": ["wait", "sourceNext"],
-    "[i": ["wait", "indentPrev"],
-    "]i": ["wait", "indentNext"],
-    "[m": ["wait", "markPrev:modified"],
-    "]m": ["wait", "markNext:modified"],
-    "[d": ["wait", "markPrev:diagnosticError:diagnosticWarning"],
-    "]d": ["wait", "markNext:diagnosticError:diagnosticWarning"],
-    "[D": ["wait", "markPrev:diagnosticError"],
-    "]D": ["wait", "markNext:diagnosticError"],
-    "[c": ["wait", "markPrev:git"],
-    "]c": ["wait", "markNext:git"],
+    "[[": [
+      "wait",
+      "sourcePrev"
+    ],
+    "]]": [
+      "wait",
+      "sourceNext"
+    ],
+    "[i": [
+      "wait",
+      "indentPrev"
+    ],
+    "]i": [
+      "wait",
+      "indentNext"
+    ],
+    "[m": [
+      "wait",
+      "markPrev:modified"
+    ],
+    "]m": [
+      "wait",
+      "markNext:modified"
+    ],
+    "[d": [
+      "wait",
+      "markPrev:diagnosticError:diagnosticWarning"
+    ],
+    "]d": [
+      "wait",
+      "markNext:diagnosticError:diagnosticWarning"
+    ],
+    "[D": [
+      "wait",
+      "markPrev:diagnosticError"
+    ],
+    "]D": [
+      "wait",
+      "markNext:diagnosticError"
+    ],
+    "[c": [
+      "wait",
+      "markPrev:git"
+    ],
+    "]c": [
+      "wait",
+      "markNext:git"
+    ],
     "<<": "gitStage",
     ">>": "gitUnstage"
   },
   "tsserver.maxTsServerMemory": 1024,
-  "typescript.inlayHints.enumMemberValues.enabled": true,
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "typescript.inlayHints.parameterNames.enabled": "literals",
-  "typescript.inlayHints.parameterTypes.enabled": true,
-  "typescript.inlayHints.variableTypes.enabled": true,
-  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "suggest.virtualText": true,
-  "suggest.preferCompleteThanJumpPlaceholder": true,
-  "typescript.suggest.completeJSDocs": true
+  "suggest.preferCompleteThanJumpPlaceholder": true
 }

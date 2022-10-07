@@ -23,8 +23,8 @@ if !exists('g:vscode')
   Plug 'sgur/vim-editorconfig'
   Plug 'airblade/vim-rooter' " auto change project cwd
   Plug 'tpope/vim-sleuth' " auto adjust tabwidth base on current file
-  Plug 'wellle/context.vim'
-  
+  " Plug 'wellle/context.vim'
+
   Plug 'dstein64/vim-startuptime', { 'on': 'StartupTime' }
   " Plug 'thaerkh/vim-workspace'
   Plug 'skywind3000/asyncrun.vim'

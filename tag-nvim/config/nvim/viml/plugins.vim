@@ -15,6 +15,7 @@ call s:source('utils')
 call s:source('git')
 call s:source('writing')
 call s:source('style')
+call s:source('lsp')
 
 call plug#end()
 

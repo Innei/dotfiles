@@ -26,6 +26,8 @@ set shortmess+=c
 set signcolumn=yes
 set pumheight=15
 
+let g:copilot_no_tab_map = v:true
+
 let g:coc_global_extensions = [
       \ 'coc-calc',
       \ 'coc-css',
