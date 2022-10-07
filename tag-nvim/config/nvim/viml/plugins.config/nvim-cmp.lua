@@ -1,5 +1,5 @@
 local lspkind = require('lspkind')
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 vim.cmd([[set pumheight=15]])
 
@@ -32,8 +32,8 @@ cmp.setup {
     -- -- For snippy users.
     -- { name = 'snippy' },
   }, { { name = 'buffer' },
-       { name = 'path' }
-    }),
+    { name = 'path' }
+  }),
 
   -- 快捷键
   mapping = {
@@ -52,7 +52,7 @@ cmp.setup {
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
     ['<CR>'] = cmp.mapping.confirm({
-      select = true ,
+      select = true,
     }),
 
     -- ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
@@ -86,27 +86,30 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
-      { name = 'cmdline' }
-    })
+    { name = 'cmdline' }
+  })
 })
+
+
 require("lsp-format").setup {}
 require("lspconfig").gopls.setup { on_attach = require("lsp-format").on_attach }
 
 
 require("nvim-lsp-installer").setup {
-automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-    ui = {
+  automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+  ui = {
+    icons = {
+      sautomatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+      ui = {
         icons = {
-            sautomatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-    ui = {
-        icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
+          server_installed = "✓",
+          server_pending = "➜",
+          server_uninstalled = "✗"
         }
-    }erver_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
-        }
+      },
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
     }
   }
+}
