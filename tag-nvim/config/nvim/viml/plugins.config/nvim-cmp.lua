@@ -51,7 +51,9 @@ cmp.setup {
   -- 快捷键
   mapping = {
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
+      if vim.fn['vsnip#available'](1) == 1 then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true), "")
+      elseif cmp.visible() then
         cmp.confirm({ select = true })
       elseif has_words_before() then
         cmp.complete()
