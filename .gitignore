@@ -9,3 +9,5 @@ tmp/
 _machine_specific.vim
 .vim-bookmarks
 .undodir/
+*.pyo
+__pycache__/

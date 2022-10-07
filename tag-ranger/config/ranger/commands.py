@@ -9,6 +9,10 @@ class paste_as_root(Command):
 		else:
 			self.fm.execute_console('shell sudo cp -r %c .')
 
+class create_and_edit(Command):
+    def execute(self):
+        self.fm.execute_console('shell touch %s' % self.rest(1))
+        self.fm.execute_console('edit %s' % self.rest(1))
 
 
 class mkcd(Command):

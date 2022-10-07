@@ -50,8 +50,10 @@ augroup END
 au FileType markdown setlocal wrap
 endif
 
+
+" set filetype
+
 autocmd BufRead,BufNewFile *.{md,mkd,markdown,mdown,mkdn,mdwn} set filetype=markdown
-autocmd BufRead,BufNewFile *.{json} set ft=jsonc
 au BufEnter github.com_*.txt set filetype=markdown
-au BufRead .*{rc} set filetype=json
+au BufRead .{eslint,prettier,bump}{rc} set filetype=json
 
