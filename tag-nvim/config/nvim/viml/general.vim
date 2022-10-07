@@ -16,7 +16,7 @@ let &t_ut=''
 " ===
 set number
 set relativenumber
-set mouse=nv
+set mouse=a
 set mousehide
 set cursorline
 set expandtab
@@ -54,7 +54,6 @@ set wildmenu
 set ignorecase
 set smartcase
 set shortmess+=cOtT
-set completeopt=longest,noinsert,menuone,noselect,preview
 set ttyfast "should make scrolling faster
 set lazyredraw "same as above
 set visualbell

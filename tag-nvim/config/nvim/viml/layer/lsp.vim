@@ -18,6 +18,9 @@ function! Load_lsp()
   Plug 'williamboman/nvim-lsp-installer'
   Plug 'ray-x/lsp_signature.nvim'
   Plug 'RRethy/vim-illuminate'
+  Plug 'folke/trouble.nvim'
+  Plug 'folke/lsp-colors.nvim'
+  Plug 'kyazdani42/nvim-tree.lua'
 
 endfunction
 

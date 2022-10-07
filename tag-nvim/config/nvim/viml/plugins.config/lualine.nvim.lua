@@ -25,7 +25,7 @@ require('lualine').setup {
     lualine_x = { { "filetype", colored = true, icon_only = true }, },
     lualine_y = {{
       'diagnostics',
-      sources = { 'coc' },
+      sources = { 'coc', 'nvim_lsp', 'nvim_diagnostic' },
       -- Displays diagnostics for the defined severity types
       sections = { 'error', 'warn', 'hint' },
       symbols = { error = " ", warn = " ", info = " " },

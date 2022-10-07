@@ -44,9 +44,9 @@ require("nvim-treesitter.configs").setup({
         ['<cr>'] = 'textsubjects-smart',
     },
 },
-  -- autotag = {
-  --   enable = true,
-  -- }
+  autotag = {
+    enable = true,
+  }
 })
 require("nvim-treesitter.install").prefer_git = true
 local parsers = require("nvim-treesitter.parsers").get_parser_configs()

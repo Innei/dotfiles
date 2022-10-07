@@ -15,6 +15,7 @@ if !exists('g:vscode')
   Plug 'nvim-treesitter/nvim-treesitter-context'
   Plug 'SmiteshP/nvim-gps'
   Plug 'RRethy/nvim-treesitter-textsubjects'
+  Plug 'windwp/nvim-ts-autotag'
 
   " Plug 'windwp/nvim-ts-autotag'
   Plug 'terrortylor/nvim-comment'

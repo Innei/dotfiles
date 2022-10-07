@@ -3,7 +3,6 @@ local cmp = require 'cmp'
 local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-require "lsp_signature".setup()
 
 
 vim.cmd([[set pumheight=15]])
@@ -106,13 +105,13 @@ cmp.setup.cmdline(':', {
 local group = vim.api.nvim_create_augroup("LspConfig", { clear = true })
 
 local border = {
-  { "🭽", "FloatBorder" },
+  { "╭", "FloatBorder" },
   { "▔", "FloatBorder" },
-  { "🭾", "FloatBorder" },
+  { "╮", "FloatBorder" },
   { "▕", "FloatBorder" },
-  { "🭿", "FloatBorder" },
+  { "╯", "FloatBorder" },
   { "▁", "FloatBorder" },
-  { "🭼", "FloatBorder" },
+  { "╰", "FloatBorder" },
   { "▏", "FloatBorder" }
 }
 
@@ -162,12 +161,13 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set("n", "gO", lsp_organize_imports, bufopts)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-  vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
-  vim.keymap.set("n", "gR", vim.lsp.buf.references, bufopts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
   vim.keymap.set("n", "ga", vim.lsp.buf.code_action, bufopts)
   vim.keymap.set("n", "<C-x><C-x>", vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set("n", "<leader>cc", vim.lsp.buf.code_action, bufopts)
 
   if client.server_capabilities.document_highlight then
     vim.api.nvim_create_autocmd(
@@ -387,4 +387,10 @@ lspconfig.diagnosticls.setup(
       return config
     end
   )
+)
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
 )
