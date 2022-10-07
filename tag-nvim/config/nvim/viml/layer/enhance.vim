@@ -11,7 +11,7 @@ Plug 'schickling/vim-bufonly'
 if !exists('g:vscode')
   Plug 'rhysd/accelerated-jk'
   Plug 'voldikss/vim-floaterm'
-  Plug 'norcalli/nvim-colorizer.lua'
+  " Plug 'norcalli/nvim-colorizer.lua'
   Plug 'jesseleite/vim-noh' " A vim plugin for automatically clearing search highlighting when cursor is moved.
   Plug 'romainl/vim-cool' " A very simple plugin that makes hlsearch more useful.
   Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
@@ -38,7 +38,7 @@ if !exists('g:vscode')
 
   Plug 'nvim-lualine/lualine.nvim'
   " Plug 'Yggdroot/indentLine', { 'for': ['python', 'yaml', 'bash'], 'on': ['IndentLinesToggle']}
-  Plug 'lukas-reineke/indent-blankline.nvim'
+"  Plug 'lukas-reineke/indent-blankline.nvim'
   " Plug 'fgheng/winbar.nvim'
   " Plug 'Shatur/neovim-session-manager'
   Plug 'Shatur/neovim-session-manager'

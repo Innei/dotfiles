@@ -10,6 +10,11 @@ vim.cmd([[set nobackup]])
 vim.cmd([[set nowritebackup]])
 vim.cmd([[set cmdheight=2]])
 
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 cmp.setup {
   -- 指定 snippet 引擎
   snippet = {
@@ -31,19 +36,49 @@ cmp.setup {
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     -- For vsnip users.
-    { name = 'vsnip' },
+    { name = 'vsnip', priority = 45, },
     -- For luasnip users.
     -- { name = 'luasnip' },
     --For ultisnips users.
     -- { name = 'ultisnips' },
     -- -- For snippy users.
     -- { name = 'snippy' },
-  }, { { name = 'buffer' },
+  }, {
+    { name = 'buffer' },
     { name = 'path' }
   }),
 
   -- 快捷键
   mapping = {
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.confirm({ select = true })
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, {
+      "i",
+      "s",
+    }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, {
+      "i",
+      "s",
+    }),
+
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.close(),
+
     -- 上一个
     ['<C-k>'] = cmp.mapping.select_prev_item(),
     -- 下一个
