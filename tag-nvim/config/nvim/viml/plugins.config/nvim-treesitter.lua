@@ -23,7 +23,12 @@ require("nvim-treesitter.configs").setup({
     "tsx",
   },
   auto_install = true,
-  highlight = { enable = true, disable = { "vim" } },
+  highlight = { 
+    enable = false, 
+    disable = function(lang, bufnr)
+      return lang == "vim" or vim.api.nvim_buf_line_count(bufnr) > 10000
+    end,
+ },
   rainbow = {
     disable = {
       "html", "vim"
