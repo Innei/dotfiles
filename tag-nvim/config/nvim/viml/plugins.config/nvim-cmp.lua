@@ -63,6 +63,7 @@ cmp.setup {
     end, {
       "i",
       "s",
+      "c"
     }),
 
     ["<S-Tab>"] = cmp.mapping(function(fallback)
@@ -76,15 +77,16 @@ cmp.setup {
     end, {
       "i",
       "s",
+      "c"
     }),
 
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
 
     -- 上一个
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
+    ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
     -- 下一个
-    ['<C-j>'] = cmp.mapping.select_next_item(),
+    ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
     -- 出现补全
     ['<S-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     -- 取消
@@ -134,9 +136,6 @@ cmp.setup.cmdline(':', {
   })
 })
 
-
--- require("lsp-format").setup {}
--- require("lspconfig").gopls.setup { on_attach = require("lsp-format").on_attach }
 
 
 local group = vim.api.nvim_create_augroup("LspConfig", { clear = true })
