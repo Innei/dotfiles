@@ -37,11 +37,13 @@ require('neoclip').setup({
         custom = {},
       },
     },
-    fzf = {
-      select = 'default',
-      paste = 'ctrl-p',
-      paste_behind = 'ctrl-k',
-      custom = {},
-    },
+    -- fzf = {
+    --   select = 'default',
+    --   paste = 'ctrl-p',
+    --   paste_behind = 'ctrl-k',
+    --   custom = {},
+    -- },
   },
 })
+
+vim.api.nvim_set_keymap('n', '<leader>y', ':Telescope neoclip<CR>', { noremap = true, silent = true })
