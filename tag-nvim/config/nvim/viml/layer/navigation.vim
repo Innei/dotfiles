@@ -12,14 +12,14 @@ if !exists('g:vscode')
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'nvim-telescope/telescope-project.nvim'
-  Plug 'fannheyward/telescope-coc.nvim'
+  " Plug 'fannheyward/telescope-coc.nvim'
   Plug 'nvim-telescope/telescope-node-modules.nvim'
-  " Plug 'nvim-telescope/telescope-fzf-writer.nvim'
+  Plug 'AckslD/nvim-neoclip.lua'
 
   Plug 'folke/which-key.nvim', {'on': 'WhichKey'}
 
   " deps of telescope, diffview
   Plug 'nvim-lua/plenary.nvim'
-  " Plug 'kkharji/sqlite.lua'
+  Plug 'kkharji/sqlite.lua'
 else
 endif

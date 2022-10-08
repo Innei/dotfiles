@@ -106,8 +106,13 @@ vim.api.nvim_set_keymap("n", "<C-f>", "<cmd>Telescope live_grep<cr>", { noremap 
 vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>Telescope find_files<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { noremap = true, silent = true })
 
+local hasCoc = vim.g.coc_global_extensions ~= nil
+
 
 require('telescope').load_extension('fzf')
 require 'telescope'.load_extension('project')
-require('telescope').load_extension('coc')
+if hasCoc then
+	require('telescope').load_extension('coc')
+end
 require 'telescope'.load_extension 'node_modules'
+require 'telescope'.load_extension 'neoclip'
