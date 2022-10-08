@@ -16,4 +16,4 @@ require("nvim-tree").setup({
   },
 })
 
-vim.cmd([[nnoremap tt :NvimTreeToggle<CR>]])
+vim.cmd([[nnoremap tt :NvimTreeFindFileToggle<CR>]])
