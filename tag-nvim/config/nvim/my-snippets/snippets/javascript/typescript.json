@@ -1,0 +1,32 @@
+{
+  "Print to console": {
+    "prefix": "log",
+    "body": [
+      "console.log($1)",
+      "$2"
+    ],
+    "description": "Log output to console"
+  },
+  "Destructure Object": {
+    "prefix": "cc",
+    "body": "const { $2 } = $1"
+  },
+  "import module": {
+    "prefix": [
+      "im",
+      "imp",
+      "ii"
+    ],
+    "body": "import {} from '$1'",
+    "description": "自动导入"
+  },
+  "header comment": {
+    "prefix": "hco",
+    "body": [
+      "/**",
+      "* $0",
+      "* @author Innei <https://innei.ren>",
+      "*/"
+    ]
+  }
+}
