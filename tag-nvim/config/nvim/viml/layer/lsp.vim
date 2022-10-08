@@ -8,9 +8,6 @@ function! Load_lsp()
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
-  Plug 'hrsh7th/cmp-vsnip'
-  Plug 'hrsh7th/vim-vsnip'
-  Plug 'rafamadriz/friendly-snippets'
   Plug 'onsails/lspkind-nvim'
   " Plug 'lukas-reineke/lsp-format.nvim'
   Plug 'mhartington/formatter.nvim'
@@ -21,6 +18,14 @@ function! Load_lsp()
   Plug 'folke/trouble.nvim'
   Plug 'folke/lsp-colors.nvim'
   Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'hrsh7th/cmp-copilot'
+  Plug 'f3fora/cmp-spell'
+  " snippets
+  Plug 'rafamadriz/friendly-snippets'
+  Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'L3MON4D3/LuaSnip'
+  " Plug 'hrsh7th/vim-vsnip'
+  " Plug 'hrsh7th/cmp-vsnip'
 
 endfunction
 

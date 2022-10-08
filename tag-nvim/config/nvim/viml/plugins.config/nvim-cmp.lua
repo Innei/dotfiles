@@ -3,7 +3,7 @@ local cmp = require 'cmp'
 local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
+local luasnip = require("luasnip")
 
 vim.cmd([[set pumheight=15]])
 vim.cmd([[set nobackup]])
@@ -13,6 +13,10 @@ vim.cmd([[set cmdheight=2]])
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 cmp.setup {
@@ -36,9 +40,12 @@ cmp.setup {
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     -- For vsnip users.
-    { name = 'vsnip', priority = 45, },
+    -- { name = 'vsnip', priority = 45 },
+    { name = 'copilot' },
     -- For luasnip users.
-    -- { name = 'luasnip' },
+    { name = 'luasnip', priority = 45 },
+    { name = "spell" },
+    { name = "nvim_lua" },
     --For ultisnips users.
     -- { name = 'ultisnips' },
     -- -- For snippy users.
@@ -51,8 +58,10 @@ cmp.setup {
   -- 快捷键
   mapping = {
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if vim.fn['vsnip#available'](1) == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true), "")
+      -- if vim.fn['vsnip#available'](1) == 1 then
+      --   vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true), "")
+      if luasnip.expand_or_jumpable() then
+        vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
       elseif cmp.visible() then
         cmp.confirm({ select = true })
       elseif has_words_before() then
@@ -71,6 +80,7 @@ cmp.setup {
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
+
       else
         fallback()
       end
