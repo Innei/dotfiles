@@ -116,3 +116,4 @@ if hasCoc then
 end
 require 'telescope'.load_extension 'node_modules'
 require 'telescope'.load_extension 'neoclip'
+require 'telescope'.load_extension 'tmux'

@@ -46,7 +46,7 @@ set foldlevel=99
 set foldenable
 set formatoptions-=cro
 set splitright
-autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set splitbelow
 set noshowmode
 set showcmd
@@ -68,6 +68,8 @@ autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" disable syntax if large
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 10000 | syntax clear | endif
 
 " experimental
 set lazyredraw
