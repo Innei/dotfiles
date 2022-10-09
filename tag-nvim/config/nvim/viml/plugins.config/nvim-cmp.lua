@@ -53,10 +53,16 @@ cmp.setup {
   -- 快捷键
   mapping = {
     ["<Tab>"] = cmp.mapping(function(fallback)
-      -- if vim.fn['vsnip#available'](1) == 1 then
-      --   vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true), "")
-      if luasnip.expand_or_jumpable() then
+      local mode = vim.api.nvim_get_mode()["mode"]
+      if mode == 'c' or mode == 'n' then
+        if cmp.visible() then
+          cmp.mapping.select_next_item()
+        else 
+          fallback()
+        end
+      end
 
+      if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       elseif cmp.visible() then
         cmp.confirm({ select = true })
@@ -72,6 +78,16 @@ cmp.setup {
     }),
 
     ["<S-Tab>"] = cmp.mapping(function(fallback)
+
+      local mode = vim.api.nvim_get_mode()["mode"]
+      if mode == 'c' then
+        if cmp.visible() then
+          cmp.mapping.select_prev_item()
+        else 
+          fallback()
+        end
+      end
+
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -427,8 +443,16 @@ lspconfig.diagnosticls.setup(
   )
 )
 
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+
+require('nvim-autopairs').setup {}
+
+local ts_utils = require("nvim-treesitter.ts_utils")
+
+cmp.event:on("confirm_done", function(evt)
+  local name = ts_utils.get_node_at_cursor():type()
+  -- print(name)
+  if name ~= "named_imports" and name ~= "export_clause" then
+    cmp_autopairs.on_confirm_done()(evt)
+  end
+end)
