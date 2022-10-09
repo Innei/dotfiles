@@ -63,9 +63,18 @@ set pastetoggle=<F10>
 " set colorcolumn=80
 set updatetime=500
 set termguicolors " enable true colors support
+
 " toggle number releative or absolute
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
+
+if !has('gui_running')
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=500
+    augroup END
+endif
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " disable syntax if large
@@ -73,8 +82,8 @@ autocmd BufWinEnter * if line2byte(line("$") + 1) > 10000 | syntax clear | endif
 
 " experimental
 set lazyredraw
-syntax sync minlines=256
-set regexpengine=0
+" syntax sync minlines=256
+" set regexpengine=0
 
 " ===
 " === Ignore File

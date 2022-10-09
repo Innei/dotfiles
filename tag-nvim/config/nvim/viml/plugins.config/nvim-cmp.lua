@@ -204,8 +204,8 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, bufopts)
   -- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
   vim.keymap.set("n", "ga", vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set("n", "<C-x><C-x>", vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set("n", "<leader>cc", vim.lsp.buf.code_action, bufopts)
+
+  -- vim.keymap.set("n", "<leader>cc", vim.lsp.buf.code_action, bufopts)
 
   if client.server_capabilities.document_highlight then
     vim.api.nvim_create_autocmd(
@@ -325,7 +325,7 @@ lsp_installer.setup(
       "eslint",
       "tsserver",
       "sumneko_lua",
-      "denols",
+      -- "denols",
       "vimls"
     },
     automatic_installation = true,

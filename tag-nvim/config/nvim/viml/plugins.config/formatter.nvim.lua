@@ -3,8 +3,13 @@ local formatter = require("formatter")
 -- on startup, check if there exists a local version of prettier
 -- in the project and use that. Otherwise, use the global version.
 local prettier_path = "./node_modules/.bin/prettier"
+local eslint_path = "./node_modules/.bin/eslint"
 if vim.fn.executable(prettier_path) ~= 1 then
   prettier_path = "prettier"
+end
+
+if vim.fn.executable(eslint_path) ~= 1 then
+  eslint_path = 'eslint'
 end
 
 local function is_deno_project()
@@ -43,30 +48,41 @@ local function deno_config()
   return {}
 end
 
+local function eslint_config()
+  return {
+    exe = eslint_path,
+    args = { "--stdin-filename", vim.api.nvim_buf_get_name(0), "--fix", "--cache" },
+    stdin = false,
+    try_node_modules = true
+  }
+end
+
 formatter.setup(
   {
     logging = false,
     filetype = {
       javascript = {
-        prettier_config
+        prettier_config,
+        eslint_config
       },
       javascriptreact = {
-        prettier_config
+        prettier_config,
+        eslint_config
       },
       json = {
         prettier_config
       },
       typescript = {
         prettier_config,
-        deno_config
+        deno_config, eslint_config
       },
       ["typescript.tsx"] = {
         prettier_config,
-        deno_config
+        deno_config, eslint_config
       },
       typescriptreact = {
         prettier_config,
-        deno_config
+        deno_config, eslint_config
       },
       lua = {
         -- luafmt
