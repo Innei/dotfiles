@@ -24,10 +24,10 @@ cmp.setup {
   snippet = {
     expand = function(args)
       -- For `vsnip` users.
-      vim.fn["vsnip#anonymous"](args.body)
+      -- vim.fn["vsnip#anonymous"](args.body)
 
       -- For `luasnip` users.
-      -- require('luasnip').lsp_expand(args.body)
+      require('luasnip').lsp_expand(args.body)
 
       -- For `ultisnips` users.
       -- vim.fn["UltiSnips#Anon"](args.body)
@@ -39,17 +39,12 @@ cmp.setup {
   -- 来源
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    -- For vsnip users.
-    -- { name = 'vsnip', priority = 45 },
     { name = 'copilot' },
     -- For luasnip users.
-    { name = 'luasnip', priority = 45 },
+    { name = 'luasnip' },
     { name = "spell" },
     { name = "nvim_lua" },
-    --For ultisnips users.
-    -- { name = 'ultisnips' },
-    -- -- For snippy users.
-    -- { name = 'snippy' },
+
   }, {
     { name = 'buffer' },
     { name = 'path' }
@@ -61,7 +56,8 @@ cmp.setup {
       -- if vim.fn['vsnip#available'](1) == 1 then
       --   vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true), "")
       if luasnip.expand_or_jumpable() then
-        vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
+
+        luasnip.expand_or_jump()
       elseif cmp.visible() then
         cmp.confirm({ select = true })
       elseif has_words_before() then
@@ -202,11 +198,11 @@ local on_attach = function(client, bufnr)
 
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set("n", "gO", lsp_organize_imports, bufopts)
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+  -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+  -- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+  -- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
   vim.keymap.set("n", "ga", vim.lsp.buf.code_action, bufopts)
   vim.keymap.set("n", "<C-x><C-x>", vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set("n", "<leader>cc", vim.lsp.buf.code_action, bufopts)

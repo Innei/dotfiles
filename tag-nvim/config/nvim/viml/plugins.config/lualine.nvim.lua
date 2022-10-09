@@ -1,5 +1,5 @@
-local gps = require("nvim-gps")
-
+-- local gps = require("nvim-gps")
+local navic = require("nvim-navic")
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -7,7 +7,7 @@ require('lualine').setup {
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
-      'coc-explorer', '', 'DiffviewFiles'
+      'coc-explorer', '', 'DiffviewFiles', 'NvimTree', 'Trouble', 'packer',
     },
     ignore_focus = {},
     always_divide_middle = true,
@@ -19,18 +19,21 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = { 'mode' },
+    lualine_a = { {
+      'mode',
+      icons_enabled = true,
+    } },
     lualine_b = { { "branch" }, { "diff", source = diff_source } },
-    lualine_c = { {'filename', path = 1, shorting_target = 40, },{ gps.get_location, cond = gps.is_available }, },
+    lualine_c = { { 'filename', path = 1, shorting_target = 40, }, { navic.get_location, cond = navic.is_available }, },
     lualine_x = { { "filetype", colored = true, icon_only = true }, },
-    lualine_y = {{
+    lualine_y = { {
       'diagnostics',
       sources = { 'coc', 'nvim_lsp', 'nvim_diagnostic' },
       -- Displays diagnostics for the defined severity types
       sections = { 'error', 'warn', 'hint' },
       symbols = { error = " ", warn = " ", info = " " },
-      colored = true,           -- Displays diagnostics status in color if set to true.
-     }
+      colored = true, -- Displays diagnostics status in color if set to true.
+    }
     },
     lualine_z = { "progress", 'location' }
   },
@@ -47,6 +50,14 @@ require('lualine').setup {
     -- lualine_a = {{'filename', path = 1, shorting_target = 40, }}
   },
   inactive_winbar = {},
+  mini_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = { "location" },
+  },
   extensions = {
     "fugitive",
   }

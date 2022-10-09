@@ -107,8 +107,6 @@ if !exists('g:vscode')
   snoremap <M-d> <ESC>*ve<C-g>
   snoremap <M-D> <ESC>#ve<C-g>
 
-  smap <ESC> <ESC>:noh<CR>
-
   " Ctrl + U or E will move up/down the view port without moving the cursor
   noremap <C-W> 5<C-y>
   noremap <C-E> 5<C-e>

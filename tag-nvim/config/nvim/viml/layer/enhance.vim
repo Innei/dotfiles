@@ -37,8 +37,7 @@ if !exists('g:vscode')
   " Plug 'rcarriga/nvim-notify'
 
   Plug 'nvim-lualine/lualine.nvim'
-  " Plug 'Yggdroot/indentLine', { 'for': ['python', 'yaml', 'bash'], 'on': ['IndentLinesToggle']}
-"  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
   " Plug 'fgheng/winbar.nvim'
   " Plug 'Shatur/neovim-session-manager'
   Plug 'Shatur/neovim-session-manager'

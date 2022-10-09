@@ -9,7 +9,7 @@ autocmd BufWritePost * GitGutter
 
 nnoremap zg :GitGutterFold<CR>
 " nnoremap <silent> gp :GitGutterPreviewHunk<CR>
-nnoremap g- :GitGutterPrevHunk<CR>
-nnoremap g= :GitGutterNextHunk<CR>
+nnoremap ]g :GitGutterPrevHunk<CR>
+nnoremap [g :GitGutterNextHunk<CR>
 nnoremap gu :GitGutterUndoHunk<CR>
 nnoremap gs :GitGutterStageHunk<CR>

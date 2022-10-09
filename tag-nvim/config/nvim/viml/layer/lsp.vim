@@ -20,6 +20,9 @@ function! Load_lsp()
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'hrsh7th/cmp-copilot'
   Plug 'f3fora/cmp-spell'
+  Plug 'SmiteshP/nvim-navic'
+  Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+
   " snippets
   Plug 'rafamadriz/friendly-snippets'
   Plug 'saadparwaiz1/cmp_luasnip'
