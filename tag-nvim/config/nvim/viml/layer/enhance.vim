@@ -24,6 +24,8 @@ if !exists('g:vscode')
   Plug 'airblade/vim-rooter' " auto change project cwd
   Plug 'tpope/vim-sleuth' " auto adjust tabwidth base on current file
   " Plug 'wellle/context.vim'
+  Plug 'famiu/bufdelete.nvim' " Neovim's default :bdelete command can be quite annoying, since it also messes up your entire window layout by deleting windows. 
+  Plug 'edluffy/specs.nvim' " Show where your cursor moves when jumping large distances (e.g between windows). Fast and lightweight, written completely in Lua.
 
   Plug 'dstein64/vim-startuptime', { 'on': 'StartupTime' }
   " Plug 'thaerkh/vim-workspace'
