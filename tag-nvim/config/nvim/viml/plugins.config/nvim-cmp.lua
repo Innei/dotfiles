@@ -1,22 +1,86 @@
 local lspkind = require('lspkind')
 local cmp = require 'cmp'
-local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local luasnip = require("luasnip")
+local nvim_lsp = lspconfig
+
+local mason = require("mason")
+local mason_lsp = require("mason-lspconfig")
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
+mason.setup()
+mason_lsp.setup({
+  ensure_installed = {
+    -- "bash-language-server",
+    "efm",
+    "lua-language-server",
+    "eslint",
+    "tsserver",
+    "vimls",
+    -- "clangd",
+    -- "gopls",
+    -- "pyright",
+  },
+  automatic_installation = true,
+  ui = {
+    icons = {
+      sautomatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+      ui = {
+        icons = {
+          server_installed = "✓",
+          server_pending = "➜",
+          server_uninstalled = "✗"
+        }
+      },
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
+    }
+  }
+})
+
+
+local function custom_attach(client, bufnr)
+  require("lsp_signature").on_attach({
+    bind = true,
+    use_lspsaga = false,
+    floating_window = true,
+    fix_pos = true,
+    hint_enable = true,
+    hi_parameter = "Search",
+    handler_opts = { "double" },
+  })
+  require("nvim-navic").attach(client, bufnr)
+end
 
 vim.cmd([[set pumheight=15]])
 vim.cmd([[set nobackup]])
 vim.cmd([[set nowritebackup]])
-vim.cmd([[set cmdheight=2]])
+vim.cmd([[set cmdheight=1]])
+vim.cmd([[set completeopt=menu,menuone,noselect]])
 
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+-- local has_words_before = function()
+--   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+--   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+-- end
 
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- local t = function(str)
+--   return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- end
+
+local function tab(fallback)
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  elseif cmp.visible() then
+    cmp.confirm({ select = true })
+    -- elseif has_words_before() then
+    --   cmp.complete()
+  else
+    fallback()
+  end
 end
 
 cmp.setup {
@@ -39,7 +103,7 @@ cmp.setup {
   -- 来源
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'copilot' },
+    -- { name = 'copilot' },
     -- For luasnip users.
     { name = 'luasnip' },
     { name = "spell" },
@@ -52,41 +116,21 @@ cmp.setup {
 
   -- 快捷键
   mapping = {
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      local mode = vim.api.nvim_get_mode()["mode"]
-      if mode == 'c' or mode == 'n' then
-        if cmp.visible() then
-          cmp.mapping.select_next_item()
-        else 
-          fallback()
-        end
-      end
-
-      if luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif cmp.visible() then
-        cmp.confirm({ select = true })
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-      "c"
+    ["<Tab>"] = cmp.mapping({
+      i = tab,
+      c = cmp.mapping.select_next_item()
     }),
 
     ["<S-Tab>"] = cmp.mapping(function(fallback)
 
-      local mode = vim.api.nvim_get_mode()["mode"]
-      if mode == 'c' then
-        if cmp.visible() then
-          cmp.mapping.select_prev_item()
-        else 
-          fallback()
-        end
-      end
+      -- local mode = vim.api.nvim_get_mode()["mode"]
+      -- if mode == 'c' then
+      --   if cmp.visible() then
+      --     cmp.mapping.select_prev_item()
+      --   else
+      --     fallback()
+      --   end
+      -- end
 
       if cmp.visible() then
         cmp.select_prev_item()
@@ -111,7 +155,8 @@ cmp.setup {
     ['<S-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<Esc>'] = cmp.mapping({
       i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
+      -- c = cmp.mapping.close(),
+      c = cmp.mapping.abort()
     }),
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
@@ -136,6 +181,16 @@ cmp.setup {
       -- end
     })
   },
+  experimental = {
+    ghost_text = true,
+  },
+  -- `cmp.PreselectMode`
+
+  -- 1. `cmp.PreselectMode.Item`
+  --   nvim-cmp will preselect the item that the source specified.
+  -- 2. `cmp.PreselectMode.None`
+  --   nvim-cmp will not preselect any items.
+  preselect = cmp.PreselectMode.Item,
 }
 
 -- Use buffer source for `/`.
@@ -154,20 +209,7 @@ cmp.setup.cmdline(':', {
   })
 })
 
-
-
 local group = vim.api.nvim_create_augroup("LspConfig", { clear = true })
-
-local border = {
-  { "╭", "FloatBorder" },
-  { "▔", "FloatBorder" },
-  { "╮", "FloatBorder" },
-  { "▕", "FloatBorder" },
-  { "╯", "FloatBorder" },
-  { "▁", "FloatBorder" },
-  { "╰", "FloatBorder" },
-  { "▏", "FloatBorder" }
-}
 
 local format_async = function(err, _, result, _, bufnr)
   if err ~= nil or result == nil then
@@ -196,6 +238,16 @@ end
 -- _G makes this function available to vimscript lua calls
 _G.lsp_organize_imports = lsp_organize_imports
 
+local border = {
+  { "╭", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "╮", "FloatBorder" },
+  { "│", "FloatBorder" },
+  { "╯", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "╰", "FloatBorder" },
+  { "│", "FloatBorder" },
+}
 -- show diagnostic line with custom border and styling
 local lsp_show_diagnostics = function()
   vim.diagnostic.open_float({ border = border })
@@ -249,18 +301,18 @@ local on_attach = function(client, bufnr)
   -- disable document formatting (currently handled by formatter.nvim)
   client.server_capabilities.document_formatting = false
 
-  if client.server_capabilities.document_formatting then
-    vim.api.nvim_create_autocmd(
-      "BufEnter",
-      {
-        pattern = "*",
-        callback = function()
-          vim.lsp.buf.formatting()
-        end,
-        group = group
-      }
-    )
-  end
+  -- if client.server_capabilities.document_formatting then
+  --   vim.api.nvim_create_autocmd(
+  --     "BufEnter",
+  --     {
+  --       pattern = "*",
+  --       callback = function()
+  --         vim.lsp.buf.formatting()
+  --       end,
+  --       group = group
+  --     }
+  --   )
+  -- end
 end
 
 local diagnosticls_settings = {
@@ -290,27 +342,6 @@ local diagnosticls_settings = {
   }
 }
 
-local lua_settings = {
-  Lua = {
-    runtime = {
-      -- LuaJIT in the case of Neovim
-      version = "LuaJIT",
-      path = vim.split(package.path, ";")
-    },
-    diagnostics = {
-      -- Get the language server to recognize the `vim` global
-      globals = { "vim" }
-    },
-    workspace = {
-      -- Make the server aware of Neovim runtime files
-      library = {
-        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-      }
-    }
-  }
-}
-
 local function make_config(callback)
   callback = callback or function(config)
     return config
@@ -334,34 +365,6 @@ local function make_config(callback)
     }
   )
 end
-
-lsp_installer.setup(
-  {
-    ensure_installed = {
-      "eslint",
-      "tsserver",
-      "sumneko_lua",
-      -- "denols",
-      "vimls"
-    },
-    automatic_installation = true,
-    ui = {
-      icons = {
-        sautomatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-        ui = {
-          icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
-          }
-        },
-        server_installed = "✓",
-        server_pending = "➜",
-        server_uninstalled = "✗"
-      }
-    }
-  }
-)
 
 lspconfig.rust_analyzer.setup(
   make_config(
@@ -411,20 +414,6 @@ lspconfig.denols.setup(
   )
 )
 
-lspconfig.sumneko_lua.setup(
-  make_config(
-    function(config)
-      config.settings = lua_settings
-      config.root_dir = function(fname)
-        local util = require("lspconfig/util")
-        return util.find_git_ancestor(fname) or util.path.dirname(fname)
-      end
-      config.root_dir = lspconfig.util.root_pattern("lua.json")
-      return config
-    end
-  )
-)
-
 lspconfig.vimls.setup(
   make_config(
     function(config)
@@ -456,3 +445,149 @@ cmp.event:on("confirm_done", function(evt)
     cmp_autopairs.on_confirm_done()(evt)
   end
 end)
+
+for _, server in ipairs(mason_lsp.get_installed_servers()) do
+  if server == "jsonls" then
+    nvim_lsp.jsonls.setup({
+      flags = { debounce_text_changes = 500 },
+      capabilities = capabilities,
+      on_attach = custom_attach,
+      settings = {
+        json = {
+          -- Schemas https://www.schemastore.org
+          schemas = {
+            {
+              fileMatch = { "package.json" },
+              url = "https://json.schemastore.org/package.json",
+            },
+            {
+              fileMatch = { "tsconfig*.json" },
+              url = "https://json.schemastore.org/tsconfig.json",
+            },
+            {
+              fileMatch = {
+                ".prettierrc",
+                ".prettierrc.json",
+                "prettier.config.json",
+              },
+              url = "https://json.schemastore.org/prettierrc.json",
+            },
+            {
+              fileMatch = { ".eslintrc", ".eslintrc.json" },
+              url = "https://json.schemastore.org/eslintrc.json",
+            },
+            {
+              fileMatch = {
+                ".babelrc",
+                ".babelrc.json",
+                "babel.config.json",
+              },
+              url = "https://json.schemastore.org/babelrc.json",
+            },
+            {
+              fileMatch = { "lerna.json" },
+              url = "https://json.schemastore.org/lerna.json",
+            },
+            {
+              fileMatch = {
+                ".stylelintrc",
+                ".stylelintrc.json",
+                "stylelint.config.json",
+              },
+              url = "http://json.schemastore.org/stylelintrc.json",
+            },
+            {
+              fileMatch = { "/.github/workflows/*" },
+              url = "https://json.schemastore.org/github-workflow.json",
+            },
+          },
+        },
+      },
+    })
+  elseif server ~= "efm" then
+    nvim_lsp[server].setup({
+      capabilities = capabilities,
+      on_attach = custom_attach,
+    })
+  end
+end
+
+-- https://github.com/vscode-langservers/vscode-html-languageserver-bin
+
+nvim_lsp.html.setup({
+  cmd = { "html-languageserver", "--stdio" },
+  filetypes = { "html" },
+  init_options = {
+    configurationSection = { "html", "css", "javascript" },
+    embeddedLanguages = { css = true, javascript = true },
+  },
+  settings = {},
+  single_file_support = true,
+  flags = { debounce_text_changes = 500 },
+  capabilities = capabilities,
+  on_attach = custom_attach,
+})
+
+-- efm
+local formatting = require("formatting")
+
+local efmls = require("efmls-configs")
+
+-- Init `efm-langserver` here.
+
+efmls.init({
+  on_attach = custom_attach,
+  capabilities = capabilities,
+  init_options = { documentFormatting = true, codeAction = true },
+})
+
+-- Require `efmls-configs-nvim`'s config here
+
+local vint = require("efmls-configs.linters.vint")
+local eslint = require("efmls-configs.linters.eslint")
+local flake8 = require("efmls-configs.linters.flake8")
+local shellcheck = require("efmls-configs.linters.shellcheck")
+
+local black = require("efmls-configs.formatters.black")
+local luafmt = require("efmls-configs.formatters.stylua")
+local prettier = require("efmls-configs.formatters.prettier_d")
+local shfmt = require("efmls-configs.formatters.shfmt")
+
+-- Add your own config for formatter and linter here
+
+-- local rustfmt = require("modules.completion.efm.formatters.rustfmt")
+-- local clangfmt = require("modules.completion.efm.formatters.clangfmt")
+
+-- Override default config here
+
+flake8 = vim.tbl_extend("force", flake8, {
+  prefix = "flake8: max-line-length=160, ignore F403 and F405",
+  lintStdin = true,
+  lintIgnoreExitCode = true,
+  lintFormats = { "%f:%l:%c: %t%n%n%n %m" },
+  lintCommand = "flake8 --max-line-length 160 --extend-ignore F403,F405 --format '%(path)s:%(row)d:%(col)d: %(code)s %(code)s %(text)s' --stdin-display-name ${INPUT} -",
+})
+
+-- Setup formatter and linter for efmls here
+
+efmls.setup({
+  vim = { formatter = vint },
+  lua = { formatter = luafmt },
+  -- c = { formatter = clangfmt },
+  -- cpp = { formatter = clangfmt },
+  python = { formatter = black },
+  vue = { formatter = prettier },
+  typescript = { formatter = prettier, linter = eslint },
+  javascript = { formatter = prettier, linter = eslint },
+  typescriptreact = { formatter = prettier, linter = eslint },
+  javascriptreact = { formatter = prettier, linter = eslint },
+  yaml = { formatter = prettier },
+  html = { formatter = prettier },
+  css = { formatter = prettier },
+  scss = { formatter = prettier },
+  sh = { formatter = shfmt, linter = shellcheck },
+  markdown = { formatter = prettier },
+  -- rust = {formatter = rustfmt},
+})
+
+formatting.configure_format_on_save()
