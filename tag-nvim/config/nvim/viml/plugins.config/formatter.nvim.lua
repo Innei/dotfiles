@@ -12,25 +12,19 @@ if vim.fn.executable(eslint_path) ~= 1 then
   eslint_path = 'eslint'
 end
 
-local function is_deno_project()
-  return utils.has_active_lsp_client("denols")
-end
-
 local function prettier_config()
-  if (not is_deno_project()) then
-    return {
-      exe = prettier_path,
-      args = {
-        "--config-precedence",
-        "prefer-file",
-        "--stdin-filepath",
-        vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
-      },
-      stdin = true,
-      try_node_modules = true
-    }
-  end
-  return {}
+
+  return {
+    exe = prettier_path,
+    args = {
+      "--config-precedence",
+      "prefer-file",
+      "--stdin-filepath",
+      vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
+    },
+    stdin = true,
+    try_node_modules = true
+  }
 end
 
 local function deno_config()
