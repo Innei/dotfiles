@@ -5,7 +5,7 @@ Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
 Plug 'andymass/vim-matchup' " Extends vim's % motion to language-specific words.
 Plug 'AndrewRadev/switch.vim' " gs to switch
 Plug 'AndrewRadev/splitjoin.vim'  " gS to split line, gJ to join lines
-Plug 'schickling/vim-bufonly'
+" Plug 'schickling/vim-bufonly'
 " Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 
 if !exists('g:vscode')
@@ -32,8 +32,9 @@ if !exists('g:vscode')
   Plug '907th/vim-auto-save', { 'on': 'AutoSaveToggle', 'for': ['text', 'markdown', 'tex'] }
 
   Plug 'max397574/better-escape.nvim'
-  " Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
-  Plug 'kdheepak/tabline.nvim'
+  Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+  
+  " Plug 'kdheepak/tabline.nvim'
   " Plug 'rcarriga/nvim-notify'
 
   Plug 'nvim-lualine/lualine.nvim'

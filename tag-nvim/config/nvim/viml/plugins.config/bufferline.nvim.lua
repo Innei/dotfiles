@@ -40,3 +40,5 @@ local opts = {
 
 
 require("bufferline").setup(opts)
+
+vim.cmd([[command! -nargs=0 BufOnly .,$-bdelete]])
