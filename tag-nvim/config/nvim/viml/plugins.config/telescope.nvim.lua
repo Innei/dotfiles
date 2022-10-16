@@ -117,3 +117,4 @@ end
 require 'telescope'.load_extension 'node_modules'
 require 'telescope'.load_extension 'neoclip'
 require 'telescope'.load_extension 'tmux'
+require 'telescope'.load_extension 'frecency'

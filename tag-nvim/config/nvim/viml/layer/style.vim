@@ -6,6 +6,7 @@ if !exists('g:vscode')
   " Plug 'olimorris/onedarkpro.nvim'
   " Plug 'marko-cerovac/material.nvim'
   " Plug 'shaunsingh/nord.nvim'
-  Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+  " Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+  Plug 'folke/tokyonight.nvim'
 
 endif

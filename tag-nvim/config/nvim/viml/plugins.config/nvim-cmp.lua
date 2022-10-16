@@ -9,7 +9,7 @@ local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 mason.setup()
 mason_lsp.setup({
@@ -72,7 +72,7 @@ vim.cmd([[set completeopt=menu,menuone,noselect]])
 -- end
 
 local function tab(fallback)
-  if luasnip.expand_or_jumpable() then
+  if luasnip.expand_or_locally_jumpable() then
     luasnip.expand_or_jump()
   elseif cmp.visible() then
     cmp.confirm({ select = true })
@@ -356,7 +356,7 @@ local function make_config(callback)
     }
   }
   capabilities.textDocument.colorProvider = { dynamicRegistration = false }
-  capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+  capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
   return callback(
     {

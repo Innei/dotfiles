@@ -78,7 +78,7 @@ endif
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " disable syntax if large
-autocmd BufWinEnter * if line2byte(line("$") + 1) > 10000 | syntax clear | endif
+" autocmd BufWinEnter * if line2byte(line("$") + 1) > 10000 | syntax clear | endif
 
 " experimental
 set lazyredraw

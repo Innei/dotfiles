@@ -17,6 +17,7 @@ if !exists('g:vscode')
   Plug 'camgraff/telescope-tmux.nvim'
   Plug 'AckslD/nvim-neoclip.lua'
   Plug 'norcalli/nvim-terminal.lua'
+  Plug 'nvim-telescope/telescope-frecency.nvim'
 
   Plug 'folke/which-key.nvim', {'on': 'WhichKey'}
 
