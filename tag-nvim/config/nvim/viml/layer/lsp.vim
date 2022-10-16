@@ -26,6 +26,8 @@ function! Load_lsp()
   Plug 'SmiteshP/nvim-navic'
   Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
+  Plug 'folke/todo-comments.nvim'
+
   " snippets
   Plug 'rafamadriz/friendly-snippets'
   Plug 'saadparwaiz1/cmp_luasnip'

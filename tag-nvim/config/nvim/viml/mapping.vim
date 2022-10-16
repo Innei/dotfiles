@@ -114,6 +114,7 @@ if !exists('g:vscode')
   " === Insert Mode Cursor Movement
   " ===
   inoremap jj <ESC>l
+  inoremap kk <ESC>l
   " undo
   inoremap <M-z> <ESC>u
   inoremap jk <ESC>u
