@@ -252,7 +252,14 @@ local border = {
 }
 -- show diagnostic line with custom border and styling
 local lsp_show_diagnostics = function()
-  vim.diagnostic.open_float({ border = border })
+  vim.diagnostic.open_float({
+    focusable = false,
+    close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+    border = 'rounded',
+    source = 'always',
+    prefix = ' ',
+    scope = 'cursor',
+  })
 end
 
 local on_attach = function(client, bufnr)
@@ -269,7 +276,7 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set("n", "gO", lsp_organize_imports, bufopts)
   -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-  -- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, bufopts)
   -- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
@@ -422,6 +429,18 @@ lspconfig.diagnosticls.setup(
   )
 )
 
+vim.diagnostic.config({
+
+  virtual_text = {
+    prefix = '●', -- Could be '●', '▎', 'x'
+    source = "if_many", -- Or "if_many"
+  },
+  float = {
+    source = "if_many", -- Or "if_many"
+  },
+})
+
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 
 require('nvim-autopairs').setup {
   check_ts = true,

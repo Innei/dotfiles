@@ -228,17 +228,16 @@ precmd_functions+=(_fix_cursor)
 function pouptmux() {
   width=${2:-80%}
   height=${2:-80%}
-  if [ "$(tmux display-message -p -F "#{session_name}")" = "popup" ];then
-      tmux detach-client
+  if [ "$(tmux display-message -p -F "#{session_name}")" = "popup" ]; then
+    tmux detach-client
   else
-      tmux popup -d '#{pane_current_path}' -xC -yC -w$width -h$height  -E "tmux attach -t popup || tmux new -s popup"
+    tmux popup -d '#{pane_current_path}' -xC -yC -w$width -h$height -E "tmux attach -t popup || tmux new -s popup"
   fi
 }
 
 export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:~/go/bin:~/.local/bin:$PATH
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
-export PATH="$HOME/Library/Python/3.8/bin:$PATH"
 
 export N_PREFIX="$HOME/.n"
 export N_PRESERVE_NPM=1
