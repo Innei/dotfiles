@@ -4,17 +4,11 @@ vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", {})
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "bash",
-    "c",
-    "cpp",
     "lua",
-    "go",
-    "gomod",
-    "json",
-    "yaml",
-    "latex",
     "make",
-    "python",
+    "yaml",
     "rust",
+    "json",
     "html",
     "javascript",
     "typescript",
@@ -23,12 +17,16 @@ require("nvim-treesitter.configs").setup({
     "tsx",
   },
   auto_install = true,
-  highlight = { 
-    enable = false, 
-    disable = function(lang, bufnr)
-      return lang == "vim" or vim.api.nvim_buf_line_count(bufnr) > 10000
+  highlight = {
+    enable = true,
+    disable = function(lang, buf)
+      local max_filesize = 100 * 1024 -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return true
+      end
     end,
- },
+  },
   rainbow = {
     disable = {
       "html", "vim"
@@ -46,9 +44,9 @@ require("nvim-treesitter.configs").setup({
   textsubjects = {
     enable = true,
     keymaps = {
-        ['<cr>'] = 'textsubjects-smart',
+      ['<cr>'] = 'textsubjects-smart',
     },
-},
+  },
   autotag = {
     enable = true,
   }

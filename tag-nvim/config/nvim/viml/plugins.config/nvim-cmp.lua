@@ -3,10 +3,12 @@ local cmp = require 'cmp'
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local luasnip = require("luasnip")
-local nvim_lsp = lspconfig
-
-local mason = require("mason")
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+local ts_utils = require("nvim-treesitter.ts_utils")
 local mason_lsp = require("mason-lspconfig")
+local mason = require("mason")
+
+local nvim_lsp = lspconfig
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
@@ -396,6 +398,7 @@ lspconfig.tsserver.setup(
           vim.lsp.handlers["textDocument/definition"](err, result, ctx, conf)
         end
       }
+
       return config
     end
   )
@@ -419,18 +422,22 @@ lspconfig.diagnosticls.setup(
   )
 )
 
-local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 
-require('nvim-autopairs').setup {}
+require('nvim-autopairs').setup {
+  check_ts = true,
+  enable_check_bracket_line = false,
+  ignored_next_char = "[%w]",
+  disable_filetype = { "TelescopePrompt" },
+  ts_config = { 'named_imports', 'export_clause' }
+}
 
-local ts_utils = require("nvim-treesitter.ts_utils")
-
+-- FIXME
 cmp.event:on("confirm_done", function(evt)
-  local name = ts_utils.get_node_at_cursor():type()
-  -- print(name)
-  if name ~= "named_imports" and name ~= "export_clause" then
-    cmp_autopairs.on_confirm_done()(evt)
-  end
+  cmp_autopairs.on_confirm_done()(evt)
+  -- local name = ts_utils.get_node_at_cursor():type()
+  -- if name ~= "named_imports" and name ~= "export_clause" then
+
+  -- end
 end)
 
 for _, server in ipairs(mason_lsp.get_installed_servers()) do
