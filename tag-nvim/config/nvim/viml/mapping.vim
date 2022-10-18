@@ -8,7 +8,6 @@ scriptencoding utf-8
 " ===
 let mapleader=" "
 noremap ; :
-" noremap : q:i
 noremap r <C-r>
 nnoremap X r
 " map 0 To the first non-blank character of the line.
@@ -73,8 +72,7 @@ nnoremap <LEADER>tw :set wrap!<CR>
 " ===
 nnoremap . <C-I>
 nnoremap , <C-O>
-nnoremap = <C-a>
-nnoremap - <C-x>
+
 map ! %
 nnoremap <C-a> <nop>
 nnoremap <C-x> <nop>
@@ -82,6 +80,11 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
+
+
+" number increment and decrement
+nnoremap = <C-a>
+nnoremap - <C-x>
 
 if !exists('g:vscode')
   inoremap <Home> <esc>^i
@@ -213,12 +216,6 @@ else
   nnoremap gb :bnext<CR>
   nnoremap tb :enew<CR>
 endif
-" ===
-" === Markdown Settings
-" ===
-" Snippets
-" auto spell
-
 
 " ===
 " === Other useful stuff
@@ -239,12 +236,6 @@ noremap <LEADER>sc :set spell!<CR>
 
 " Press ` to change case (instead of ~)
 noremap ` ~<left>
-
-" Auto change directory to current dir
-" autocmd BufEnter * silent! lcd %:p:h
-
-" Call figlet
-nnoremap tx :r !figlet
 
 " find and replace
 noremap \s :%s//g<left><left>

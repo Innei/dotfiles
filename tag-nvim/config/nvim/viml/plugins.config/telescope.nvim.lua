@@ -22,8 +22,8 @@ require("telescope").setup({
 				-- ["<C-\\|>"] = actions.select_vertical, -- open selection in new vertical split
 				["<C-t>"] = actions.select_tab, -- open selection in new tab
 				["<C-y>"] = actions.preview_scrolling_up,
-				["<C-e>"] = actions.preview_scrolling_down
-			}
+				["<C-e>"] = actions.preview_scrolling_down,
+			},
 		},
 		vimgrep_arguments = {
 			"rg",
@@ -33,7 +33,7 @@ require("telescope").setup({
 			"--line-number",
 			"--column",
 			"--smart-case",
-			"--trim"
+			"--trim",
 		},
 		initial_mode = "insert",
 		selection_strategy = "reset",
@@ -43,14 +43,14 @@ require("telescope").setup({
 			horizontal = {
 				prompt_position = "top",
 				preview_width = 0.55,
-				results_width = 0.8
+				results_width = 0.8,
 			},
 			vertical = {
-				mirror = false
+				mirror = false,
 			},
 			width = 0.87,
 			height = 0.80,
-			preview_cutoff = 120
+			preview_cutoff = 120,
 		},
 
 		path_display = { "truncate" },
@@ -82,15 +82,15 @@ require("telescope").setup({
 			ignore_patterns = { "*.git/*", "*/tmp/*" },
 		},
 		coc = {
-			theme = 'ivy',
+			theme = "ivy",
 			prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
-		}
+		},
 	},
 	pickers = {
 		buffers = fixfolds,
 		find_files = {
 			find_command = { "rg", "--files", "--hidden", "--follow" },
-			hidden = true
+			hidden = true,
 		},
 		git_files = fixfolds,
 		grep_string = fixfolds,
@@ -100,7 +100,8 @@ require("telescope").setup({
 })
 
 vim.api.nvim_set_keymap("n", "<leader>;", "<cmd>Telescope commands<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>Telescope<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>tl", "<cmd>Telescope<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>tb", "<cmd>Telescope buffers<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-r>", "<cmd>Telescope grep_string<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-f>", "<cmd>Telescope live_grep<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>Telescope find_files<cr>", { noremap = true, silent = true })
@@ -108,13 +109,13 @@ vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { no
 
 local hasCoc = vim.g.coc_global_extensions ~= nil
 
-
-require('telescope').load_extension('fzf')
-require 'telescope'.load_extension('project')
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("project")
 if hasCoc then
-	require('telescope').load_extension('coc')
+	require("telescope").load_extension("coc")
 end
-require 'telescope'.load_extension 'node_modules'
-require 'telescope'.load_extension 'neoclip'
-require 'telescope'.load_extension 'tmux'
-require 'telescope'.load_extension 'frecency'
+require("telescope").load_extension("node_modules")
+require("telescope").load_extension("neoclip")
+require("telescope").load_extension("tmux")
+require("telescope").load_extension("frecency")
+
