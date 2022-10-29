@@ -28,7 +28,7 @@ else
 endif
 
 if has('nvim')
-  exec 'source ' . s:script_path . '/viml/neovim.lua'
+  exec 'source ' . s:script_path . '/viml/neovim.vim'
 endif
 
 " Free memory

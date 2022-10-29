@@ -157,11 +157,19 @@ antigen apply
 
 # default keymap
 bindkey -s '\ee' 'nvim\n'
+
 bindkey '\eh' backward-char
 bindkey '\el' forward-char
 bindkey '\ej' down-line-or-history
 bindkey '\ek' up-line-or-history
-# bindkey '\eu' undo
+
+bindkey '^h' backward-char
+bindkey '^l' forward-char
+bindkey '^j' down-line-or-history
+bindkey '^k' up-line-or-history
+
+bindkey '\eu' undo
+
 bindkey '\eH' backward-word
 bindkey '\eL' forward-word
 bindkey '\e[H' beginning-of-line
