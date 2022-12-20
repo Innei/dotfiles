@@ -33,6 +33,7 @@ alias proxy='export all_proxy=socks5://127.0.0.1:1080'
 alias charles='export http_proxy=http://127.0.0.1:8888;export https_proxy=http://127.0.0.1:8888'
 alias hp='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;'
 alias pc='proxychains4 zsh'
+alias cdr='cd $(git rev-parse --show-toplevel)'
 
 alias ga='git status'
 alias gc='git clone'
