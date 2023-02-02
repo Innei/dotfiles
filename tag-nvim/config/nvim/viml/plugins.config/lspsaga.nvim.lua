@@ -1,7 +1,7 @@
 local keymap = vim.keymap.set
 local saga = require('lspsaga')
 
-saga.init_lsp_saga()
+saga.setup({})
 
 -- Lsp finder find the symbol definition implement reference
 -- if there is no implement it will hide
@@ -40,7 +40,7 @@ keymap("n", "]E", function()
 end, { silent = true })
 
 -- Outline
-keymap("n", "T", "<cmd>LSoutlineToggle<CR>", { silent = true })
+keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
 
 -- Hover Doc
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })

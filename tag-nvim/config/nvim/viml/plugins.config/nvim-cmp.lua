@@ -16,9 +16,9 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 mason.setup()
 mason_lsp.setup({
   ensure_installed = {
-    -- "bash-language-server",
+    "bashls",
     "efm",
-    -- "lua-language-server",
+    "sumneko_lua",
     "eslint",
     "tsserver",
     "vimls",
