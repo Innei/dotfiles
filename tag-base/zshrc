@@ -41,7 +41,7 @@ alias gm='git commit -a -m'
 alias gp='git push -u origin $(git symbolic-ref --short HEAD)'
 alias gb='git branch'
 alias gpl='git pull'
-alias gf='git fetch'
+alias gf='git fetch --all --prune'
 alias gs='git stash'
 alias gr='git rebase'
 alias gt='git log --graph --oneline --all'
@@ -68,6 +68,7 @@ alias cl='cloc . --exclude-dir=node_modules,.nuxt,.next,build,.vscode,dist,relea
 alias r='ranger'
 alias q='exit'
 alias c='clear'
+
 alias ll='ls -l'
 alias d='npm run dev'
 
@@ -95,6 +96,9 @@ alias nenv='export PATH="$PATH:./node_modules/.bin"'
 alias clang++='clang++ --std=c++17'
 
 alias nv=nvim
+
+# alias gh cli
+alias ghb='gh browse '
 # alias end
 
 VISUAL=nvim
