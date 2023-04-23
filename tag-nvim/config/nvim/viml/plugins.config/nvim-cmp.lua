@@ -18,7 +18,7 @@ mason_lsp.setup({
   ensure_installed = {
     "bashls",
     "efm",
-    "sumneko_lua",
+    -- "sumneko_lua",
     "eslint",
     "tsserver",
     "vimls",

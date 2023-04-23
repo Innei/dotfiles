@@ -50,6 +50,7 @@ alias gignore='git update-index --assume-unchanged'
 alias gnoignore='git update-index --no-assume-unchanged'
 alias gclean='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias lg='lazygit'
+alias main='git checkout main || git checkout master'
 
 # git commit
 alias gm1='git commit -m "chore: update deps"'
@@ -86,14 +87,14 @@ alias charge80='sudo bclm write 80'
 alias charge60='sudo bclm write 60'
 alias charge='sudo bclm write 100'
 
-alias npm_='\npm'
-alias npx_='\npx'
 alias npm='pnpm'
 alias npx='pnpx'
 alias nn='\n'
 alias n='pnpm'
 alias nenv='export PATH="$PATH:./node_modules/.bin"'
 alias clang++='clang++ --std=c++17'
+
+alias nv=nvim
 # alias end
 
 VISUAL=nvim
