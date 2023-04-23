@@ -99,8 +99,9 @@ alias nv=nvim
 
 # alias gh cli
 alias ghb='gh browse '
-alias ghmr='gh pr list -S " update dependency" | cat | cut -f1 -d '   ' | xargs -I {} gh pr merge {} --auto'
-# alias end
+alias ghmr="gh pr list -S \" update dependency\" | cat | cut -f1 -d '	' | xargs -I {} gh pr merge {} --auto"
+
+# alias end alias ghmr="gh pr list -S \" update dependency\" | cat | cut -f1 -d ' ' | xargs -I {} gh pr merge {} --auto"
 
 VISUAL=nvim
 export VISUAL EDITOR=nvim
