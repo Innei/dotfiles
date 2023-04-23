@@ -15,7 +15,7 @@ require("telescope").setup({
 	defaults = {
 		mappings = {
 			i = {
-				["<Esc>"] = actions.close, -- don't go into normal mode, just close
+				["<Esc>"] = actions.close,       -- don't go into normal mode, just close
 				["<C-j>"] = actions.move_selection_next, -- scroll the list with <c-j>
 				["<C-k>"] = actions.move_selection_previous, -- scroll the list with <c-k>
 				-- ["<C-\\->"] = actions.select_horizontal, -- open selection in new horizantal split
@@ -52,7 +52,6 @@ require("telescope").setup({
 			height = 0.80,
 			preview_cutoff = 120,
 		},
-
 		path_display = { "truncate" },
 		winblend = 0,
 		border = {},
@@ -68,7 +67,6 @@ require("telescope").setup({
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
 		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 	},
-
 	extensions = {
 		fzf = {
 			fuzzy = true,
@@ -96,6 +94,9 @@ require("telescope").setup({
 		grep_string = fixfolds,
 		live_grep = fixfolds,
 		oldfiles = fixfolds,
+		colorscheme = {
+			enable_preview = true
+		}
 	},
 })
 
@@ -118,4 +119,3 @@ require("telescope").load_extension("node_modules")
 require("telescope").load_extension("neoclip")
 require("telescope").load_extension("tmux")
 require("telescope").load_extension("frecency")
-
