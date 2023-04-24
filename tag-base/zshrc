@@ -286,6 +286,28 @@ pastefinish() {
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
+# Get the owner of the repository to which you contributed (Pull Requests)
+
+ghpall ()
+{
+   gh api graphql --paginate -f query='
+     query($endCursor: String) {
+       user(login: "Innei") {
+         pullRequests(first: 100, after: $endCursor, states: MERGED) {
+           nodes { repository { owner { login } } }
+           pageInfo {
+             hasNextPage
+             endCursor
+           }
+         }
+       }
+     }
+   '  --jq '.data.user.pullRequests.nodes[].repository.owner.login' | sort | uniq -c | sort -r
+   
+   # Merge all dependency PRs
+   gh search prs --owner Innei author:app/renovate --json "url" --jq ".[].url" | xargs -I {} gh pr merge {} --squash --auto
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/innei/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
