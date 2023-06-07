@@ -29,9 +29,7 @@ fi
 alias c='clear'
 alias e='exit'
 alias pip='pip3'
-alias proxy='export all_proxy=socks5://127.0.0.1:1080'
-alias charles='export http_proxy=http://127.0.0.1:8888;export https_proxy=http://127.0.0.1:8888'
-alias hp='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;'
+alias proxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 alias pc='proxychains4 zsh'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 
@@ -84,6 +82,9 @@ alias dns114='networksetup -setdnsservers Wi-Fi 114.114.114.114'
 alias dnsali='networksetup -setdnsservers Wi-Fi 223.5.5.5'
 alias dns='networksetup -setdnsservers Wi-Fi "Empty"'
 
+alias netpw='networksetup -setmanual Wi-Fi 10.0.0.61 255.255.255.0 10.0.0.1 && networksetup -setdnsservers Wi-Fi 10.0.0.1'
+alias netdp='networksetup -setdhcp Wi-Fi && networksetup -setdnsservers Wi-Fi "Empty"'
+
 alias charge80='sudo bclm write 80'
 alias charge60='sudo bclm write 60'
 alias charge='sudo bclm write 100'
@@ -101,8 +102,9 @@ alias nv=nvim
 alias ghb='gh browse '
 alias ghmr="gh pr list -S \" update dependency\" | cat | cut -f1 -d '	' | xargs -I {} gh pr merge {} --auto --squash"
 
-# alias end alias ghmr="gh pr list -S \" update dependency\" | cat | cut -f1 -d ' ' | xargs -I {} gh pr merge {} --auto"
-
+alias md='frogmouth '
+alias jq='jless '
+# alias end
 VISUAL=nvim
 export VISUAL EDITOR=nvim
 export EDITOR
@@ -134,20 +136,12 @@ source "$ANTIGEN"
 # Initialize oh-my-zsh
 antigen use oh-my-zsh
 
-# default bundles
-# visit https://github.com/unixorn/awesome-zsh-plugins
-# antigen bundle pip
-# antigen bundle svn-fast-info
-
 antigen bundle colorize
-# antigen bundle github
-# antigen bundle python
 antigen bundle rupa/z z.sh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle willghatch/zsh-cdr
 antigen theme robbyrussell
-# antigen bundle sobolevn/wakatime-zsh-plugin
 
 #syntax color definition
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -286,8 +280,8 @@ pastefinish() {
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
+# functions
 # Get the owner of the repository to which you contributed (Pull Requests)
-
 ghpall ()
 {
    gh api graphql --paginate -f query='
@@ -303,11 +297,20 @@ ghpall ()
        }
      }
    '  --jq '.data.user.pullRequests.nodes[].repository.owner.login' | sort | uniq -c | sort -r
-   
    # Merge all dependency PRs
    gh search prs --owner Innei author:app/renovate --json "url" --jq ".[].url" | xargs -I {} gh pr merge {} --squash --auto
 }
 
+ghdep() {
+    gh search prs --owner innei is:open author:app/renovate archived:false --json url --jq ".[].url" | gxargs -I URL bash -c 'echo "Approving & merging: URL" && gh pr review --approve URL && gh pr merge --squash --auto URL'
+}
+
+ghfl() {
+    gh api /user --jq '"🎉 @" + .login + " has " + (.followers|tostring) + " followers!"'
+}
+
+# end
+#
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/innei/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -323,3 +326,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+source /Users/innei/.docker/init-zsh.sh || true # Added by Docker Desktop

@@ -15,6 +15,7 @@ require("nvim-treesitter.configs").setup({
     "vue",
     "css",
     "tsx",
+    "git_rebase"
   },
   auto_install = true,
   highlight = {
