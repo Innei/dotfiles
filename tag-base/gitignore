@@ -116,4 +116,9 @@ ctag
 .undodir
 
 # idea
-# .idea/*
+.idea/*
+
+
+.env
+.env.local
+.env.development.local
