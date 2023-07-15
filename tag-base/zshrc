@@ -25,86 +25,6 @@ if [ ! -f "$ANTIGEN" ]; then
   mv "$TMPFILE" "$ANTIGEN"
 fi
 
-# alias begin
-alias c='clear'
-alias e='exit'
-alias pip='pip3'
-alias proxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
-alias pc='proxychains4 zsh'
-alias cdr='cd $(git rev-parse --show-toplevel)'
-
-alias ga='git status'
-alias gc='git clone'
-alias gm='git commit -a -m'
-alias gp='git push -u origin $(git symbolic-ref --short HEAD)'
-alias gb='git branch'
-alias gpl='git pull'
-alias gf='git fetch --all --prune'
-alias gs='git stash'
-alias gr='git rebase'
-alias gt='git log --graph --oneline --all'
-alias gco='git checkout'
-alias gignore='git update-index --assume-unchanged'
-alias gnoignore='git update-index --no-assume-unchanged'
-alias gclean='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
-alias lg='lazygit'
-alias main='git checkout main || git checkout master'
-
-# git commit
-alias gm1='git commit -m "chore: update deps"'
-
-alias t='tldr'
-alias mkdir='mkdir -p'
-alias mkidr='mkdir -p'
-
-alias vf='nvim $(fzf)'
-alias cdt='cd $(find * -type d | fzf)'
-alias gct='git checkout $(git branch -r | fzf)'
-
-alias cl='cloc . --exclude-dir=node_modules,.nuxt,.next,build,.vscode,dist,release,tmp --exclude-lang=JSON,SVG,XML'
-
-alias r='ranger'
-alias q='exit'
-alias c='clear'
-
-alias ll='ls -l'
-alias d='npm run dev'
-
-alias tnew='tmux new -s'
-alias tkall='tmux kill-session -a'
-alias ta='tmux attach-session'
-alias yanr='yarn'
-
-alias ss='lsof -Pn -i4 | grep LISTEN'
-
-alias dns8='networksetup -setdnsservers Wi-Fi 8.8.8.8'
-alias dns114='networksetup -setdnsservers Wi-Fi 114.114.114.114'
-alias dnsali='networksetup -setdnsservers Wi-Fi 223.5.5.5'
-alias dns='networksetup -setdnsservers Wi-Fi "Empty"'
-
-alias netpw='networksetup -setmanual Wi-Fi 10.0.0.61 255.255.255.0 10.0.0.1 && networksetup -setdnsservers Wi-Fi 10.0.0.1'
-alias netdp='networksetup -setdhcp Wi-Fi && networksetup -setdnsservers Wi-Fi "Empty"'
-
-alias charge80='sudo bclm write 80'
-alias charge60='sudo bclm write 60'
-alias charge='sudo bclm write 100'
-
-alias npm='pnpm'
-alias npx='pnpx'
-alias nn='\n'
-alias n='pnpm'
-alias nenv='export PATH="$PATH:./node_modules/.bin"'
-alias clang++='clang++ --std=c++17'
-
-alias nv=nvim
-
-# alias gh cli
-alias ghb='gh browse '
-alias ghmr="gh pr list -S \" update dependency\" | cat | cut -f1 -d '	' | xargs -I {} gh pr merge {} --auto --squash"
-
-alias md='frogmouth '
-alias jq='jless '
-# alias end
 VISUAL=nvim
 export VISUAL EDITOR=nvim
 export EDITOR
@@ -261,7 +181,7 @@ eval "$(starship init zsh)"
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 # bun completions
-[ -s "/Users/innei/.bun/_bun" ] && source "/Users/innei/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -327,4 +247,87 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-source /Users/innei/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+
+
+
+# alias begin
+alias c='clear'
+alias e='exit'
+alias pip='pip3'
+alias proxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
+alias pc='proxychains4 zsh'
+alias cdr='cd $(git rev-parse --show-toplevel)'
+
+alias ga='git status'
+alias gc='git clone'
+alias gm='git commit -a -m'
+alias gp='git push -u origin $(git symbolic-ref --short HEAD)'
+alias gb='git branch'
+alias gpl='git pull'
+alias gf='git fetch --all --prune'
+alias gs='git stash'
+alias gr='git rebase'
+alias gt='git log --graph --oneline --all'
+alias gco='git checkout'
+alias gignore='git update-index --assume-unchanged'
+alias gnoignore='git update-index --no-assume-unchanged'
+alias gclean='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias lg='lazygit'
+alias main='git checkout main || git checkout master'
+
+# git commit
+alias gm1='git commit -m "chore: update deps"'
+
+alias t='tldr'
+alias mkdir='mkdir -p'
+alias mkidr='mkdir -p'
+
+alias vf='nvim $(fzf)'
+alias cdt='cd $(find * -type d | fzf)'
+alias gct='git checkout $(git branch -r | fzf)'
+
+alias cl='cloc . --exclude-dir=node_modules,.nuxt,.next,build,.vscode,dist,release,tmp --exclude-lang=JSON,SVG,XML'
+
+alias r='ranger'
+alias q='exit'
+alias c='clear'
+
+alias ll='ls -l'
+alias d='npm run dev'
+
+alias tnew='tmux new -s'
+alias tkall='tmux kill-session -a'
+alias ta='tmux attach-session'
+alias yanr='yarn'
+
+alias ss='lsof -Pn -i4 | grep LISTEN'
+
+alias dns8='networksetup -setdnsservers Wi-Fi 8.8.8.8'
+alias dns114='networksetup -setdnsservers Wi-Fi 114.114.114.114'
+alias dnsali='networksetup -setdnsservers Wi-Fi 223.5.5.5'
+alias dns='networksetup -setdnsservers Wi-Fi "Empty"'
+
+alias netpw='networksetup -setmanual Wi-Fi 10.0.0.61 255.255.255.0 10.0.0.1 && networksetup -setdnsservers Wi-Fi 10.0.0.1'
+alias netdp='networksetup -setdhcp Wi-Fi && networksetup -setdnsservers Wi-Fi "Empty"'
+
+alias charge80='sudo bclm write 80'
+alias charge60='sudo bclm write 60'
+alias charge='sudo bclm write 100'
+
+alias npm='pnpm'
+alias npx='pnpx'
+alias nn='\n'
+alias n='pnpm'
+alias nenv='export PATH="$PATH:./node_modules/.bin"'
+alias clang++='clang++ --std=c++17'
+
+alias nv=nvim
+
+# alias gh cli
+alias ghb='gh browse '
+alias ghmr="gh pr list -S \" update dependency\" | cat | cut -f1 -d '	' | xargs -I {} gh pr merge {} --auto --squash"
+
+alias md='frogmouth '
+alias jq='jless '
+# alias end
