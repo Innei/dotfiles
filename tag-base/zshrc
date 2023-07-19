@@ -244,12 +244,12 @@ else
     fi
 fi
 unset __conda_setup
+
+
 # <<< conda initialize <<<
 
-
-
-
-
+# bob nvim
+export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 
 # alias begin
 alias c='clear'
