@@ -45,7 +45,8 @@ export LANGUAGE=en_US
 #export PS1="%n@%m:%~%# "
 
 # Enable 256 color to make auto-suggestions look nice
-export TERM="xterm-256color"
+# Kitty undercurl
+# export TERM="xterm-256color"
 
 # Load local bash/zsh compatible settings
 _INIT_SH_NOFUN=1
@@ -289,7 +290,7 @@ alias gct='git checkout $(git branch -r | fzf)'
 
 alias cl='cloc . --exclude-dir=node_modules,.nuxt,.next,build,.vscode,dist,release,tmp --exclude-lang=JSON,SVG,XML'
 
-alias r='ranger'
+alias r='joshuto'
 alias q='exit'
 alias c='clear'
 

@@ -33,4 +33,20 @@ def handle_result(args, answer, target_window_id, boss):
 
     elif args[1] == "S-s":
         if cmd[-4:] == "nvim":
-            window.write_to_child("\x1b\x1b[83;5u")
+            window.write_to_child("\x1b\x1b[115;5u")
+    elif args[1] == "M-f":
+        if cmd[-4:] == "nvim":
+            window.write_to_child('\x1b\x1b[102;9u')
+    elif args[1] == "C-p":
+        if cmd[-4:] == "nvim":
+            window.write_to_child('\x1b\x1b[112;5u')
+    elif args[1] == "C-d":
+        if cmd[-4:] == "nvim":
+            window.write_to_child('\x1b\x1b[100;5u')
+    elif args[1] == "M-x":
+        if cmd[-4:] == "nvim":
+            window.write_to_child('\x1b\x1b[120;3u')
+    elif args[1] == "M-c":
+        if cmd[-4:] == "nvim":
+            window.write_to_child('\x1b\x1b[99;3u')
+
