@@ -252,6 +252,8 @@ unset __conda_setup
 # bob nvim
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # alias begin
 alias c='clear'
 alias e='exit'

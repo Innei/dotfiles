@@ -49,4 +49,11 @@ def handle_result(args, answer, target_window_id, boss):
     elif args[1] == "M-c":
         if cmd[-4:] == "nvim":
             window.write_to_child('\x1b\x1b[99;3u')
+    elif args[1] == "M-z":
+        if cmd[-4:] == "nvim":
+            window.write_to_child('\x1b\x1b[122;3u')
+    elif args[1] == "M-p":
+        if cmd[-4:] == "nvim":
+            window.write_to_child('\x1b\x1b[112;3u')
+
 
