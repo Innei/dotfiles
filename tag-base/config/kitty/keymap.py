@@ -52,4 +52,6 @@ def handle_result(args, answer, target_window_id, boss):
             window.write_to_child('\x1b\x1b[127;3u')
         elif args[1] == "M-.":
             window.write_to_child('\x1b\x1b[46;9u')
+        elif args[1] == "M-b":
+            window.write_to_child('\x1b\x1b[98;5u')
 
