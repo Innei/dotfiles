@@ -32,30 +32,27 @@ def handle_result(args, answer, target_window_id, boss):
             window.write_to_child("\x09")
 
     elif cmd.endswith("nvim"):
-        if args[1] == "S-s":
-            window.write_to_child("\x1b\x1b[115;5u")
-        elif args[1] == "M-f":
-            window.write_to_child('\x1b\x1b[102;9u')
-        elif args[1] == "C-p":
-            window.write_to_child('\x1b\x1b[112;5u')
-        elif args[1] == "C-d":
-            window.write_to_child('\x1b\x1b[100;5u')
-        elif args[1] == "M-d":
-            window.write_to_child('\x1b\x1b[100;3u')
-        elif args[1] == "M-x":
-            window.write_to_child('\x1b\x1b[120;3u')
-        elif args[1] == "M-c":
-            window.write_to_child('\x1b\x1b[99;3u')
-        elif args[1] == "M-z":
-            window.write_to_child('\x1b\x1b[122;3u')
-        elif args[1] == "M-p":
-            window.write_to_child('\x1b\x1b[112;3u')
-        elif args[1] == "M-backspace":
-            window.write_to_child('\x1b\x1b[127;3u')
-        elif args[1] == "M-.":
-            window.write_to_child('\x1b\x1b[46;9u')
-        elif args[1] == "M-b":
-            window.write_to_child('\x1b\x1b[98;5u')
-        elif args[1] == 'C-a':
-            window.write_to_child('\x1b\x1b[97;5u')
+        key_to_sequence = {
+            "S-s": "\x1b\x1b[115;5u",
+            "M-f": "\x1b\x1b[102;9u",
+            "C-p": "\x1b\x1b[112;5u",
+            "C-d": "\x1b\x1b[100;5u",
+            "M-d": "\x1b\x1b[100;3u",
+            "M-x": "\x1b\x1b[120;3u",
+            "M-c": "\x1b\x1b[99;3u",
+            "M-z": "\x1b\x1b[122;3u",
+            "M-p": "\x1b\x1b[112;3u",
+            "M-backspace": "\x1b\x1b[127;3u",
+            "M-.": "\x1b\x1b[46;9u",
+            "M-b": "\x1b\x1b[98;5u",
+            "C-a": "\x1b\x1b[97;5u",
+            "M-right": "\x1b\x1b[1;3C",
+            "M-left": "\x1b\x1b[1;3D",
+            "M-up": "\x1b\x1b[1;3A",
+            "M-down": "\x1b\x1b[1;3B",
+        }
+
+        sequence = key_to_sequence.get(args[1])
+        if sequence:
+             window.write_to_child(sequence)
 
