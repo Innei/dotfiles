@@ -313,6 +313,7 @@ alias dnsali='networksetup -setdnsservers Wi-Fi 223.5.5.5'
 alias dns='networksetup -setdnsservers Wi-Fi "Empty"'
 
 alias netpw='networksetup -setmanual Wi-Fi 10.0.0.61 255.255.255.0 10.0.0.1 && networksetup -setdnsservers Wi-Fi 10.0.0.1'
+alias netpass='networksetup -setmanual Wi-Fi 10.0.0.251 255.255.255.0 10.0.0.8 && networksetup -setdnsservers Wi-Fi 10.0.0.8'
 alias netdp='networksetup -setdhcp Wi-Fi && networksetup -setdnsservers Wi-Fi "Empty"'
 
 alias charge80='sudo bclm write 80'
