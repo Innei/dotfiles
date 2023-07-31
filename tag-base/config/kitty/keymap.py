@@ -69,4 +69,14 @@ def handle_result(args, answer, target_window_id, boss):
         sequence = key_to_sequence.get(args[1])
         if sequence:
              window.write_to_child(sequence)
+    else:
+        key_to_sequence = {
+            "M-left": "\x1b[1;3D",
+            "M-right": "\x1b[1;3C",
+            "M-up": "\x1b[1;3A",
+            "M-down": "\x1b[1;3B",
+        }
+        sequence = key_to_sequence.get(args[1])
+        if sequence:
+             window.write_to_child(sequence)
 
