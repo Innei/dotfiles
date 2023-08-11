@@ -55,14 +55,14 @@ _INIT_SH_NOFUN=1
 source "$ANTIGEN"
 
 # Initialize oh-my-zsh
-antigen use oh-my-zsh
+# antigen use oh-my-zsh
 
 antigen bundle colorize
 antigen bundle rupa/z z.sh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle willghatch/zsh-cdr
-antigen theme robbyrussell
+# antigen theme robbyrussell
 
 #syntax color definition
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -174,8 +174,10 @@ export N_PREFIX="$HOME/.n"
 export N_PRESERVE_NPM=1
 export PATH=$N_PREFIX/bin:$PATH
 
-export GOPROXY=https://goproxy.io,direct
+# export GOPROXY=https://goproxy.io,direct
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
 
 # tabtab source for packages
 # uninstall by removing these lines
