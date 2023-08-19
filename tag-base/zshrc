@@ -57,11 +57,12 @@ source "$ANTIGEN"
 # Initialize oh-my-zsh
 # antigen use oh-my-zsh
 
-antigen bundle colorize
-antigen bundle rupa/z z.sh
+# antigen bundle colorize
+# antigen bundle rupa/z z.sh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
-antigen bundle willghatch/zsh-cdr
+antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen bundle willghatch/zsh-cdr
 # antigen theme robbyrussell
 
 #syntax color definition
@@ -75,7 +76,6 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 [ -f "$HOME/.config/zsh/zshrc" ] && source "$HOME/.config/zsh/zshrc"
 [ -f "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh" ] && source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
-antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 # default keymap
@@ -232,6 +232,24 @@ ghdep() {
 ghfl() {
     gh api /user --jq '"🎉 @" + .login + " has " + (.followers|tostring) + " followers!"'
 }
+
+
+
+alias nvim-dot="NVIM_APPNAME=nvimdots nvim"
+
+function nvims() {
+  items=("default" "nvim-dot")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config >" --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+
+bindkey -s ^a "nvims\n"
 
 # end
 #
