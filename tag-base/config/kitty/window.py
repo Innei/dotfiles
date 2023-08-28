@@ -14,14 +14,23 @@ def main(args):
 
 @result_handler(no_ui=True)
 def handle_result(args, answer, target_window_id, boss):
+    def close():
+        boss.close_window()
+
     window = boss.active_window
     if window is None:
         return
 
     cmd = window.child.foreground_cmdline[0]
     act = args[1]  # e.g. -jump
-    if act[0] == "-" and cmd[-4:] == "nvim":
-        window.write_to_child("\x1b\x1b[113;5u")
+    if cmd[-4:] == "nvim":
+        if act == "-close":
+            # <C-q>
+            window.write_to_child("\x1b\x1b[113;5u")
+        elif act == '-quit':
+
+            # close kitty tab
+            close()
         return
 
     if (act == "-close" or act == "-quit") and cmd[-7:] == "joshuto":
@@ -37,8 +46,6 @@ def handle_result(args, answer, target_window_id, boss):
         if direction == "top" or direction == "left":
             boss.active_tab.move_window(direction)
 
-    def close():
-        boss.close_window()
 
     def quit():
         boss.quit()
