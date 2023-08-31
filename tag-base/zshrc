@@ -55,7 +55,7 @@ _INIT_SH_NOFUN=1
 source "$ANTIGEN"
 
 # Initialize oh-my-zsh
-# antigen use oh-my-zsh
+antigen use oh-my-zsh
 
 # antigen bundle colorize
 # antigen bundle rupa/z z.sh
@@ -360,3 +360,15 @@ alias approve_and_merge_prs="for pr in \$(gh pr list -S ' update dependency' | c
 alias md='frogmouth '
 alias jq='jless '
 # alias end
+
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+#
+export STARSHIP_LOG=error
+
