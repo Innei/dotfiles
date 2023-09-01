@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# global settings
+
+yabai -m config window_opacity off
+yabai -m config window_opacity_duration 0.0
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.9
+
+yabai -m config layout bsp
+yabai -m config window_gap 5
+
+# ignore these apps
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Messages$" manage=off
+yabai -m rule --add app="^Music$" manage=off
+yabai -m rule --add app="Microsoft Teams$" manage=off
+yabai -m rule --add app="^CleanShot X$" manage=off
+yabai -m rule --add app="^CleanMyMac X$" manage=off
+yabai -m rule --add app="^WeChat$" manage=off
+yabai -m rule --add app="^QQ$" manage=off
+yabai -m rule --add app="^Telegram$" manage=off
+yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^Raycast$" manage=off
+yabai -m rule --add app="^Ivory$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+
+# mouse support
+yabai -m config mouse_modifier fn
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m config mouse_follows_focus off
+yabai -m c config focus_follows_mouse off
