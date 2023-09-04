@@ -26,7 +26,7 @@ yabai -m rule --add app="^Ivory$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Slack$" manage=off
 yabai -m rule --add app="^Discord$" manage=off
-yabai -m rule --add app="^Typecho$" manage=off
+yabai -m rule --add app="^Typora$" manage=off
 
 # mouse support
 yabai -m config mouse_modifier fn
