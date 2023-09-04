@@ -31,7 +31,7 @@ def handle_result(args, answer, target_window_id, boss):
         else:
             window.write_to_child("\x09")
 
-    elif cmd.endswith("nvim"):
+    elif cmd.endswith("nvim") or window.child_title.endswith("nvim"):
         key_to_sequence = {
             # "C-a": "\x1b\x1b[97;5u",
             # "C-d": "\x1b\x1b[100;5u",
