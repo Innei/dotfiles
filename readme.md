@@ -2,13 +2,15 @@
 
 ### Usage
 
-Install rcm first. then run 
+Install [rcm](https://github.com/thoughtbot/rcm) first. then run 
 
 ```bash
 cd
 git clone https://github.com/Innei/dotfiles --depth=1 ~/.dotfiles
 rcup -t base
 ```
+
+You also need to install [starship](https://github.com/starship/starship), [zoxide](https://github.com/ajeetdsouza/zoxide) and [thefuck](https://github.com/nvbn/thefuck).
 
 After, you will get normal config. (Eg. Tmux, zsh, git ...)
 
