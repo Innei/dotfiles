@@ -338,7 +338,7 @@ alias nv=nvim
 
 # alias gh cli
 alias ghb='gh browse '
-alias approve_and_merge_prs="for pr in \$(gh pr list -S ' update dependency' | cut -f1 -d '	'); do gh pr review --approve \$pr && gh pr merge \$pr --auto --squash; done"
+alias approve_and_merge_prs="for pr in \$( gh pr list | grep 'renovate' | cut -f1 -d '	'); do gh pr review --approve \$pr && gh pr merge \$pr --auto --squash; done"
 
 
 alias md='frogmouth '
