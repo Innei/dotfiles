@@ -1,3 +1,5 @@
+sudo -v
+
 # Allow quitting via ⌘Q
 defaults write com.apple.finder QuitMenuItem -bool true
 
@@ -83,4 +85,25 @@ defaults com.apple.AdLib allowApplePersonalizedAdvertising -bool false
 defaults com.apple.AdLib allowIdentifierForAdvertising -bool false
 
 sudo spctl --master-disable
-xcode-select --install
+
+# brew install
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+brew install rcm
+
+cp -r ~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Config/ssh ~/.ssh
+
+cd
+git clone git@github.com:Innei/dotfiles.git .dotfiles
+rcup -t base
+rcup -t fzf-mac
+mkdir -p .config
+git clone git@github.com:Innei/nvim-config-lua.git nvim
+
+mv .Brewfile Brewfile
+brew bundle install
+
+
+sudo reboot
