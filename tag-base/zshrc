@@ -166,7 +166,7 @@ function pouptmux() {
   fi
 }
 
-export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:~/go/bin:~/.local/bin:$PATH
+export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:~/go/bin:~/.local/bin:$HOME/Library/Python/3.11/bin:$PATH
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
@@ -303,7 +303,7 @@ alias q='exit'
 alias c='clear'
 
 alias ll='ls -l'
-alias d='npm run dev'
+alias d='nr dev'
 
 alias tnew='tmux new -s'
 alias tkall='tmux kill-session -a'
