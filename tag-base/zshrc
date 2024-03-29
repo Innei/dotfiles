@@ -343,7 +343,7 @@ alias approve_and_merge_prs="for pr in \$( gh pr list | grep 'renovate' | cut -f
 
 
 alias md='frogmouth '
-alias jq='jless '
+# alias jq='jless '
 # alias end
 
 
