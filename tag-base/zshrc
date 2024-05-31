@@ -357,3 +357,14 @@ esac
 #
 export STARSHIP_LOG=error
 
+kitty-reload() {
+    kill -SIGUSR1 $(pidof kitty)
+}
+
+builtin bindkey "^A" beginning-of-line
+builtin bindkey "^E" end-of-line
+builtin bindkey "^[^H" backward-kill-word
+builtin bindkey "^[^?" backward-kill-word
+
+# env
+export COREPACK_ENABLE_STRICT=0
