@@ -57,3 +57,5 @@
 
 [diff]
     colorMoved = default
+[rebase]
+    autoStash = true

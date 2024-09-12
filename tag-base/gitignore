@@ -122,3 +122,5 @@ ctag
 .env
 .env.local
 .env.development.local
+
+dist

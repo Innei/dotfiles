@@ -368,3 +368,4 @@ builtin bindkey "^[^?" backward-kill-word
 
 # env
 export COREPACK_ENABLE_STRICT=0
+export PATH=/Users/innei/.meteor:$PATH
