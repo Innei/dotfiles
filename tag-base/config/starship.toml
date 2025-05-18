@@ -1,3 +1,4 @@
+"$schema" = 'https://starship.rs/config-schema.json'
 
 format = """$all"""
 
@@ -46,6 +47,8 @@ echo "$GIT_REMOTE_SYMBOL "
 when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
 format = "at $output  "
 
+[package]
+format = 'via [🎁 $version](208 bold) '
 
 [custom.system_icons]
 description = "Show system icons"

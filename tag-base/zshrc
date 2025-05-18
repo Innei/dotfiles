@@ -177,8 +177,6 @@ export PATH=$N_PREFIX/bin:$PATH
 # export GOPROXY=https://goproxy.io,direct
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)" 
-eval $(thefuck --alias)
-
 
 # tabtab source for packages
 # uninstall by removing these lines
@@ -297,8 +295,7 @@ alias vf='nvim $(fzf)'
 alias cdt='cd $(find * -type d | fzf)'
 alias gct='git checkout $(git branch -r | fzf)'
 
-alias cl='cloc . --exclude-dir=node_modules,.nuxt,.next,build,.vscode,dist,release,tmp --exclude-lang=JSON,SVG,XML'
-
+alias cl='tokei . -e node_modules -e .nuxt -e .next -e build -e .vscode -e dist -e release -e tmp'
 alias r='joshuto'
 alias q='exit'
 alias c='clear'
@@ -374,3 +371,4 @@ export PATH=/Users/innei/.meteor:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 
 [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+[ -s "$HOME/.zshrc_local" ] && source "$HOME/.zshrc_local"

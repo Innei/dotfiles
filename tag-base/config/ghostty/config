@@ -29,3 +29,7 @@ palette = 15=#ffffff
 font-size = 16
 font-family = ComicShannsMono Nerd Font Mono
 adjust-cell-height = 3
+
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = clipboard
