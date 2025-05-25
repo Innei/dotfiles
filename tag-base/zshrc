@@ -160,7 +160,7 @@ function pouptmux() {
   width=${2:-80%}
   height=${2:-80%}
   if [ "$(tmux display-message -p -F "#{session_name}")" = "popup" ]; then
-    tmux detach-client
+    tmux detach-cnnlient
   else
     tmux popup -d '#{pane_current_path}' -xC -yC -w$width -h$height -E "tmux attach -t popup || tmux new -s popup"
   fi
@@ -295,7 +295,9 @@ alias vf='nvim $(fzf)'
 alias cdt='cd $(find * -type d | fzf)'
 alias gct='git checkout $(git branch -r | fzf)'
 
-alias cl='tokei . -e node_modules -e .nuxt -e .next -e build -e .vscode -e dist -e release -e tmp'
+alias cl='cloc . --exclude-dir=node_modules,.nuxt,.next,build,.vscode,dist,release,tmp --exclude-lang=JSON,SVG,XML'
+
+# alias cl='tokei . -e node_modules -e .nuxt -e .next -e build -e .vscode -e dist -e release -e tmp'
 alias r='joshuto'
 alias q='exit'
 alias c='clear'
