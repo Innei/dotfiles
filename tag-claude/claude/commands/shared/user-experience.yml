@@ -1,0 +1,208 @@
+# UX & Interface Patterns
+
+## User Interaction Principles
+
+```yaml
+Clarity & Communication:
+  Clear Intent: Every command should have obvious purpose
+  Immediate Feedback: Show what's happening in real-time
+  Progress Indicators: Display completion % & ETA
+  Result Summary: Concise overview→what was accomplished
+  
+Predictability:
+  Consistent Behavior: Same flags work same way across commands
+  Expected Outputs: Users should know what→expect
+  Stable Interface: Minimize breaking changes
+  Docs: Always up-to-date & comprehensive
+  
+Efficiency:
+  Smart Defaults: Most common options should be default
+  Minimal Typing: Short, memorable command names & flags
+  Context Awareness: Remember previous ops & preferences
+  Workflow Optimization: Common sequences should be streamlined
+```
+
+## Progressive Disclosure
+
+```yaml
+Beginner Mode:
+  Guided Experience: Step-by-step instructions
+  Explanatory Output: Why each step is needed
+  Safety Rails: Prevent destructive operations
+  Learning Resources: Links to documentation and tutorials
+  
+Intermediate Mode:
+  Balanced Output: Key information without overwhelming detail
+  Useful Shortcuts: Common flag combinations and aliases
+  Context Hints: Suggestions based on current state
+  Flexible Options: More configuration choices available
+  
+Expert Mode:
+  Minimal Output: Just essential information
+  Advanced Features: Full power and customization
+  Direct Control: Override safety checks when needed
+  Performance Focus: Optimized for speed and efficiency
+
+Adaptive Interface:
+  Usage Detection: Automatically adjust based on user behavior
+  Preference Learning: Remember user's preferred interaction style
+  Context Switching: Different modes for different project types
+  Customization: Allow users to configure their experience
+```
+
+## Workflow Discovery & Guidance
+
+```yaml
+Command Suggestions:
+  Context-Aware: Suggest next logical steps based on current state
+  Common Patterns: Recommend proven workflow sequences
+  Problem-Specific: Tailored suggestions for specific issues
+  Learning Opportunities: Introduce new features when relevant
+  
+Interactive Help:
+  Command Help: Detailed usage for specific commands
+  Flag Explanations: What each flag does and when to use it
+  Example Library: Real-world usage examples
+  Troubleshooting: Common issues and solutions
+  
+Workflow Templates:
+  Project Types: Predefined workflows for different project types
+  Use Cases: Common scenarios with step-by-step guides
+  Best Practices: Recommended approaches for quality and safety
+  Customization: Allow users to create and share their own templates
+```
+
+## Error Prevention & Recovery
+
+```yaml
+Proactive Prevention:
+  Validation: Check prerequisites before execution
+  Warnings: Alert about potential issues or risks
+  Confirmation: Require explicit approval for destructive operations
+  Simulation: Dry-run mode to preview changes
+  
+Graceful Degradation:
+  Partial Success: Continue with what's possible when some parts fail
+  Alternative Paths: Suggest different approaches when primary fails
+  Fallback Options: Automatic switches to backup methods
+  Recovery Guidance: Clear steps to resolve issues and continue
+  
+Learning from Errors:
+  Pattern Recognition: Identify common user mistakes
+  Preventive Measures: Add checks for frequently encountered issues
+  Documentation Updates: Improve help based on common confusion
+  Interface Improvements: Redesign confusing or error-prone interactions
+```
+
+## Performance & Responsiveness
+
+```yaml
+Response Time Expectations:
+  Immediate: Command acknowledgment, simple queries
+  Fast: File operations, simple analysis
+  Moderate: Complex analysis, building, testing
+  Long (>10s): Deployment, migration, comprehensive operations
+  
+Progress Communication:
+  Quick Start: Show immediate activity indicator
+  Detailed Progress: Break down long operations into steps
+  Time Estimates: Provide realistic completion predictions
+  Cancellation: Allow users to interrupt long operations
+  
+Resource Management:
+  Token Awareness: Monitor and display context usage
+  Memory Efficiency: Optimize for large codebases
+  Network Usage: Minimize unnecessary requests
+  Caching: Reuse results when appropriate
+```
+
+## Accessibility & Inclusivity
+
+```yaml
+Output Formatting:
+  Screen Readers: Structured output that reads well
+  Color Blind: Don't rely solely on color for information
+  Low Vision: High contrast, clear typography
+  Motor Impairments: Keyboard shortcuts, minimal mouse requirements
+  
+Language & Terminology:
+  Clear Language: Avoid jargon when possible
+  Consistent Terms: Use same words for same concepts
+  Internationalization: Support for multiple languages
+  Cultural Sensitivity: Inclusive examples and references
+  
+Learning Styles:
+  Visual Learners: Diagrams, charts, visual representations
+  Auditory Learners: Clear explanations, logical flow
+  Kinesthetic Learners: Interactive exercises, hands-on examples
+  Reading/Writing: Comprehensive documentation, examples
+```
+
+## Customization & Personalization
+
+```yaml
+User Preferences:
+  Output Verbosity: Detailed, normal, minimal
+  Color Schemes: Support for different terminal themes
+  Confirmation Levels: When to ask for approval
+  Default Flags: Commonly used flags for each command
+  
+Project Configuration:
+  Workflow Presets: Saved command sequences for project
+  Quality Gates: Project-specific standards and thresholds
+  Tool Preferences: Choice of testing frameworks, linters, etc.
+  Environment Settings: Development, staging, production configs
+  
+Team Settings:
+  Shared Workflows: Common patterns across team members
+  Code Standards: Enforced quality and style requirements
+  Review Processes: Required steps before deployment
+  Communication: How and when to notify team members
+```
+
+## Feedback & Improvement
+
+```yaml
+Usage Analytics:
+  Command Frequency: Which commands are used most often
+  Error Patterns: Common failure points and user confusion
+  Workflow Analysis: How users combine commands
+  Performance Metrics: Response times and user satisfaction
+  
+User Feedback:
+  In-App Feedback: Quick way to report issues or suggestions
+  Feature Requests: Channel for users to propose improvements
+  Bug Reports: Structured way to report problems
+  Success Stories: Positive feedback and use cases
+  
+Continuous Improvement:
+  Regular Updates: Frequent improvements based on feedback
+  A/B Testing: Try different approaches with different users
+  Community Input: Involve users in design decisions
+  Documentation: Keep help and examples current and useful
+```
+
+## Integration Points
+
+```yaml
+Command Integration:
+  Consistent Patterns: Same UX principles across all commands
+  Shared Components: Common UI elements and behaviors
+  Context Preservation: Maintain user state across commands
+  Workflow Continuity: Smooth transitions between operations
+  
+External Tools:
+  IDE Integration: Work well within development environments
+  Terminal Enhancement: Support for modern terminal features
+  Documentation Tools: Generate and maintain help content
+  Monitoring Systems: Track user experience metrics
+  
+Platform Adaptation:
+  Operating Systems: Optimize for Windows, macOS, Linux
+  Shell Environments: Work well with bash, zsh, PowerShell
+  Cloud Platforms: Integration with cloud development environments
+  Container Systems: Effective operation within containers
+```
+
+---
+*User experience: Human-centered design for developer productivity*

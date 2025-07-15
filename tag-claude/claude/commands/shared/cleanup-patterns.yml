@@ -1,0 +1,107 @@
+# Cleanup Patterns & Safety Rules
+
+## Safe→Remove (Auto)
+```yaml
+Files: 
+  - node_modules (if package-lock exists)
+  - dist/, build/, .next/, .nuxt/
+  - .tmp, temp/, cache/
+  - *.log, *.tmp, *.cache
+  - .DS_Store, thumbs.db, desktop.ini
+  - coverage/, .nyc_output/
+
+Code:
+  - console.log(), console.debug()
+  - debugger; statements
+  - TODO comments >30 days old
+  - Commented code blocks >7 days old
+  - Unused imports (if safe analysis confirms)
+```
+
+## Requires Confirmation (Manual)
+```yaml
+Files:
+  - Large files >10MB
+  - Untracked files in git
+  - User-specific cfgs (.vscode/, .idea/)
+  - DB files, logs w/ data
+
+Code:
+  - Unused functions (if no external refs)
+  - Dead code branches
+  - Deprecated API calls
+  - Large commented blocks
+
+Deps:
+  - Unused packages in package.json
+  - Packages w/ security vulns
+  - Major version updates
+  - Dev deps in prod
+```
+
+## Never Remove (Protected)
+```yaml
+Files:
+  - .env.example, .env.template
+  - README.md, LICENSE, CHANGELOG
+  - .gitignore, .gitattributes
+  - package.json, package-lock.json
+  - Source code in src/, lib/
+
+Code:
+  - Error handling blocks
+  - Type definitions
+  - API interfaces
+  - Configuration objects
+  - Test files
+
+Dependencies:
+  - Core framework packages
+  - Peer dependencies
+  - Packages used in production
+```
+
+## Risk Assessment
+```yaml
+LOW [1-3]:
+  - Temporary files
+  - Build artifacts  
+  - Log files
+  - Cache directories
+
+MEDIUM [4-6]:
+  - Unused code
+  - Old git branches
+  - Dev dependencies
+  - Config cleanup
+
+HIGH [7-9]:
+  - Dependency updates
+  - Git history changes
+  - Production configs
+  - Database cleanup
+
+CRITICAL [10]:
+  - Production data
+  - Security configs
+  - Core framework files
+  - User data
+```
+
+## Cleanup Strategies
+```yaml
+Incremental:
+  - Start with safe files
+  - Progress to code cleanup
+  - Finish with dependencies
+  
+Verification:
+  - Run tests after code cleanup
+  - Verify builds after file cleanup
+  - Check functionality after deps
+
+Rollback:
+  - Git commit before cleanup
+  - Backup configs before changes
+  - Document what was removed
+```
