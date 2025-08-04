@@ -374,3 +374,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 
 [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 [ -s "$HOME/.zshrc_local" ] && source "$HOME/.zshrc_local"
+
+function cdroot() {
+cd $(identify-monorepo-root)
+}
