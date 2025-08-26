@@ -124,6 +124,4 @@ ctag
 .env.development.local
 
 dist
-CLAUDE.md
-.claude
 temp
