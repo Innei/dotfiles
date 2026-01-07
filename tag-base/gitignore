@@ -126,3 +126,5 @@ ctag
 dist
 temp
 settings.local.json
+
+.kiro

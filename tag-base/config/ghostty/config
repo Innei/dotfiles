@@ -5,10 +5,19 @@ background-opacity = 0.9
 background-blur-radius = 70
 font-thicken = true
 
-theme = Ayu Mirage
 
-
+#theme = Ayu Mirage
+theme = dark:Catppuccin Frappe,light:Catppuccin Latte
+selection-invert-fg-bg = true
+window-subtitle = working-directory
+window-theme = system
+window-padding-balance = true
+window-height = 40
+window-width = 133
+resize-overlay = never
 font-size = 16
+#font-family = Berkeley Mono
+font-family = Ioskeley Mono
 font-family = ComicShannsMono Nerd Font
 font-family = Hannotate SC
 
@@ -23,3 +32,4 @@ adjust-cell-height = 3
 
 scrollback-limit = 300000000
 cursor-style = bar
+keybind = shift+enter=text:\x1b\r
