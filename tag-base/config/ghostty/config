@@ -4,17 +4,17 @@ window-padding-balance = true
 background-opacity = 0.9
 background-blur-radius = 70
 font-thicken = true
-
+#term = xterm-256color
 
 #theme = Ayu Mirage
-theme = dark:Catppuccin Frappe,light:Catppuccin Latte
+theme = Catppuccin Mocha
 selection-invert-fg-bg = true
 window-subtitle = working-directory
-window-theme = system
+#window-theme = system
 window-padding-balance = true
 window-height = 40
 window-width = 133
-resize-overlay = never
+
 font-size = 16
 #font-family = Berkeley Mono
 font-family = Ioskeley Mono
@@ -32,4 +32,7 @@ adjust-cell-height = 3
 
 scrollback-limit = 300000000
 cursor-style = bar
-keybind = shift+enter=text:\x1b\r
+
+# ~/.config/ghostty/config
+keybind = ctrl+minus=text:\x1f
+keybind = super+z=text:\x1f
