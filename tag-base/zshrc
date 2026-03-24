@@ -1,380 +1,42 @@
-# Antigen: https://github.com/zsh-users/antigen
-ANTIGEN="$HOME/.local/bin/antigen.zsh"
+# Load modular Zsh configuration
+ZSH_CONFIG_DIR="$HOME/.config/zsh"
 
-# Install antigen.zsh if not exist
-if [ ! -f "$ANTIGEN" ]; then
-  [ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local" 2>/dev/null
-  [ ! -d "$HOME/.local/bin" ] && mkdir -p "$HOME/.local/bin" 2>/dev/null
-  [ ! -f "$HOME/.z" ] && touch "$HOME/.z"
-  URL="https://cdn.jsdelivr.net/gh/zsh-users/antigen@master/bin/antigen.zsh"
-  TMPFILE="/tmp/antigen.zsh"
-  if [ -x "$(which curl)" ]; then
-    curl -L "$URL" -o "$TMPFILE"
-  elif [ -x "$(which wget)" ]; then
-    wget "$URL" -O "$TMPFILE"
-  else
-    echo "ERROR: please install curl or wget before installation !!"
-    exit
-  fi
-  if [ ! $? -eq 0 ]; then
-    echo ""
-    echo "ERROR: downloading antigen.zsh ($URL) failed !!"
-    exit
-  fi
-  echo "move $TMPFILE to $ANTIGEN"
-  mv "$TMPFILE" "$ANTIGEN"
+if [ -d "$ZSH_CONFIG_DIR" ]; then
+  SOURCE_HELPERS="$ZSH_CONFIG_DIR/source-modules.zsh"
+  [ -r "$SOURCE_HELPERS" ] && source "$SOURCE_HELPERS"
+
+  while IFS= read -r config_file; do
+    [ -r "$config_file" ] && source "$config_file"
+  done < <(find "$ZSH_CONFIG_DIR" -maxdepth 1 -type f -name '*.zsh' ! -name 'source-modules.zsh' -print | sort)
 fi
 
-VISUAL=nvim
-export VISUAL EDITOR=nvim
-export EDITOR
-
-# fzf
-export FZF_DEFAULT_OPTS='--bind ctrl-e:down,ctrl-u:up --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore-dir=node_modules -g ""'
-export FZF_COMPLETION_TRIGGER='\'
-export FZF_TMUX_HEIGHT='80%'
-export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
-
-export LSCOLORS=exfxcxdxbxexexxxxxxxxx
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US
-
-# Initialize command prompt
-#export PS1="%n@%m:%~%# "
-
-# Enable 256 color to make auto-suggestions look nice
-# Kitty undercurl
-# export TERM="xterm-256color"
-
-# Load local bash/zsh compatible settings
-_INIT_SH_NOFUN=1
-
-# Initialize antigen
-source "$ANTIGEN"
-
-# Initialize oh-my-zsh
-antigen use oh-my-zsh
-
-# antigen bundle colorize
-# antigen bundle rupa/z z.sh
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-syntax-highlighting
-# antigen bundle willghatch/zsh-cdr
-# antigen theme robbyrussell
-
-#syntax color definition
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-
-typeset -A ZSH_HIGHLIGHT_STYLES
-
-# load local config
-[ -f "$HOME/.local/etc/config.zsh" ] && source "$HOME/.local/etc/config.zsh"
-[ -f "$HOME/.local/etc/local.zsh" ] && source "$HOME/.local/etc/local.zsh"
-[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
-[ -f "$HOME/.config/zsh/zshrc" ] && source "$HOME/.config/zsh/zshrc"
-[ -f "/usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh" ] && source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
-antigen apply
-
-# default keymap
-bindkey -s '\ee' 'nvim\n'
-
-bindkey '\eh' backward-char
-bindkey '\el' forward-char
-bindkey '\ej' down-line-or-history
-bindkey '\ek' up-line-or-history
-
-bindkey '^h' backward-char
-bindkey '^l' forward-char
-bindkey '^j' down-line-or-history
-bindkey '^k' up-line-or-history
-
-bindkey '\eu' undo
-
-bindkey '\eH' backward-word
-bindkey '\eL' forward-word
-bindkey '\e[H' beginning-of-line
-bindkey '\e[F' end-of-line
-
-bindkey -s '\eo' 'cd ..\n'
-bindkey -s '\e;' 'll\n'
-
-bindkey '\e[1;3D' backward-word
-bindkey '\e[1;3C' forward-word
-bindkey '\e[1;3A' beginning-of-line
-bindkey '\e[1;3B' end-of-line
-
-if [[ -n "$TMUX" ]]; then
-  bindkey -s '\e[1~' '\eOH'
-  bindkey -s '\e[4~' '\eOF'
-  export TERM=screen-256color
-fi
-# options
-unsetopt correct_all
-
-setopt BANG_HIST              # Treat the '!' character specially during expansion.
-setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
-setopt SHARE_HISTORY          # Share history between all sessions.
-setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
-setopt HIST_IGNORE_DUPS       # Don't record an entry that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a duplicate.
-setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
-setopt HIST_IGNORE_SPACE      # Don't record an entry starting with a space.
-setopt HIST_SAVE_NO_DUPS      # Don't write duplicate entries in the history file.
-setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
-setopt HIST_VERIFY            # Don't execute immediately upon history expansion.
-
-# less highlight for man page
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
-
-# ignore complition
-zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.pdf|*.exe|*.dll'
-zstyle ':completion:*:*sh:*:' tag-order files
-
-setopt nonomatch
-
-# Use beam shape cursor on startup.
-echo -ne '\e[5 q'
-
-# Use beam shape cursor for each new prompt.
-preexec() {
-  echo -ne '\e[5 q'
-}
-
-_fix_cursor() {
-  echo -ne '\e[5 q'
-}
-precmd_functions+=(_fix_cursor)
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-function pouptmux() {
-  width=${2:-80%}
-  height=${2:-80%}
-  if [ "$(tmux display-message -p -F "#{session_name}")" = "popup" ]; then
-    tmux detach-cnnlient
-  else
-    tmux popup -d '#{pane_current_path}' -xC -yC -w$width -h$height -E "tmux attach -t popup || tmux new -s popup"
-  fi
-}
-
-export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:~/go/bin:~/.local/bin:$HOME/Library/Python/3.11/bin:$PATH
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-export PATH="./node_modules/.bin:$PATH"
-
-export N_PREFIX="$HOME/.n"
-export N_PRESERVE_NPM=1
-export PATH=$N_PREFIX/bin:$PATH
-
-# export GOPROXY=https://goproxy.io,direct
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)" 
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 # bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "/Users/innei/.bun/_bun" ] && source "/Users/innei/.bun/_bun"
+export PATH="$HOME/.local/bin:$PATH"
 
-#  fast paste
-pasteinit() {
-OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
- zle -N self-insert url-quote-magic
-}
+# opencode
+export PATH=/Users/innei/.opencode/bin:$PATH
 
-pastefinish() {
- zle -N self-insert $OLD_SELF_INSERT
-}
- 
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
+# Added by Antigravity
+export PATH="/Users/innei/.antigravity/antigravity/bin:$PATH"
+ulimit -n 1000000000
 
-# functions
-# Get the owner of the repository to which you contributed (Pull Requests)
-ghpall ()
-{
-   gh api graphql --paginate -f query='
-     query($endCursor: String) {
-       user(login: "Innei") {
-         pullRequests(first: 100, after: $endCursor, states: MERGED) {
-           nodes { repository { owner { login } } }
-           pageInfo {
-             hasNextPage
-             endCursor
-           }
-         }
-       }
-     }
-   '  --jq '.data.user.pullRequests.nodes[].repository.owner.login' | sort | uniq -c | sort -r
-   # Merge all dependency PRs
-   gh search prs --owner Innei author:app/renovate --json "url" --jq ".[].url" | xargs -I {} gh pr merge {} --squash --auto
-}
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/innei/.lmstudio/bin"
+# End of LM Studio CLI section
 
-ghdep() {
-    gh search prs --owner innei is:open author:app/renovate archived:false --json url --jq ".[].url" | gxargs -I URL bash -c 'echo "Approving & merging: URL" && gh pr review --approve URL && gh pr merge --squash --auto URL'
-}
-
-ghfl() {
-    gh api /user --jq '"🎉 @" + .login + " has " + (.followers|tostring) + " followers!"'
-}
+export CODE_EDITOR=cursor
+export ENABLE_TOOL_SEARCH=1
+export CLAUDE_CODE_TASK_LIST_ID=groceries 
+export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 
 
 
-alias nvim-dot="NVIM_APPNAME=nvimdots nvim"
-
-function nvims() {
-  items=("default" "nvim-dot" 'xlboy_nvim')
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config >" --height=~50% --layout=reverse --border --exit-0)
-  if [[ -z $config ]]; then
-    echo "Nothing selected"
-    return 0
-  elif [[ $config == "default" ]]; then
-    config=""
-  fi
-  NVIM_APPNAME=$config nvim $@
-}
-
-bindkey -s ^a "nvims\n"
-
-# end
-#
-
-# bob nvim
-export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# alias begin
-alias c='clear'
-alias e='exit'
-alias pip='pip3'
-alias proxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
-alias pc='proxychains4 zsh'
-alias cdr='cd $(git rev-parse --show-toplevel)'
-
-alias ga='git status'
-alias gc='git clone'
-alias gm='git commit -m'
-alias gpo='git push -u origin $(git symbolic-ref --short HEAD)'
-alias gp='git push'
-alias gb='git branch'
-alias gpl='git pull'
-alias gf='git fetch --all --prune'
-alias gs='git stash'
-alias gr='git rebase'
-alias gt='git log --graph --oneline --all'
-alias gco='git checkout'
-alias gignore='git update-index --assume-unchanged'
-alias gnoignore='git update-index --no-assume-unchanged'
-alias gclean='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
-alias main='git checkout main || git checkout master'
-
-alias g='lazygit'
-
-# git commit
-alias gm1='git commit -m "chore: update deps"'
-
-alias t='tldr'
-alias mkdir='mkdir -p'
-alias mkidr='mkdir -p'
-
-alias vf='nvim $(fzf)'
-alias cdt='cd $(find * -type d | fzf)'
-alias gct='git checkout $(git branch -r | fzf)'
-
-alias cl='cloc . --exclude-dir=node_modules,.nuxt,.next,build,.vscode,dist,release,tmp --exclude-lang=JSON,SVG,XML'
-
-# alias cl='tokei . -e node_modules -e .nuxt -e .next -e build -e .vscode -e dist -e release -e tmp'
-alias r='joshuto'
-alias q='exit'
-alias c='clear'
-
-alias ll='ls -l'
-alias d='nr dev'
-
-alias tnew='tmux new -s'
-alias tkall='tmux kill-session -a'
-alias ta='tmux attach-session'
-alias yanr='yarn'
-
-alias ss='lsof -Pn -i4 | grep LISTEN'
-
-alias dns8='networksetup -setdnsservers Wi-Fi 8.8.8.8'
-alias dns114='networksetup -setdnsservers Wi-Fi 114.114.114.114'
-alias dnsali='networksetup -setdnsservers Wi-Fi 223.5.5.5'
-alias dns='networksetup -setdnsservers Wi-Fi "Empty"'
-
-alias netpw='networksetup -setmanual Wi-Fi 10.0.0.61 255.255.255.0 10.0.0.1 && networksetup -setdnsservers Wi-Fi 10.0.0.1'
-alias netpass='networksetup -setmanual Wi-Fi 10.0.0.61 255.255.255.0 10.0.0.8 && networksetup -setdnsservers Wi-Fi 10.0.0.8'
-alias netdp='networksetup -setdhcp Wi-Fi && networksetup -setdnsservers Wi-Fi "Empty"'
-alias nettest='networksetup -setmanual Wi-Fi 10.0.0.61 255.255.255.0 10.0.0.11 && networksetup -setdnsservers Wi-Fi 10.0.0.11'
-
-alias charge80='sudo bclm write 80'
-alias charge60='sudo bclm write 60'
-alias charge='sudo bclm write 100'
-
-alias npm='pnpm'
-alias npx='pnpx'
-alias nn='\n'
-alias n='pnpm'
-alias nenv='export PATH="$PATH:./node_modules/.bin"'
-alias clang++='clang++ --std=c++17'
-
-alias nv=nvim
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 
 
-# alias gh cli
-alias ghb='gh browse '
-alias approve_and_merge_prs="for pr in \$( gh pr list | grep 'renovate' | cut -f1 -d '	'); do gh pr review --approve \$pr && gh pr merge \$pr --auto --squash; done"
-
-
-alias md='frogmouth '
-# alias jq='jless '
-# alias end
-
-
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-#
-export STARSHIP_LOG=error
-
-kitty-reload() {
-    kill -SIGUSR1 $(pidof kitty)
-}
-
-builtin bindkey "^A" beginning-of-line
-builtin bindkey "^E" end-of-line
-builtin bindkey "^[^H" backward-kill-word
-builtin bindkey "^[^?" backward-kill-word
-
-# env
-export COREPACK_ENABLE_STRICT=0
-export PATH=/Users/innei/.meteor:$PATH
-
-# rust
-export PATH=$HOME/.cargo/bin:$PATH
-
-[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-[ -s "$HOME/.zshrc_local" ] && source "$HOME/.zshrc_local"
-
-function cdroot() {
-cd $(identify-monorepo-root)
-}
+[[ -f "$HOME/.config/kaku/zsh/kaku.zsh" ]] && source "$HOME/.config/kaku/zsh/kaku.zsh" # Kaku Shell Integration
