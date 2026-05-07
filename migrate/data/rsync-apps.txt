@@ -1,0 +1,22 @@
+# 需要从旧电脑 rsync /Applications 的 app (brew/mas 没有的)
+# 格式: app 名 (不含 .app 后缀)
+Apparency
+CC Switch
+Discord
+Fork
+IINA
+Lark
+NeteaseMusic
+OpenInTerminal
+Pixelmator Pro
+PixelSnap 2
+ProcessReporter
+Supercharge
+TablePlus
+Telegram
+Typeless
+Typora
+CleanShot X
+Capture One
+MetaImage
+WeChat

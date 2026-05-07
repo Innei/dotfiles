@@ -1,6 +1,7 @@
 [user]
 	name = Innei
 	email = tukon479@gmail.com
+	signingkey = 0F62D33977F021F7
 
 [alias]
 	sa = status
@@ -59,3 +60,4 @@
     colorMoved = default
 [rebase]
     autoStash = true
+

@@ -11,3 +11,4 @@ _machine_specific.vim
 .undodir/
 *.pyo
 __pycache__/
+migrate/data/gpg/

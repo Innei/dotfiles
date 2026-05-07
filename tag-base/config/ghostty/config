@@ -4,7 +4,7 @@ window-padding-balance = true
 background-opacity = 0.9
 background-blur-radius = 70
 font-thicken = true
-#term = xterm-256color
+term = xterm-256color
 
 #theme = Ayu Mirage
 theme = Catppuccin Mocha
@@ -36,3 +36,4 @@ cursor-style = bar
 # ~/.config/ghostty/config
 keybind = ctrl+minus=text:\x1f
 keybind = super+z=text:\x1f
+cursor-style = bar

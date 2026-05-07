@@ -1,0 +1,6 @@
+# App Store apps (mas install <id>)
+# 格式: id  name
+1630034110  Bob
+1579200037  Medis
+1594061654  Navicat Premium
+497799835   Xcode

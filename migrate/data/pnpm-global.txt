@@ -1,0 +1,12 @@
+
+/Users/innei/Library/pnpm/global/5
+│
+│   dependencies:
+├── @antfu/ni@27.0.0
+├── @anthropic-ai/claude-code@2.1.2
+├── @mariozechner/pi-coding-agent@0.73.0
+├── degit@2.8.4
+├── npm@11.6.2
+└── taze@19.8.1
+
+6 packages
