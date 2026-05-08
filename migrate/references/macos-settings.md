@@ -100,9 +100,9 @@ Values are written to both `com.apple.AppleMultitouchTrackpad` and `com.apple.dr
 | Setting | Value | Command |
 |---------|-------|---------|
 | Screenshot shadow | disabled | `com.apple.screencapture disable-shadow true` |
-| Display sleep | 2 min | `sudo pmset -a displaysleep 2` |
-| Disk sleep | 10 min | `sudo pmset -a disksleep 10` |
-| System sleep | 1 min | `sudo pmset -a sleep 1` |
+| Display sleep | never | `sudo pmset -a displaysleep 0` |
+| Disk sleep | never | `sudo pmset -a disksleep 0` |
+| System sleep | never | `sudo pmset -a sleep 0` |
 
 ## Menu Bar
 

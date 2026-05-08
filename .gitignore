@@ -12,3 +12,5 @@ _machine_specific.vim
 *.pyo
 __pycache__/
 migrate/data/gpg/
+migrate/data/finder/
+migrate/data/keyboard/

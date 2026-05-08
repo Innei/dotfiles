@@ -17,7 +17,7 @@ if [[ "${DRY_RUN:-0}" == "1" ]]; then
     else
         info "搜狗输入法 — 将下载 ZIP 并安装输入法 bundle"
     fi
-    if [[ -d "/Applications/OpenVPN Connect.app" ]]; then
+    if [[ -d "/Applications/OpenVPN Connect.app" ]] || [[ -d "/Applications/OpenVPN Connect/OpenVPN Connect.app" ]]; then
         ok "OpenVPN Connect — 已安装 ✓"
     else
         info "OpenVPN Connect — 将下载 DMG 并安装对应架构 .pkg"
@@ -27,6 +27,61 @@ fi
 
 DL_DIR="$HOME/Downloads/_migrate_pkgs"
 mkdir -p "$DL_DIR"
+
+configure_sogou_input_source() {
+    /usr/bin/python3 - <<'PY'
+import datetime
+import os
+import plistlib
+
+path = os.path.expanduser("~/Library/Preferences/com.apple.HIToolbox.plist")
+sogou = {
+    "Bundle ID": "com.sogou.inputmethod.sogou",
+    "Input Mode": "com.sogou.inputmethod.pinyin",
+    "InputSourceKind": "Input Mode",
+}
+press_and_hold = {
+    "Bundle ID": "com.apple.PressAndHold",
+    "InputSourceKind": "Non Keyboard Input Method",
+}
+
+try:
+    with open(path, "rb") as f:
+        data = plistlib.load(f)
+except FileNotFoundError:
+    data = {}
+
+def same_source(item, source):
+    return (
+        isinstance(item, dict)
+        and item.get("Bundle ID") == source.get("Bundle ID")
+        and item.get("Input Mode") == source.get("Input Mode")
+        and item.get("InputSourceKind") == source.get("InputSourceKind")
+    )
+
+history = [item for item in data.get("AppleInputSourceHistory", []) if not same_source(item, sogou)]
+data["AppleInputSourceHistory"] = [sogou] + history[:9]
+
+selected = data.get("AppleSelectedInputSources", [])
+selected = [item for item in selected if not same_source(item, sogou)]
+if not any(same_source(item, press_and_hold) for item in selected):
+    selected.insert(0, press_and_hold)
+
+next_selected = []
+for source in [press_and_hold, sogou, *selected]:
+    if not any(same_source(item, source) for item in next_selected):
+        next_selected.append(source)
+data["AppleSelectedInputSources"] = next_selected
+
+data["AppleInputSourceUpdateTime"] = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S +0000")
+
+with open(path, "wb") as f:
+    plistlib.dump(data, f, fmt=plistlib.FMT_BINARY)
+PY
+    defaults import com.apple.HIToolbox "$HOME/Library/Preferences/com.apple.HIToolbox.plist" 2>/dev/null || true
+    killall cfprefsd TextInputMenuAgent 2>/dev/null || true
+    ok "搜狗拼音已写入当前用户输入源"
+}
 
 # ---- GPG Suite ----
 if [[ -d "/Applications/GPG Keychain.app" ]]; then
@@ -42,9 +97,10 @@ else
     fi
 
     info "挂载并安装 GPG Suite ..."
+    hdiutil detach /Volumes/GPG* -quiet 2>/dev/null || true
     hdiutil attach "$DL_DIR/GPG_Suite.dmg" -quiet
     # GPG Suite installer 是 .pkg inside DMG
-    PKG=$(ls /Volumes/GPG*/*.pkg /Volumes/GPG*/*/Install*.pkg 2>/dev/null | head -1)
+    PKG=$(find /Volumes -maxdepth 3 -path "/Volumes/GPG*" -name "*.pkg" -print 2>/dev/null | head -1 || true)
     if [[ -n "$PKG" ]]; then
         sudo installer -pkg "$PKG" -target /
         ok "GPG Suite 安装完成"
@@ -59,6 +115,7 @@ echo ""
 # ---- 搜狗输入法 ----
 if [[ -d "/Library/Input Methods/SogouInput.app" ]] || [[ -d "$HOME/Library/Input Methods/SogouInput.app" ]]; then
     ok "搜狗输入法已安装"
+    configure_sogou_input_source
 else
     info "下载搜狗输入法 ..."
     SOGOU_URL="http://ime.gtimg.com/pc/sogou_mac_new_guanwang_620a.zip"
@@ -78,6 +135,7 @@ else
         sudo ditto "$SOGOU_WORK/input/SogouInput.app" "/Library/Input Methods/SogouInput.app"
         sudo chown -R root:wheel "/Library/Input Methods/SogouInput.app"
         ok "搜狗输入法安装完成"
+        configure_sogou_input_source
     else
         warn "未找到 SogouInput.zip，请手动打开: $SOGOU_WORK/sogou_mac_new_guanwang_620a.app"
     fi
@@ -86,7 +144,7 @@ fi
 echo ""
 
 # ---- OpenVPN Connect ----
-if [[ -d "/Applications/OpenVPN Connect.app" ]]; then
+if [[ -d "/Applications/OpenVPN Connect.app" ]] || [[ -d "/Applications/OpenVPN Connect/OpenVPN Connect.app" ]]; then
     ok "OpenVPN Connect 已安装"
 else
     info "下载 OpenVPN Connect ..."
@@ -111,6 +169,11 @@ else
         warn "未找到 OpenVPN .pkg，请手动安装: 打开 $DL_DIR/OpenVPN_Connect.dmg"
     fi
     hdiutil detach "/Volumes/OpenVPN Connect" -quiet 2>/dev/null || hdiutil detach /Volumes/OpenVPN* -quiet 2>/dev/null || true
+fi
+
+echo ""
+if [[ -d "/Library/Input Methods/SogouInput.app" ]] || [[ -d "$HOME/Library/Input Methods/SogouInput.app" ]]; then
+    configure_sogou_input_source
 fi
 
 echo ""

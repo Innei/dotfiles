@@ -90,6 +90,60 @@ defaults write -g InitialKeyRepeat -int 15
 defaults write -g KeyRepeat -int 2
 ok "键盘 (快速重复，禁用按住弹出重音菜单)"
 
+KEYBOARD_CURRENT_HOST_PLIST="$DATA_DIR/keyboard/current-host-global.plist"
+if [[ -f "$KEYBOARD_CURRENT_HOST_PLIST" ]]; then
+    info "恢复键盘修饰键映射 ..."
+    /usr/bin/python3 - "$KEYBOARD_CURRENT_HOST_PLIST" "$HOME" <<'PY'
+import glob
+import os
+import plistlib
+import subprocess
+import sys
+
+source_path, home = sys.argv[1:3]
+byhost = os.path.join(home, "Library", "Preferences", "ByHost")
+targets = glob.glob(os.path.join(byhost, ".GlobalPreferences.*.plist"))
+if targets:
+    target_path = targets[0]
+else:
+    uuid = subprocess.check_output([
+        "ioreg", "-rd1", "-c", "IOPlatformExpertDevice"
+    ], text=True)
+    platform_uuid = ""
+    for line in uuid.splitlines():
+        if "IOPlatformUUID" in line:
+            platform_uuid = line.split('"')[-2]
+            break
+    if not platform_uuid:
+        raise SystemExit("无法确定当前主机 UUID")
+    os.makedirs(byhost, exist_ok=True)
+    target_path = os.path.join(byhost, f".GlobalPreferences.{platform_uuid}.plist")
+
+with open(source_path, "rb") as f:
+    source = plistlib.load(f)
+
+try:
+    with open(target_path, "rb") as f:
+        target = plistlib.load(f)
+except FileNotFoundError:
+    target = {}
+
+copied = 0
+for key, value in source.items():
+    if key.startswith("com.apple.keyboard.modifiermapping."):
+        target[key] = value
+        copied += 1
+
+with open(target_path, "wb") as f:
+    plistlib.dump(target, f, fmt=plistlib.FMT_BINARY)
+
+print(f"copied={copied} target={target_path}")
+PY
+    ok "键盘修饰键映射已恢复"
+else
+    warn "未找到键盘 currentHost 迁移数据: $KEYBOARD_CURRENT_HOST_PLIST"
+fi
+
 # ---- 菜单栏时钟 ----
 info "配置菜单栏时钟 ..."
 defaults write com.apple.menuextra.clock ShowAMPM -bool true
@@ -152,7 +206,7 @@ ok "截图去阴影"
 
 # ---- 电源管理 ----
 info "配置电源管理 (需要 sudo) ..."
-run_sudo_setting "电源管理" pmset -a displaysleep 2 disksleep 10 sleep 1
+run_sudo_setting "电源管理 (永不休眠)" pmset -a displaysleep 0 disksleep 0 sleep 0
 
 # ---- 音量 ----
 osascript -e "set volume output volume 24" 2>/dev/null && ok "音量设为 24" || true

@@ -1,2 +1,17 @@
-└── npm@11.12.1
+├── @badliveware/pi-footer-framework@0.2.2
+├── @google/gemini-cli@0.19.4
+├── @juicesharp/rpiv-btw@1.2.0
+├── @spences10/pi-themes@0.0.3
+├── @tintinweb/pi-subagents@0.7.0
+├── @tmustier/pi-tab-status@0.1.3
+├── @whynothugo/pi-notify@1.0.0
+├── asar@3.2.0
+├── corepack@0.34.0
+├── glimpseui@0.8.0
+├── http-server@14.1.1
+├── nbump@2.1.8
+├── pi-interactive-shell@0.13.0
+├── pi-mermaid@0.3.0
+├── pi-token-speed@0.1.2
+└── pi-web-access@0.10.7
 

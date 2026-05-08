@@ -44,6 +44,12 @@ Library/Application Support/CherryStudio/
 Library/Application Support/Arc/
 Library/Application Support/Clash*/
 Library/Application Support/ClashMac/
+Library/Application Support/discord/
+Library/Application Support/LarkShell/
+Library/Application Support/Telegram Desktop/
+Library/Application Support/CleanShot X/
+Library/Group Containers/6N38VWS5BX.ru.keepcoder.Telegram/
+Library/Containers/ru.keepcoder.Telegram.TelegramShare/
 
 # --- 运行时/版本管理器（新电脑重装） ---
 .n/
@@ -65,5 +71,6 @@ Library/Saved Application State/
 
 # --- 系统垃圾 ---
 .DS_Store
+.com.apple.containermanagerd.metadata.plist
 .Trash-*
 tmp/

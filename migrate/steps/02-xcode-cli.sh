@@ -7,7 +7,7 @@ if [[ "${DRY_RUN:-0}" == "1" ]]; then
     if xcode-select -p &>/dev/null; then
         ok "Xcode CLI Tools 已安装: $(xcode-select -p)"
     else
-        info "将安装 Xcode CLI Tools (xcode-select --install + 交互确认)"
+        info "将通过 softwareupdate 非交互安装 Xcode CLI Tools"
     fi
     info "完整 Xcode 需从 App Store 手动安装 (很大，建议后装)"
     exit 0
@@ -17,10 +17,28 @@ if xcode-select -p &>/dev/null; then
     ok "Xcode CLI Tools 已安装: $(xcode-select -p)"
 else
     info "安装 Xcode CLI Tools ..."
-    xcode-select --install 2>/dev/null || true
-    echo "  ⏳ 请在弹窗中点击「安装」，完成后按回车继续..."
-    read -r
-    ok "Xcode CLI Tools 安装完成"
+    TOUCH_FILE="/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress"
+    sudo touch "$TOUCH_FILE"
+    trap 'sudo rm -f "$TOUCH_FILE" 2>/dev/null || true' EXIT
+
+    CLT_LABEL="$(softwareupdate -l 2>&1 \
+        | awk -F': ' '/Label: Command Line Tools/{label=$2} END{print label}')"
+
+    if [[ -z "$CLT_LABEL" ]]; then
+        fail "softwareupdate 未找到可安装的 Command Line Tools"
+        echo "  可稍后在目标机手动运行: xcode-select --install"
+        exit 1
+    fi
+
+    info "安装: $CLT_LABEL"
+    sudo softwareupdate -i "$CLT_LABEL" --verbose
+
+    if xcode-select -p &>/dev/null; then
+        ok "Xcode CLI Tools 安装完成: $(xcode-select -p)"
+    else
+        fail "Xcode CLI Tools 安装后仍不可用"
+        exit 1
+    fi
 fi
 
 # 如果之后需要完整 Xcode (手动装)

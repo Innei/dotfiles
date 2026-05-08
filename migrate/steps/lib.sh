@@ -130,4 +130,14 @@ if [[ "$DRY_RUN" == "1" ]]; then
 
     # --- dotfiles 工具 ---
     rcup() { _dry "rcup $*"; return 0; }
+elif [[ -n "${MIGRATE_SUDO_PASSWORD:-}" ]]; then
+    sudo() {
+        local args=()
+        local arg
+        for arg in "$@"; do
+            [[ "$arg" == "-n" ]] && continue
+            args+=("$arg")
+        done
+        printf '%s\n' "$MIGRATE_SUDO_PASSWORD" | command sudo -S -p '' "${args[@]}"
+    }
 fi

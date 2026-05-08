@@ -31,7 +31,8 @@ STEPS=(
     "13|13-gpg-import.sh|导入 GPG keys"
     "14|14-clear-quarantine.sh|清理 App quarantine"
     "15|15-notification-prefs.sh|恢复通知权限偏好"
-    "16|13-re-auth.sh|重新登录/认证"
+    "16|16-finder-state.sh|恢复 Finder sidebar/layout"
+    "17|13-re-auth.sh|重新登录/认证"
 )
 
 GREEN='\033[0;32m'
@@ -56,7 +57,11 @@ stop_sudo_keepalive() {
 start_sudo_keepalive() {
     (
         while true; do
-            sudo -n true 2>/dev/null || exit
+            if [[ -n "${MIGRATE_SUDO_PASSWORD:-}" ]]; then
+                printf '%s\n' "$MIGRATE_SUDO_PASSWORD" | sudo -S -p '' -v 2>/dev/null || exit
+            else
+                sudo -n true 2>/dev/null || exit
+            fi
             sleep 60
         done
     ) &
@@ -66,6 +71,15 @@ start_sudo_keepalive() {
 
 prepare_sudo() {
     [[ "$DRY_RUN" == "1" ]] && return 0
+
+    if [[ -n "${MIGRATE_SUDO_PASSWORD:-}" ]]; then
+        if printf '%s\n' "$MIGRATE_SUDO_PASSWORD" | sudo -S -p '' -v 2>/dev/null; then
+            echo -e "${GREEN}[ OK ]${NC} sudo credential 已通过 MIGRATE_SUDO_PASSWORD 缓存"
+            start_sudo_keepalive
+            return 0
+        fi
+        echo -e "${YELLOW}[WARN]${NC} MIGRATE_SUDO_PASSWORD 未能通过 sudo 验证"
+    fi
 
     if sudo -n true 2>/dev/null; then
         echo -e "${GREEN}[ OK ]${NC} sudo credential 已缓存"

@@ -4,6 +4,24 @@ step_header "11" "App 安装"
 
 require_brew
 
+UNWANTED_APPLE_APPS=(
+    "GarageBand"
+    "iMovie"
+)
+
+PROTECTED_SYSTEM_APPLE_APPS=(
+    "Music"
+)
+
+UNWANTED_APPLE_SUPPORT_PATHS=(
+    "/Library/Application Support/GarageBand"
+    "/Library/Application Support/Logic"
+    "/Library/Audio/Apple Loops"
+    "/Library/Application Support/iMovie"
+    "$HOME/Library/Application Support/iMovie"
+    "$HOME/Music/GarageBand"
+)
+
 clear_app_quarantine() {
     local app_path="$1"
     if [[ "${DRY_RUN:-0}" == "1" ]]; then
@@ -23,6 +41,61 @@ clear_app_quarantine() {
     fi
 }
 
+remove_unwanted_apple_apps() {
+    local app_name=""
+    local app_path=""
+    local support_path=""
+
+    info "清理不需要的 Apple 预装应用 ..."
+
+    for app_name in "${UNWANTED_APPLE_APPS[@]}"; do
+        app_path="/Applications/$app_name.app"
+        if [[ ! -d "$app_path" ]]; then
+            ok "  ✓ $app_name (未安装)"
+            continue
+        fi
+
+        if [[ "${DRY_RUN:-0}" == "1" ]]; then
+            _dry "sudo rm -rf $app_path"
+            continue
+        fi
+
+        info "  删除 $app_name ..."
+        if sudo rm -rf "$app_path"; then
+            ok "  ✓ $app_name 已删除"
+        else
+            warn "  ✗ $app_name 删除失败: $app_path"
+        fi
+    done
+
+    for app_name in "${PROTECTED_SYSTEM_APPLE_APPS[@]}"; do
+        app_path="/System/Applications/$app_name.app"
+        if [[ -d "$app_path" ]]; then
+            warn "  $app_name 是系统应用 ($app_path)，保留系统卷内置版本"
+        fi
+    done
+
+    for support_path in "${UNWANTED_APPLE_SUPPORT_PATHS[@]}"; do
+        if [[ ! -e "$support_path" ]]; then
+            continue
+        fi
+
+        if [[ "${DRY_RUN:-0}" == "1" ]]; then
+            _dry "sudo rm -rf $support_path"
+            continue
+        fi
+
+        info "  删除素材/支持目录 $support_path ..."
+        if sudo rm -rf "$support_path"; then
+            ok "  ✓ 已删除 $support_path"
+        else
+            warn "  ✗ 删除失败: $support_path"
+        fi
+    done
+}
+
+remove_unwanted_apple_apps
+
 # ---- mas (App Store) ----
 MAS_FILE="$DATA_DIR/mas-apps.txt"
 if [[ -f "$MAS_FILE" ]]; then
@@ -35,11 +108,9 @@ if [[ -f "$MAS_FILE" ]]; then
         info "dry-run: 将检查 mas 登录状态后安装 $MAS_FILE 中的 App Store 应用"
     elif ! has mas; then
         warn "mas 不可用，跳过 App Store 应用安装"
-    elif ! MAS_ACCOUNT="$(mas account 2>/dev/null)" || [[ -z "$MAS_ACCOUNT" || "$MAS_ACCOUNT" == *"Not signed in"* ]]; then
-        warn "未登录 Mac App Store，跳过 mas 应用安装"
-        echo "  登录后可重新执行: bash ~/migrate/setup.sh 11"
     else
-        ok "Mac App Store 已登录: $MAS_ACCOUNT"
+        export MAS_NO_AUTO_INDEX=1
+        sudo -v 2>/dev/null || true
         info "安装 App Store 应用 ..."
         while IFS= read -r line; do
             # 跳过注释和空行
@@ -53,7 +124,11 @@ if [[ -f "$MAS_FILE" ]]; then
                 ok "  ✓ $name (已安装)"
             else
                 info "  安装 $name ($id) ..."
-                mas install "$id" && ok "  ✓ $name" || warn "  ✗ $name 安装失败"
+                if mas install "$id" || mas get "$id"; then
+                    ok "  ✓ $name"
+                else
+                    warn "  ✗ $name 安装失败"
+                fi
             fi
         done < "$MAS_FILE"
     fi

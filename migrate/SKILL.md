@@ -22,6 +22,8 @@ migrate/
 │   ├── rsync-apps.txt
 │   ├── dock-layout.json
 │   ├── notification-prefs.plist
+│   ├── finder/                 # Finder layout plist + sidebar SharedFileList files
+│   ├── keyboard/               # currentHost keyboard modifier mappings
 │   ├── gpg/                   # Exported public/secret keys + ownertrust (git-ignored)
 │   ├── npm-global.txt
 │   ├── pnpm-global.txt
@@ -44,7 +46,8 @@ migrate/
     ├── 13-gpg-import.sh
     ├── 13-re-auth.sh
     ├── 14-clear-quarantine.sh
-    └── 15-notification-prefs.sh
+    ├── 15-notification-prefs.sh
+    └── 16-finder-state.sh
 ```
 
 ## Quick Start
@@ -85,7 +88,8 @@ bash ~/migrate/setup.sh --list    # List all steps
 | 13 | GPG Import | Import exported public/secret keys and ownertrust |
 | 14 | Clear Quarantine | Remove `com.apple.quarantine` from migrated/installed apps |
 | 15 | Notification Prefs | Restore `com.apple.ncprefs.plist` after app installation |
-| 16 | Re-authenticate | Checklist of services needing manual re-login |
+| 16 | Finder State | Restore Finder sidebar SharedFileList files and layout plist |
+| 17 | Re-authenticate | Checklist of services needing manual re-login |
 
 ## Maintenance Guide
 
