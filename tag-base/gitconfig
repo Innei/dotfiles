@@ -28,7 +28,7 @@
 	keepBackup = false
     
 [push]
-	default = upstream
+	default = simple
 	autoSetupRemote = true
 [pull]
 	default = current
@@ -60,4 +60,5 @@
     colorMoved = default
 [rebase]
     autoStash = true
-
+[branch]
+    autoSetupMerge = simple

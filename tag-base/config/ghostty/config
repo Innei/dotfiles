@@ -17,7 +17,9 @@ window-width = 133
 
 font-size = 16
 #font-family = Berkeley Mono
-font-family = Ioskeley Mono
+#font-family = Ioskeley Mono
+
+#font-family = OperatorMonoSSmLig Nerd Font
 font-family = ComicShannsMono Nerd Font
 font-family = Hannotate SC
 
@@ -33,7 +35,5 @@ adjust-cell-height = 3
 scrollback-limit = 300000000
 cursor-style = bar
 
-# ~/.config/ghostty/config
 keybind = ctrl+minus=text:\x1f
 keybind = super+z=text:\x1f
-cursor-style = bar

@@ -15,7 +15,10 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 # bun completions
 
-[ -s "/Users/innei/.bun/_bun" ] && source "/Users/innei/.bun/_bun"
+# bun completions
+fpath=("$HOME/.bun" $fpath)
+(( $+functions[_bun] )) || autoload -U _bun
+compdef _bun bun 2>/dev/null
 export PATH="$HOME/.local/bin:$PATH"
 
 # opencode
@@ -40,3 +43,12 @@ if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)
 
 
 [[ -f "$HOME/.config/kaku/zsh/kaku.zsh" ]] && source "$HOME/.config/kaku/zsh/kaku.zsh" # Kaku Shell Integration
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
+# pnpm
+export PNPM_HOME="/Users/innei/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
