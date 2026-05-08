@@ -1,12 +1,23 @@
 
-/Users/innei/Library/pnpm/global/5
+/Users/innei/Library/pnpm/global/v11 (PRIVATE)
 │
 │   dependencies:
-├── @antfu/ni@27.0.0
-├── @anthropic-ai/claude-code@2.1.2
+├── @antfu/ni@30.1.0
+├── @github/copilot@1.0.40
+├── @google/gemini-cli@0.40.1
 ├── @mariozechner/pi-coding-agent@0.73.0
-├── degit@2.8.4
-├── npm@11.6.2
-└── taze@19.8.1
-
-6 packages
+├── @schpet/linear-cli@2.0.0
+├── @typescript/native-preview@7.0.0-dev.20260503.1
+├── acorn@8.16.0
+├── agent-browser@0.26.0
+├── asar@3.2.0
+├── deepseek-tui@0.8.7
+├── handlebars@4.7.9
+├── http-server@14.1.1
+├── nbump@2.1.8
+├── pnpm@10.33.2
+├── taze@19.11.0
+├── typescript@6.0.3
+├── typescript-language-server@5.1.3
+├── vercel@53.1.0
+└── wrangler@4.87.0

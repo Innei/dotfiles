@@ -228,7 +228,10 @@ cleanup_power_preflight() {
 
 rsync_major_version() {
     local bin="$1"
-    "$bin" --version 2>/dev/null | awk 'NR == 1 {print $3}' | cut -d. -f1
+    "$bin" --version 2>/dev/null | awk 'NR == 1 && $1 == "rsync" && $2 == "version" {
+        split($3, version_parts, ".")
+        if (version_parts[1] ~ /^[0-9]+$/) print version_parts[1]
+    }'
 }
 
 ensure_local_rsync() {
@@ -281,7 +284,7 @@ remote_rsync_info() {
     ssh "$TARGET" '
         for bin in /opt/homebrew/bin/rsync /usr/local/bin/rsync /usr/bin/rsync; do
             if [[ -x "$bin" ]]; then
-                version="$("$bin" --version 2>/dev/null | awk "NR == 1 {print \$3}")"
+                version="$("$bin" --version 2>/dev/null | awk "NR == 1 && \$1 == \"rsync\" && \$2 == \"version\" {print \$3}")"
                 major="${version%%.*}"
                 printf "%s\t%s\t%s\n" "$bin" "${major:-0}" "$("$bin" --version 2>/dev/null | head -n 1)"
                 exit 0
@@ -509,7 +512,7 @@ sync_glob() {
 # === Home 目录 ===
 info "同步 Home 目录 ..."
 for item in \
-    .claude .claude.json .codex .dotfiles .hammerspoon .pi \
+    .agents .claude .claude.json .codex .dotfiles .hammerspoon .pi \
     .ssh .npmrc .wakatime.cfg \
     .zshrc .zprofile .zsh_history; do
     sync_item "$HOME/$item" "$(remote_home_path "$item")"
@@ -721,7 +724,7 @@ else
     # === 验证 ===
     info "验证 ..."
     FAILED=0
-    for item in .ssh .dotfiles .zshrc .config/zsh .config/ghostty migrate/data/gpg; do
+    for item in .agents .ssh .dotfiles .zshrc .config/zsh .config/ghostty migrate/data/gpg; do
         if ssh "$TARGET" "test -e \$HOME/$item" 2>/dev/null; then
             ok "✓ $item"
         else
