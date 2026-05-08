@@ -8,7 +8,6 @@ IINA
 Lark
 NeteaseMusic
 OpenInTerminal
-Pixelmator Pro
 PixelSnap 2
 ProcessReporter
 Supercharge
@@ -19,4 +18,13 @@ Typora
 CleanShot X
 Capture One
 MetaImage
+Pixelmator Pro Creator Studio
+PortKiller
+Proxyman
+RapidAPI
+Slack
+Squash
+Torrent Vibe
+uPic
 WeChat
+Zed

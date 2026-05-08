@@ -491,6 +491,21 @@ sync_item() {
     fi
 }
 
+sync_glob() {
+    local pattern="$1"
+    local dest_dir="$2"
+    local matched=0
+    local src=""
+
+    for src in $pattern; do
+        [[ -e "$src" ]] || continue
+        matched=1
+        sync_item "$src" "$dest_dir"
+    done
+
+    return 0
+}
+
 # === Home 目录 ===
 info "同步 Home 目录 ..."
 for item in \
@@ -542,8 +557,28 @@ sync_item "$HOME/Library/Application Support/OpenVPN Connect/" \
     "$(remote_home_path "Library/Application Support/OpenVPN Connect/")"
 sync_item "$HOME/Library/Application Support/com.DanPristupov.Fork/" \
     "$(remote_home_path "Library/Application Support/com.DanPristupov.Fork/")"
+sync_item "$HOME/Library/Application Support/Zed/" \
+    "$(remote_home_path "Library/Application Support/Zed/")"
+sync_item "$HOME/Library/Application Support/Slack/" \
+    "$(remote_home_path "Library/Application Support/Slack/")"
+sync_item "$HOME/Library/Application Support/discord/" \
+    "$(remote_home_path "Library/Application Support/discord/")"
+sync_item "$HOME/Library/Application Support/Torrent Vibe/" \
+    "$(remote_home_path "Library/Application Support/Torrent Vibe/")"
 sync_item "$HOME/Library/Application Support/IINA/" \
     "$(remote_home_path "Library/Application Support/IINA/")"
+sync_item "$HOME/Library/Application Support/com.colliderli.iina/" \
+    "$(remote_home_path "Library/Application Support/com.colliderli.iina/")"
+sync_item "$HOME/Library/Application Support/com.proxyman.NSProxy/" \
+    "$(remote_home_path "Library/Application Support/com.proxyman.NSProxy/")"
+sync_item "$HOME/Library/Application Support/Squash/" \
+    "$(remote_home_path "Library/Application Support/Squash/")"
+sync_item "$HOME/Library/Application Support/abnerworks.Typora/" \
+    "$(remote_home_path "Library/Application Support/abnerworks.Typora/")"
+sync_item "$HOME/Library/Application Support/typora-user-images/" \
+    "$(remote_home_path "Library/Application Support/typora-user-images/")"
+sync_item "$HOME/Library/Application Support/Capture One/" \
+    "$(remote_home_path "Library/Application Support/Capture One/")"
 sync_item "$HOME/Library/Application Support/NeteaseMusic/" \
     "$(remote_home_path "Library/Application Support/NeteaseMusic/")"
 sync_item "$HOME/Library/Application Support/Typora/" \
@@ -581,6 +616,30 @@ sync_item "$HOME/Library/Keychains/openvpn.keychain-db" \
     "$(remote_home_path "Library/Keychains/")"
 sync_item "$HOME/Library/Preferences/com.raycast.macos.plist" \
     "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Preferences/dev.zed.Zed.plist" \
+    "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Preferences/com.tinyspeck.slackmacgap.plist" \
+    "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Preferences/com.hnc.Discord.plist" \
+    "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Preferences/dev.innei.torrentvibe.client.plist" \
+    "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Preferences/com.luckymarmot.Paw.plist" \
+    "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Preferences/com.proxyman.NSProxy.plist" \
+    "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Preferences/com.proxyman.iconappmanager.userdefaults.plist" \
+    "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Preferences/com.svend.uPic.macos.plist" \
+    "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Preferences/com.portkiller.app.plist" \
+    "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Preferences/com.realmacsoftware.squash3.plist" \
+    "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Preferences/com.apple.pixelmator.plist" \
+    "$(remote_home_path "Library/Preferences/")"
+sync_glob "$HOME/Library/Preferences/com.captureone.*.plist" \
+    "$(remote_home_path "Library/Preferences/")"
 sync_item "$HOME/Library/Preferences/com.tencent.xinWeChat.plist" \
     "$(remote_home_path "Library/Preferences/")"
 sync_item "$HOME/Library/Preferences/com.colliderli.iina.plist" \
@@ -589,6 +648,30 @@ sync_item "$HOME/Library/Preferences/com.netease.163music.plist" \
     "$(remote_home_path "Library/Preferences/")"
 sync_item "$HOME/Library/Preferences/abnerworks.Typora.plist" \
     "$(remote_home_path "Library/Preferences/")"
+sync_item "$HOME/Library/Containers/com.luckymarmot.Paw/" \
+    "$(remote_home_path "Library/Containers/com.luckymarmot.Paw/")"
+sync_item "$HOME/Library/Containers/com.svend.uPic.macos/" \
+    "$(remote_home_path "Library/Containers/com.svend.uPic.macos/")"
+sync_item "$HOME/Library/Containers/com.svend.uPic.macos.uPicShareExtension/" \
+    "$(remote_home_path "Library/Containers/com.svend.uPic.macos.uPicShareExtension/")"
+sync_item "$HOME/Library/Group Containers/group.svend.uPic/" \
+    "$(remote_home_path "Library/Group Containers/group.svend.uPic/")"
+sync_item "$HOME/Library/Application Scripts/com.luckymarmot.Paw/" \
+    "$(remote_home_path "Library/Application Scripts/com.luckymarmot.Paw/")"
+sync_item "$HOME/Library/Application Scripts/com.svend.uPic.macos/" \
+    "$(remote_home_path "Library/Application Scripts/com.svend.uPic.macos/")"
+sync_item "$HOME/Library/Application Scripts/com.svend.uPic.macos.uPicShareExtension/" \
+    "$(remote_home_path "Library/Application Scripts/com.svend.uPic.macos.uPicShareExtension/")"
+sync_item "$HOME/Library/Application Scripts/group.svend.uPic/" \
+    "$(remote_home_path "Library/Application Scripts/group.svend.uPic/")"
+sync_glob "$HOME/Library/Containers/com.apple.pixelmator*" \
+    "$(remote_home_path "Library/Containers/")"
+sync_item "$HOME/Library/Group Containers/com.pixelmator/" \
+    "$(remote_home_path "Library/Group Containers/com.pixelmator/")"
+sync_glob "$HOME/Library/Application Scripts/com.apple.pixelmator*" \
+    "$(remote_home_path "Library/Application Scripts/")"
+sync_item "$HOME/Library/Application Scripts/com.pixelmator/" \
+    "$(remote_home_path "Library/Application Scripts/com.pixelmator/")"
 sync_item "$HOME/Library/Containers/com.tencent.xinWeChat/" \
     "$(remote_home_path "Library/Containers/com.tencent.xinWeChat/")"
 sync_item "$HOME/Library/Containers/com.tencent.xinWeChat.WeChatMacShare/" \
